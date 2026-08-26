@@ -473,7 +473,9 @@
 <div class="wrap scherm">
   <div class="scherm-kop"><span class="nr">6</span><h2>Inventaris: het materiaalkot van de vereniging</h2></div>
   <div class="chips"><span class="chip login">Ingelogde materiaalmeester</span><span class="chip">Filament, standaard tabel + formulier</span></div>
-  <p class="uitleg">De inventaris is een gewone Filament-tabel: naam, categorie, aantal en leenstatus. Toevoegen gaat via het standaardformulier met vier velden en is klaar in een halve minuut. Wat hier op "beschikbaar" staat, staat in de publieke catalogus; "even niet" haalt het er stil uit.</p>
+  <p class="uitleg">De inventaris is een gewone Filament-tabel: naam, categorie, aantal en leenstatus. Wat hier op "beschikbaar" staat, staat in de publieke catalogus; "even niet" haalt het er stil uit. Toevoegen gebeurt op een aparte pagina met vier velden, zoals Filament dat standaard doet, en is klaar in een halve minuut.</p>
+
+  <div style="margin: 0 0 8px; font-size: 13px; font-weight: 700; color: #6A6A6A;">6a &middot; Het overzicht</div>
 
   <div class="frame">
     <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/beheer/materialen</span></div>
@@ -507,19 +509,46 @@
               <tr><td class="naam">Partytent 4&times;8 m</td><td class="zacht">Tenten &amp; kamp</td><td class="zacht">1 tent, opbouw met 4 pers.</td><td><span class="f-badge grijs"><i></i>even niet</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
             </table>
           </div>
-          <div class="f-kaart" style="max-width: 420px;">
-            <div class="f-kaartkop"><b>Nieuw materiaal</b></div>
-            <div style="padding: 14px 16px;" class="f-veld">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin: 20px 0 8px; font-size: 13px; font-weight: 700; color: #6A6A6A;">6b &middot; Nieuw materiaal, een aparte pagina</div>
+
+  <div class="frame">
+    <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/beheer/materialen/nieuw</span></div>
+    <div class="f" style="min-height: 300px;">
+      <div class="f-zijbalk">
+        <div class="f-merk"><span class="blokje">OS</span><b>Out of Stock</b></div>
+        <div class="f-nav">
+          <div class="f-groep">Mijn vereniging</div>
+          <span class="f-item actief"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8Z"/></svg>Materialen</span>
+          <span class="f-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h12.8"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H4.2"/></svg>Uitleningen<span class="telling">2</span></span>
+          <span class="f-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8L7 17M17 7l2.8-2.8"/></svg>Instellingen</span>
+        </div>
+      </div>
+      <div class="f-romp">
+        <div class="f-kop"><span class="f-tenant"><i></i>Chiro Hekeko &middot; Kessel-Lo</span><span class="f-avatar">L</span></div>
+        <div class="f-main">
+          <div style="font-size: 11.5px; color: #78716C; margin-bottom: 6px;">Materialen &nbsp;/&nbsp; <span style="color:#1C1917;">Nieuw materiaal</span></div>
+          <div class="f-titelrij"><div><h3>Nieuw materiaal</h3><div class="f-onderkop">Wat jullie in de catalogus willen zetten.</div></div></div>
+          <div class="f-kaart" style="max-width: 520px;">
+            <div style="padding: 16px 18px;" class="f-veld">
               <label>Wat is het?</label>
               <span class="invoer" style="display:block;">bv. Partytent 3&times;6 m</span>
-              <label style="margin-top:10px;">Aantal of capaciteit <span style="color:#B45309;">(verplicht)</span></label>
+              <label style="margin-top:12px;">Aantal of capaciteit <span style="color:#B45309;">(verplicht)</span></label>
               <span class="invoer" style="display:block;">bv. 2 tenten, elk voor 40 personen</span>
               <div class="f-hint">Dit is wat een lener het eerst wil weten.</div>
-              <label style="margin-top:10px;">Categorie</label>
+              <label style="margin-top:12px;">Categorie</label>
               <span class="invoer gevuld" style="display:block;">Tenten &amp; kamp</span>
-              <label style="margin-top:10px;">Opmerking (niet verplicht)</label>
+              <label style="margin-top:12px;">Opmerking (niet verplicht)</label>
               <span class="invoer" style="display:block;">bv. enkel in het weekend op te halen</span>
-              <span class="f-knop primair" style="margin-top:12px;">Zet in de catalogus</span>
+            </div>
+            <div style="display:flex; gap:8px; padding: 12px 18px; border-top: 1px solid #F0EEE9; background: #FAF8F5;">
+              <span class="f-knop primair">Aanmaken</span>
+              <span class="f-knop">Aanmaken en nog een</span>
+              <span class="f-knop" style="border:none; background:none; color:#78716C;">Annuleren</span>
             </div>
           </div>
         </div>
@@ -530,6 +559,7 @@
   <div class="duiding">
     <div class="kolom nu"><h3>In de eerste versie</h3><ul>
       <li>Standaard Filament-resource: lijst, zoeken, filteren op status, toevoegen, bewerken, verwijderen.</li>
+      <li>Toevoegen en bewerken zijn eigen pagina's, zoals Filament ze standaard genereert. Voor zo'n kort formulier kan het evengoed een venster over de lijst worden; dat is een instelling, geen extra bouwwerk.</li>
       <li>Vier velden bij toevoegen: naam, aantal of capaciteit (verplicht), categorie, opmerking.</li>
       <li>Leenstatus met &eacute;&eacute;n klik: beschikbaar, uitgeleend of even niet. Bepaalt meteen wat de publieke catalogus toont.</li>
       <li>Aantal is in de basis een tekstveld; het systeem telt niet mee (zie keuze 2 op de keuzepagina).</li>
