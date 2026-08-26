@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Out of Stock: wie mag wat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Albert Sans', sans-serif; color: #222222; background: #FAFAF7; -webkit-font-smoothing: antialiased; }
+  a { color: #222222; text-decoration: none; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  .pagehead { background: #FFFFFF; border-bottom: 1px solid #EBEBEB; }
+  .pagehead .wrap { display: flex; align-items: center; gap: 20px; padding-top: 10px; padding-bottom: 10px; }
+  .pagehead img { height: 60px; width: 60px; object-fit: contain; }
+  .pagehead .kicker { font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #708C3D; }
+  .pagehead h1 { margin: 2px 0 0; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+  .pagehead .navs { margin-left: auto; display: flex; gap: 8px; }
+  .pagehead .switch { font-weight: 700; font-size: 14px; color: #222222; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 18px; background: #FFFFFF; white-space: nowrap; }
+  .pagehead .switch:hover { border-color: #222222; }
+
+  .intro { padding: 40px 0 4px; }
+  .intro p.lead { margin: 0; font-size: 16.5px; font-weight: 500; line-height: 1.7; color: #444444; max-width: 760px; }
+  .intro p.lead b { font-weight: 700; }
+
+  .sectie { padding: 42px 0 4px; }
+  .sectie-kop { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .sectie-kop .nr { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: #222222; color: #FFFFFF; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+  .sectie-kop h2 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+  .sectie > .uitleg { margin: 6px 0 22px; font-size: 15px; font-weight: 500; line-height: 1.65; color: #444444; max-width: 760px; }
+
+  /* rolkaarten */
+  .rollen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 14px; }
+  .rol { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 22px 24px; }
+  .rol .merkje { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 5px 12px; margin-bottom: 12px; }
+  .rol.bezoeker .merkje { color: #8A7B55; background: #F1E8D6; }
+  .rol.meester .merkje { color: #5C7431; background: #F0F4E8; }
+  .rol.ecolife .merkje { color: #4A5B7A; background: #E9EDF5; }
+  .rol.bestuur .merkje { color: #8A6A1F; background: #FBF3E4; }
+  .rol h3 { margin: 0 0 4px; font-size: 16.5px; font-weight: 800; }
+  .rol .wie { font-size: 13px; font-weight: 600; color: #6A6A6A; margin-bottom: 10px; }
+  .rol p { margin: 0 0 12px; font-size: 13.5px; font-weight: 500; color: #444444; line-height: 1.6; }
+  .rol .login { border-top: 1px solid #F0F0EC; padding-top: 11px; font-size: 12.5px; font-weight: 700; }
+  .rol .login.ja { color: #5C7431; }
+  .rol .login.nee { color: #9A9A9A; }
+
+  /* matrix */
+  .matrixkaart { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; overflow: hidden; }
+  .matrixwikkel { overflow-x: auto; }
+  table.matrix { width: 100%; border-collapse: collapse; min-width: 680px; }
+  table.matrix th { text-align: left; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #6A6A6A; padding: 14px 18px; background: #FAFAF7; border-bottom: 1px solid #EBEBEB; }
+  table.matrix th.rol-kop { text-align: center; width: 150px; }
+  table.matrix th.rol-kop span { display: block; font-size: 12.5px; font-weight: 800; letter-spacing: 0; text-transform: none; }
+  table.matrix th.rol-kop.bezoeker span { color: #8A7B55; }
+  table.matrix th.rol-kop.meester span { color: #5C7431; }
+  table.matrix th.rol-kop.ecolife span { color: #4A5B7A; }
+  table.matrix td { padding: 12px 18px; border-bottom: 1px solid #F2F2F2; font-size: 14px; font-weight: 500; vertical-align: middle; }
+  table.matrix tr:last-child td { border-bottom: none; }
+  table.matrix td.actie { font-weight: 600; color: #222222; }
+  table.matrix td.mark { text-align: center; }
+  table.matrix tr.groep td { background: #FCFBF9; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A; padding: 9px 18px; }
+  .mk { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 13px; }
+  .mk.ja { background: #F0F4E8; color: #5C7431; }
+  .mk.vw { background: #FBF3E4; color: #B0762A; font-size: 12px; }
+  .mk.nee { background: #F4F4F2; color: #C4C4C4; }
+  .legende { display: flex; gap: 22px; flex-wrap: wrap; padding: 14px 18px; border-top: 1px solid #EBEBEB; background: #FAFAF7; }
+  .legende span { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 500; color: #6A6A6A; }
+  .voetnoot { margin-top: 12px; font-size: 13px; font-weight: 500; color: #6A6A6A; line-height: 1.6; }
+  .voetnoot b { color: #B0762A; font-weight: 800; }
+
+  /* voorwaarden */
+  .voorwaarden { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px; }
+  .vw-kaart { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 16px; padding: 22px 24px; }
+  .vw-kaart .nrtje { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: #708C3D; color: #FFF; font-weight: 800; font-size: 12.5px; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .vw-kaart b { display: block; font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+  .vw-kaart span { font-size: 13.5px; font-weight: 500; color: #555555; line-height: 1.6; }
+
+  .toestanden { margin-top: 14px; background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 16px; overflow: hidden; }
+  .toestand { display: flex; gap: 18px; align-items: flex-start; padding: 18px 22px; }
+  .toestand + .toestand { border-top: 1px solid #F2F2F2; }
+  .toestand .situatie { flex: 0 0 240px; font-size: 14px; font-weight: 700; }
+  .toestand .gevolg { flex: 1; font-size: 13.5px; font-weight: 500; color: #555555; line-height: 1.6; }
+  .knopdemo { display: inline-block; font-size: 12.5px; font-weight: 700; border-radius: 8px; padding: 7px 14px; margin-bottom: 6px; }
+  .knopdemo.actief { background: #708C3D; color: #FFFFFF; }
+  .knopdemo.uit { background: #F4F4F2; color: #A0A0A0; border: 1px solid #E5E5E5; }
+  .knopdemo.alt { background: #FFFFFF; color: #222222; border: 1px solid #DDDDDD; }
+
+  /* levensloop */
+  .loop { display: grid; gap: 0; background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; overflow: hidden; }
+  .stap { display: flex; gap: 18px; padding: 20px 24px; align-items: flex-start; }
+  .stap + .stap { border-top: 1px solid #F2F2F2; }
+  .stap .bol { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: #F0F4E8; color: #5C7431; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+  .stap .tekst b { display: block; font-size: 15px; font-weight: 800; margin-bottom: 3px; }
+  .stap .tekst span { font-size: 13.5px; font-weight: 500; color: #555555; line-height: 1.6; }
+  .stap .tekst em { font-style: normal; font-weight: 700; color: #4A5B7A; }
+
+  /* accentblok */
+  .accent { background: #222222; color: #FFFFFF; border-radius: 18px; padding: 28px 30px; }
+  .accent h2 { margin: 0 0 8px; font-size: 19px; font-weight: 800; }
+  .accent p { margin: 0 0 14px; font-size: 14.5px; font-weight: 500; color: #C9C9C9; line-height: 1.65; max-width: 720px; }
+  .accent p:last-child { margin-bottom: 0; }
+  .accent b { color: #FFFFFF; font-weight: 700; }
+
+  /* bewust niet */
+  .nee-lijst { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 26px 28px; }
+  .nee-lijst ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .nee-lijst li { font-size: 14px; font-weight: 500; color: #444444; line-height: 1.55; padding-left: 24px; position: relative; }
+  .nee-lijst li::before { content: "\00d7"; position: absolute; left: 0; top: -1px; font-weight: 800; font-size: 16px; color: #C0392B; }
+  .nee-lijst b { font-weight: 700; color: #222222; }
+
+  .paginavoet { border-top: 1px solid #EBEBEB; margin-top: 56px; background: #FFFFFF; }
+  .paginavoet .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 22px; padding-bottom: 26px; }
+  .paginavoet span.credit { font-size: 13px; font-weight: 500; color: #6A6A6A; }
+  .paginavoet a { font-weight: 700; font-size: 14px; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 18px; background: #FFFFFF; }
+
+  @media (max-width: 860px) {
+    .pagehead h1 { font-size: 17px; }
+    .pagehead .navs { display: none; }
+    .toestand { flex-direction: column; gap: 8px; }
+    .toestand .situatie { flex: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="pagehead">
+  <div class="wrap">
+    <img src="uploads/logo-outofstock.png" alt="Out of Stock">
+    <div>
+      <div class="kicker">Werksessie · Out of Stock</div>
+      <h1>Wie mag wat</h1>
+    </div>
+    <div class="navs">
+      <a class="switch" href="mvp-schermen.html">De schermen</a>
+      <a class="switch" href="keuzepagina.html">De keuzes</a>
+      <a class="switch" href="verantwoording.html">Waarom zo</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap intro">
+  <p class="lead">Het rollenmodel is bewust zo klein mogelijk gehouden: <b>er zijn maar twee soorten accounts in het hele systeem.</b> De materiaalmeester, die alles doet voor de eigen vereniging, en de Ecolife-admin, die het netwerk bestuurt. Al de rest zijn bezoekers zonder account. Deze pagina zet uit wie wat kan, wanneer de aanvraagknop verschijnt en hoe iemand aan een account raakt.</p>
+</div>
+
+<!-- ============ 1. DE BETROKKENEN ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">1</span><h2>De vier betrokkenen</h2></div>
+  <p class="uitleg">Twee daarvan hebben een login, twee niet. Dat is een bewuste keuze en geen tekort: hoe minder accountsoorten, hoe minder er kan misgaan en hoe goedkoper het onderhoud blijft.</p>
+
+  <div class="rollen">
+    <div class="rol bezoeker">
+      <span class="merkje">Geen account</span>
+      <h3>De bezoeker</h3>
+      <div class="wie">Iedereen die de site opent</div>
+      <p>Zoekt in de catalogus en bekijkt materiaalfiches. Ziet nooit contactgegevens en kan niets aanvragen. Wil die persoon meedoen, dan vult hij de aanmeldfiche in.</p>
+      <div class="login nee">Logt niet in</div>
+    </div>
+
+    <div class="rol meester">
+      <span class="merkje">Account</span>
+      <h3>De materiaalmeester</h3>
+      <div class="wie">Eén of meer personen per vereniging</div>
+      <p>Beheert het materiaal van de eigen vereniging, behandelt binnenkomende aanvragen en vraagt zelf materiaal aan bij andere verenigingen binnen het deelnetwerk. Dit is de enige rol op verenigingsniveau.</p>
+      <div class="login ja">Logt in op het Filament-paneel</div>
+    </div>
+
+    <div class="rol ecolife">
+      <span class="merkje">Account</span>
+      <h3>De Ecolife-admin</h3>
+      <div class="wie">Ecolife en de deelcoaches</div>
+      <p>Voegt verenigingen toe, nodigt materiaalmeesters uit, behandelt aanmeldingen en koppelt gemeenten aan elkaar. Ziet alle uitleningen van het netwerk. De deelcoach werkt onder deze rol.</p>
+      <div class="login ja">Logt in op het Filament-paneel</div>
+    </div>
+
+    <div class="rol bestuur">
+      <span class="merkje">Nog geen account</span>
+      <h3>Het lokaal bestuur</h3>
+      <div class="wie">De gemeente die betaalt</div>
+      <p>Heeft in de eerste versie bewust geen login. De gemeente krijgt haar cijfers via de deelcoach. Pas als het gemeenterapport gebouwd wordt, komt hier eventueel een eigen weergave bij.</p>
+      <div class="login nee">Krijgt een rapport via de deelcoach</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2. DE MATRIX ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">2</span><h2>Wie kan wat</h2></div>
+  <p class="uitleg">De volledige rechtenverdeling op één blad. Alles wat een materiaalmeester kan, geldt uitsluitend voor de eigen vereniging.</p>
+
+  <div class="matrixkaart">
+    <div class="matrixwikkel">
+      <table class="matrix">
+        <tr>
+          <th>Actie</th>
+          <th class="rol-kop bezoeker"><span>Bezoeker</span></th>
+          <th class="rol-kop meester"><span>Materiaalmeester</span></th>
+          <th class="rol-kop ecolife"><span>Ecolife-admin</span></th>
+        </tr>
+
+        <tr class="groep"><td colspan="4">De publieke kant</td></tr>
+        <tr><td class="actie">De catalogus doorzoeken</td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+        <tr><td class="actie">Een materiaalfiche bekijken</td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+        <tr><td class="actie">Contactgegevens van een vereniging zien</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk vw">&#10003;*</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+        <tr><td class="actie">De aanmeldfiche invullen</td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+
+        <tr class="groep"><td colspan="4">Lenen</td></tr>
+        <tr><td class="actie">Materiaal aanvragen bij een andere vereniging</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk vw">&#10003;*</span></td><td class="mark"><span class="mk nee">&ndash;</span></td></tr>
+        <tr><td class="actie">Een binnengekomen aanvraag goedkeuren of weigeren</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk nee">&ndash;</span></td></tr>
+        <tr><td class="actie">Markeren als opgehaald of terug</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk nee">&ndash;</span></td></tr>
+        <tr><td class="actie">De eigen lopende uitleningen opvolgen</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+
+        <tr class="groep"><td colspan="4">De eigen inventaris</td></tr>
+        <tr><td class="actie">Materiaal toevoegen, aanpassen of verwijderen</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk vw">&#10003;*</span></td></tr>
+        <tr><td class="actie">De leenstatus wijzigen</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk vw">&#10003;*</span></td></tr>
+        <tr><td class="actie">Instellen of contactgegevens getoond mogen worden</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk nee">&ndash;</span></td></tr>
+        <tr><td class="actie">Iemand van de eigen vereniging uitnodigen</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+
+        <tr class="groep"><td colspan="4">Het netwerk</td></tr>
+        <tr><td class="actie">Een vereniging toevoegen en uitnodigen</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+        <tr><td class="actie">Aanmeldfiches behandelen</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+        <tr><td class="actie">Gemeenten aan elkaar koppelen (deelnetwerken)</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+        <tr><td class="actie">Alle uitleningen van het netwerk zien</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+        <tr><td class="actie">Een vereniging op non-actief zetten</td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk nee">&ndash;</span></td><td class="mark"><span class="mk ja">&#10003;</span></td></tr>
+      </table>
+    </div>
+    <div class="legende">
+      <span><span class="mk ja">&#10003;</span> mag</span>
+      <span><span class="mk vw">&#10003;*</span> mag, onder voorwaarde</span>
+      <span><span class="mk nee">&ndash;</span> mag niet</span>
+    </div>
+  </div>
+
+  <div class="voetnoot">
+    <b>*</b> Contactgegevens verschijnen pas na een klik, en alleen als die vereniging dat in haar instellingen toestaat. Aanvragen kan alleen binnen het eigen deelnetwerk, zie punt 3. Ecolife kan aan de inventaris van een vereniging komen om te helpen bij een deelscan of om iets recht te zetten; dat is een hulpfunctie, geen dagelijkse taak.
+  </div>
+</div>
+
+<!-- ============ 3. WANNEER KAN JE AANVRAGEN ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">3</span><h2>Wanneer verschijnt de aanvraagknop</h2></div>
+  <p class="uitleg">Kijken kan iedereen, aanvragen niet. Daarvoor moeten twee dingen tegelijk kloppen.</p>
+
+  <div class="voorwaarden">
+    <div class="vw-kaart"><span class="nrtje">1</span><b>De gemeente is aangesloten</b><span>Het lokaal bestuur is ingestapt, waardoor zijn verenigingen tot het netwerk horen. Dat is de beslissing die het bestuur koopt.</span></div>
+    <div class="vw-kaart"><span class="nrtje">2</span><b>De vereniging heeft een account</b><span>De deelcoach heeft de vereniging aangemaakt en minstens één materiaalmeester uitgenodigd.</span></div>
+  </div>
+
+  <div class="toestanden">
+    <div class="toestand">
+      <div class="situatie"><span class="knopdemo actief">Verstuur aanvraag</span><br>Alles klopt</div>
+      <div class="gevolg">Ingelogd, en het materiaal ligt bij een vereniging binnen het eigen deelnetwerk. De knop werkt gewoon: periode kiezen, bericht typen, versturen. De eigenaar krijgt meteen een mail.</div>
+    </div>
+    <div class="toestand">
+      <div class="situatie"><span class="knopdemo uit">Buiten jullie deelnetwerk</span><br>Ingelogd, ander deelnetwerk</div>
+      <div class="gevolg">De fiche blijft gewoon zichtbaar, maar in plaats van de knop staat er een eerlijke uitleg: deze vereniging hoort bij deelnetwerk Hageland, jullie zitten in Leuven. Daaronder een knop <b>"laat weten dat je hier zou willen lenen"</b>. Elke klik daarop vertelt Ecolife waar een koppeling ontbreekt.</div>
+    </div>
+    <div class="toestand">
+      <div class="situatie"><span class="knopdemo alt">Doe mee met je vereniging</span><br>Niet ingelogd</div>
+      <div class="gevolg">Geen aanvraagknop en geen contactgegevens, wel een duidelijke uitleg dat aanvragen voorbehouden is aan aangesloten verenigingen, met de weg naar de aanmeldfiche. Zo wordt de particulier met een tuinfeest netjes tegengehouden en de gemotiveerde vereniging opgevangen.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 4. MEERDERE PERSONEN ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">4</span><h2>Eén rol, meerdere personen</h2></div>
+  <p class="uitleg">Belangrijk onderscheid: er is één soort account per vereniging, maar dat betekent niet één persoon.</p>
+
+  <div class="accent">
+    <h2>Waarom meerdere mensen dezelfde rol krijgen</h2>
+    <p>De pijn die Out of Stock oplost, is precies dat alle kennis bij één iemand zit. Als er letterlijk één login is voor de hele vereniging, bouwen we dat probleem in de oplossing in: valt die persoon weg, dan geraakt niemand er nog aan. In verenigingen wisselt de ploeg bovendien vaak jaarlijks.</p>
+    <p>Wat er in de praktijk gebeurt bij één gedeelde login: het wachtwoord belandt in de WhatsApp-groep, niemand weet nog wie wat gedaan heeft, en een vertrekkende leider kan je de toegang niet ontnemen zonder iedereen buiten te sluiten.</p>
+    <p><b>Daarom: persoonlijke accounts, allemaal met exact dezelfde rechten, allemaal gekoppeld aan dezelfde vereniging.</b> Dat kost geen extra bouwwerk. Er komt geen rol bij, er komen alleen meer mensen in dezelfde rol.</p>
+    <p>Eén detail dat daarbij hoort: de meldingen gaan naar één adres van de vereniging (bijvoorbeeld materiaal@chirohekeko.be), niet naar alle accounts apart. Anders krijgt de hele ploeg dezelfde mail en voelt niemand zich verantwoordelijk. Persoonlijke logins om te werken, één gedeeld adres om verwittigd te worden.</p>
+  </div>
+</div>
+
+<!-- ============ 5. LEVENSLOOP ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">5</span><h2>Hoe iemand aan een account raakt</h2></div>
+  <p class="uitleg">Er is nergens een knop "maak een account". Toegang is altijd een beslissing van een mens, en dat is de kern van het vertrouwensmodel.</p>
+
+  <div class="loop">
+    <div class="stap"><span class="bol">1</span><div class="tekst"><b>Aanmelden of aangesproken worden</b><span>Een vereniging vult de aanmeldfiche in, of de deelcoach spreekt haar aan tijdens een deelscan. De fiche komt binnen bij <em>Ecolife</em>.</span></div></div>
+    <div class="stap"><span class="bol">2</span><div class="tekst"><b>Ecolife maakt de vereniging aan</b><span>Naam, gemeente en buurt. Ligt de gemeente nog niet in het netwerk, dan is dit meteen een lead richting dat bestuur in plaats van een afwijzing. Gedaan door <em>Ecolife</em>.</span></div></div>
+    <div class="stap"><span class="bol">3</span><div class="tekst"><b>De eerste materiaalmeester wordt uitgenodigd</b><span>Per mail, met een link om een wachtwoord in te stellen. Vanaf dat moment kan de vereniging materiaal toevoegen en aanvragen doen. Gedaan door <em>Ecolife</em>.</span></div></div>
+    <div class="stap"><span class="bol">4</span><div class="tekst"><b>De vereniging nodigt zelf collega's uit</b><span>Zelfde rol, zelfde rechten. Ecolife hoeft hier niet meer tussen te komen. Gedaan door de <em>materiaalmeester</em>.</span></div></div>
+    <div class="stap"><span class="bol">5</span><div class="tekst"><b>Ploegwissel</b><span>De vertrekkende leiding nodigt de nieuwe uit en zet het eigen account stop. Lukt dat niet meer omdat iemand al weg is, dan doet de deelcoach het. Gedaan door de <em>materiaalmeester</em> of <em>Ecolife</em>.</span></div></div>
+    <div class="stap"><span class="bol">6</span><div class="tekst"><b>Een vereniging stopt</b><span>Ecolife zet haar op non-actief. Het materiaal verdwijnt uit de catalogus, de historiek van uitleningen blijft bewaard voor de cijfers. Gedaan door <em>Ecolife</em>.</span></div></div>
+  </div>
+
+  <div class="voetnoot">Belangrijk voor het datamodel: een uitlening hangt aan de <b>vereniging</b>, niet aan de persoon die ze ingaf. Vertrekt iemand midden in een lopende uitlening, dan blijft die gewoon staan en kan een collega ze afhandelen.</div>
+</div>
+
+<!-- ============ 6. BEWUST NIET ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">6</span><h2>Bewust geen extra rollen</h2></div>
+  <p class="uitleg">Elke extra rol is een extra scherm, een extra rechtencontrole en een extra bron van fouten. Dit laten we weg, en dat kan later altijd nog.</p>
+  <div class="nee-lijst">
+    <ul>
+      <li><b>Geen ledenrol.</b> Een gewoon lid dat wel mag kijken en aanvragen maar niets beheren, klinkt logisch maar niemand heeft er in de test iets aan. Kijken kan sowieso zonder account.</li>
+      <li><b>Geen tussenrollen.</b> Geen "mag toevoegen maar niet verwijderen". Wie binnen is, kan alles voor de eigen vereniging.</li>
+      <li><b>Geen self-service registratie.</b> Toegang blijft een menselijke beslissing van de deelcoach.</li>
+      <li><b>Geen gemeentelogin.</b> Het bestuur krijgt zijn cijfers via de deelcoach zolang het rapport niet gebouwd is.</li>
+      <li><b>Geen aparte deelcoach-rol naast Ecolife.</b> De deelcoach werkt onder de admin-rol. Wordt het team groter, dan kan dat later gesplitst worden.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="paginavoet">
+  <div class="wrap">
+    <span class="credit">Out of Stock &middot; werksessiemateriaal, geen definitief ontwerp</span>
+    <span style="display:flex; gap:8px; flex-wrap:wrap;"><a href="mvp-schermen.html">De schermen</a><a href="keuzepagina.html">De keuzes</a><a href="verantwoording.html">Waarom zo</a></span>
+  </div>
+</div>
+
+</body>
+</html>

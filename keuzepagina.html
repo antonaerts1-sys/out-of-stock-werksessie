@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Out of Stock: de keuzes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Albert Sans', sans-serif; color: #222222; background: #FAFAF7; -webkit-font-smoothing: antialiased; }
+  a { color: #222222; text-decoration: none; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  .pagehead { background: #FFFFFF; border-bottom: 1px solid #EBEBEB; }
+  .pagehead .wrap { display: flex; align-items: center; gap: 20px; padding-top: 10px; padding-bottom: 10px; }
+  .pagehead img { height: 60px; width: 60px; object-fit: contain; }
+  .pagehead .kicker { font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #708C3D; }
+  .pagehead h1 { margin: 2px 0 0; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+  .pagehead .switch { margin-left: auto; font-weight: 700; font-size: 14px; color: #222222; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 18px; background: #FFFFFF; }
+  .pagehead .switch:hover { border-color: #222222; }
+
+  .intro { padding: 40px 0 4px; }
+  .intro p.lead { margin: 0; font-size: 16.5px; font-weight: 500; line-height: 1.65; color: #444444; max-width: 720px; }
+
+  .sectie { padding: 40px 0 4px; }
+  .sectie-kop { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .sectie-kop .nr { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: #222222; color: #FFFFFF; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+  .sectie-kop h2 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+  .sectie > .uitleg { margin: 6px 0 22px; font-size: 15px; font-weight: 500; line-height: 1.65; color: #444444; max-width: 740px; }
+
+  .flag { display: inline-block; font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 6px 14px; margin-bottom: 8px; }
+  .flag.groot { color: #8A6A1F; background: #FBF3E4; }
+
+  /* modellen */
+  .modellen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px; }
+  .model { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 0; }
+  .model .letter { width: 34px; height: 34px; border-radius: 50%; background: #F1E8D6; color: #8A7B55; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .model h3 { margin: 0 0 4px; font-size: 17px; font-weight: 800; }
+  .model .sub { font-size: 13.5px; font-weight: 500; color: #6A6A6A; line-height: 1.55; margin-bottom: 14px; }
+  .model .tekening { background: #FAFAF7; border: 1px solid #F0F0EC; border-radius: 12px; padding: 10px; display: flex; justify-content: center; margin-bottom: 14px; }
+  .model dl { margin: 0; display: grid; gap: 9px; }
+  .model dt { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A; }
+  .model dd { margin: 1px 0 0; font-size: 13px; font-weight: 500; color: #444444; line-height: 1.5; }
+  .model .let-op { margin-top: 14px; border-top: 1px solid #F0F0EC; padding-top: 12px; font-size: 12.5px; font-weight: 500; color: #8A6A1F; line-height: 1.5; }
+  .model .let-op b { font-weight: 800; }
+
+  /* scope-kaarten */
+  .opties { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 14px; }
+  .optie { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 16px; padding: 22px 24px; }
+  .optie h3 { margin: 0 0 6px; font-size: 15.5px; font-weight: 800; }
+  .optie p { margin: 0; font-size: 13.5px; font-weight: 500; color: #555555; line-height: 1.6; }
+  .optie .basis-regel { display: block; margin-top: 12px; border-top: 1px solid #F0F0EC; padding-top: 10px; font-size: 12.5px; font-weight: 500; color: #6A6A6A; line-height: 1.5; }
+  .optie .basis-regel b { color: #5C7431; font-weight: 800; }
+
+  /* bewust niet */
+  .nee { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 26px 28px; }
+  .nee ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .nee li { font-size: 14px; font-weight: 500; color: #444444; line-height: 1.55; padding-left: 24px; position: relative; }
+  .nee li::before { content: "\00d7"; position: absolute; left: 0; top: -1px; font-weight: 800; font-size: 16px; color: #C0392B; }
+  .nee b { font-weight: 700; }
+
+  /* beslislijst */
+  .beslis { background: #222222; color: #FFFFFF; border-radius: 18px; padding: 28px 30px; }
+  .beslis h2 { margin: 0 0 6px; font-size: 19px; font-weight: 800; }
+  .beslis p { margin: 0 0 16px; font-size: 14px; font-weight: 500; color: #C9C9C9; line-height: 1.6; max-width: 680px; }
+  .beslis ol { margin: 0; padding: 0 0 0 2px; list-style: none; counter-reset: b; display: grid; gap: 10px; }
+  .beslis li { counter-increment: b; font-size: 14.5px; font-weight: 500; line-height: 1.55; padding-left: 34px; position: relative; }
+  .beslis li::before { content: counter(b); position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 50%; background: #708C3D; color: #FFF; font-weight: 800; font-size: 12.5px; display: flex; align-items: center; justify-content: center; }
+
+  .paginavoet { border-top: 1px solid #EBEBEB; margin-top: 56px; background: #FFFFFF; }
+  .paginavoet .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 22px; padding-bottom: 26px; }
+  .paginavoet span { font-size: 13px; font-weight: 500; color: #6A6A6A; }
+  .paginavoet a.switch { font-weight: 700; font-size: 14px; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 18px; background: #FFFFFF; }
+
+  @media (max-width: 760px) { .pagehead h1 { font-size: 17px; } }
+</style>
+</head>
+<body>
+
+<div class="pagehead">
+  <div class="wrap">
+    <img src="uploads/logo-outofstock.png" alt="Out of Stock">
+    <div>
+      <div class="kicker">Werksessie · Out of Stock</div>
+      <h1>De keuzes</h1>
+    </div>
+    <span style="margin-left:auto; display:flex; gap:8px;">
+      <a class="switch" style="margin-left:0;" href="mvp-schermen.html">De schermen</a>
+      <a class="switch" style="margin-left:0;" href="rollen.html">Wie mag wat</a>
+      <a class="switch" style="margin-left:0;" href="verantwoording.html">Waarom zo</a>
+    </span>
+  </div>
+</div>
+
+<div class="wrap intro">
+  <p class="lead">De basis staat vast: uitlenen loopt binnen het systeem, materiaal toevoegen is simpel, en Ecolife voegt verenigingen toe. Daarbovenop liggen keuzes. E&eacute;n grote, die bepaalt hoe het netwerk in elkaar zit, en een handvol kleinere over wat er in de eerste versie bij mag.</p>
+</div>
+
+<!-- ============ KEUZE 1 ============ -->
+<div class="wrap sectie">
+  <span class="flag groot">De grote keuze, bepaalt alles daarna</span>
+  <div class="sectie-kop"><span class="nr">1</span><h2>Hoe open is het netwerk?</h2></div>
+  <p class="uitleg">Iedereen mag altijd k&iacute;jken: de catalogus is publiek, zonder login, en contactgegevens staan er nooit open op. De vraag is wie bij wie mag <b>aanvragen</b>. Daar zijn drie modellen voor.</p>
+
+  <div class="modellen">
+    <div class="model">
+      <span class="letter">A</span>
+      <h3>E&eacute;n open platform</h3>
+      <div class="sub">Zoals 2dehands: &eacute;&eacute;n grote catalogus voor heel Vlaanderen. Afstand is een filter, geen grens. Elke geregistreerde vereniging kan bij elke andere aanvragen.</div>
+      <div class="tekening">
+        <svg width="220" height="96" viewBox="0 0 220 96" fill="none">
+          <rect x="4" y="4" width="212" height="88" rx="12" stroke="#DDDDDD" stroke-width="1.5"/>
+          <line x1="50" y1="34" x2="106" y2="62" stroke="#C9D3B4" stroke-width="1.5"/><line x1="106" y1="62" x2="168" y2="30" stroke="#C9D3B4" stroke-width="1.5"/><line x1="50" y1="34" x2="168" y2="30" stroke="#C9D3B4" stroke-width="1.5"/><line x1="106" y1="62" x2="74" y2="76" stroke="#C9D3B4" stroke-width="1.5"/><line x1="168" y1="30" x2="152" y2="72" stroke="#C9D3B4" stroke-width="1.5"/>
+          <circle cx="50" cy="34" r="8" fill="#708C3D"/><circle cx="106" cy="62" r="8" fill="#708C3D"/><circle cx="168" cy="30" r="8" fill="#708C3D"/><circle cx="74" cy="76" r="8" fill="#708C3D"/><circle cx="152" cy="72" r="8" fill="#708C3D"/>
+        </svg>
+      </div>
+      <dl>
+        <dt>Voor een vereniging</dt><dd>Maximale kans dat iemand heeft wat je zoekt. Lenen blijft in de praktijk lokaal, omdat je toch moet gaan ophalen.</dd>
+        <dt>Voor een lokaal bestuur</dt><dd>Geen eigen afgebakende omgeving. Het bestuur betaalt voor de deelcoach en de aansluiting van zijn verenigingen.</dd>
+        <dt>Voor Ecolife</dt><dd>Niets te configureren. E&eacute;n netwerk om te laten groeien.</dd>
+      </dl>
+      <div class="let-op"><b>Let op:</b> het is minder duidelijk wat een gemeente precies koopt. Het aanbod van het businessmodel moet dan volledig uit begeleiding en rapportering komen.</div>
+    </div>
+
+    <div class="model">
+      <span class="letter">B</span>
+      <h3>Aparte deelnetwerken</h3>
+      <div class="sub">Elke gemeente of regio krijgt een eigen, afgeschermde omgeving met een eigen catalogus. Wat in Leuven staat, bestaat niet voor Aarschot.</div>
+      <div class="tekening">
+        <svg width="220" height="96" viewBox="0 0 220 96" fill="none">
+          <rect x="4" y="4" width="98" height="88" rx="12" stroke="#DDDDDD" stroke-width="1.5"/>
+          <rect x="118" y="4" width="98" height="88" rx="12" stroke="#DDDDDD" stroke-width="1.5"/>
+          <line x1="34" y1="36" x2="70" y2="62" stroke="#C9D3B4" stroke-width="1.5"/><line x1="34" y1="36" x2="62" y2="26" stroke="#C9D3B4" stroke-width="1.5"/>
+          <circle cx="34" cy="36" r="8" fill="#708C3D"/><circle cx="70" cy="62" r="8" fill="#708C3D"/><circle cx="62" cy="26" r="8" fill="#708C3D"/>
+          <line x1="150" y1="34" x2="184" y2="60" stroke="#C9D3B4" stroke-width="1.5"/>
+          <circle cx="150" cy="34" r="8" fill="#8A7B55"/><circle cx="184" cy="60" r="8" fill="#8A7B55"/>
+        </svg>
+      </div>
+      <dl>
+        <dt>Voor een vereniging</dt><dd>Overzichtelijk en vertrouwd, maar een kleiner aanbod. De buurgemeente aan de overkant van de straat valt buiten bereik.</dd>
+        <dt>Voor een lokaal bestuur</dt><dd>Het duidelijkste product: een eigen deelplatform met eigen naam.</dd>
+        <dt>Voor Ecolife</dt><dd>Elke nieuwe gemeente start met een lege catalogus die apart op gang moet komen.</dd>
+      </dl>
+      <div class="let-op"><b>Let op:</b> grensgevallen worden raar. Een deelgemeente van Aarschot die dichter bij Leuven ligt dan Leuven zelf, kan er niet lenen. En elk deelnetwerk verdunt een markt die sowieso weinig transacties heeft.</div>
+    </div>
+
+    <div class="model">
+      <span class="letter">C</span>
+      <h3>E&eacute;n platform met leenclusters</h3>
+      <div class="sub">E&eacute;n catalogus, iedereen kijkt mee. Ecolife koppelt gemeenten aan elkaar: Leuven met Aarschot, Aarschot met Rotselaar. Aanvragen kan binnen je gekoppelde gemeenten.</div>
+      <div class="tekening">
+        <svg width="220" height="96" viewBox="0 0 220 96" fill="none">
+          <rect x="4" y="4" width="212" height="88" rx="12" stroke="#DDDDDD" stroke-width="1.5"/>
+          <line x1="46" y1="38" x2="102" y2="58" stroke="#708C3D" stroke-width="2"/><line x1="102" y1="58" x2="158" y2="34" stroke="#708C3D" stroke-width="2"/>
+          <circle cx="46" cy="38" r="8" fill="#708C3D"/><circle cx="102" cy="58" r="8" fill="#708C3D"/><circle cx="158" cy="34" r="8" fill="#708C3D"/>
+          <circle cx="188" cy="72" r="8" fill="#FFFFFF" stroke="#B5B5B5" stroke-width="2"/>
+        </svg>
+      </div>
+      <dl>
+        <dt>Voor een vereniging</dt><dd>Je leent in je eigen streek, maar het aanbod groeit mee met elke koppeling. Grensgevallen los je op door gewoon een koppeling toe te voegen.</dd>
+        <dt>Voor een lokaal bestuur</dt><dd>Aansluiten betekent: jouw verenigingen kunnen meedoen. Het bestuur koopt toegang, begeleiding en straks rapportering.</dd>
+        <dt>Voor Ecolife</dt><dd>De koppelingen zijn een bewuste, menselijke beslissing van de deelcoach. Later kan alles alsnog opengetrokken worden.</dd>
+      </dl>
+      <div class="let-op"><b>Let op:</b> iets meer bouw- en beheerwerk dan model A: het systeem moet per aanvraag weten of twee gemeenten gekoppeld zijn.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ KEUZE 2 ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">2</span><h2>Hoe slim moet de voorraad zijn?</h2></div>
+  <p class="uitleg">De grootste technische valkuil van dit project. Twee smaken.</p>
+  <div class="opties">
+    <div class="optie">
+      <h3>Leenstatus per materiaal</h3>
+      <p>Elk materiaal is beschikbaar, uitgeleend of even niet. E&eacute;n klik van de materiaalmeester. Simpel, robuust, en voor tafels-en-banken als &eacute;&eacute;n set is dat de waarheid.</p>
+      <span class="basis-regel"><b>Dit zit in de basis.</b> Aantallen staan als tekst op de fiche ("20 partytenten"), maar het systeem telt niet mee.</span>
+    </div>
+    <div class="optie">
+      <h3>Echte voorraadteller</h3>
+      <p>Het systeem weet: 20 partytenten, 4 uitgeleend, dus 16 beschikbaar, en telt automatisch terug op wanneer ze terugkomen. Nodig voor verenigingen met grote aantallen die aan meerdere partijen tegelijk uitlenen.</p>
+      <span class="basis-regel"><b>Extra bovenop de basis.</b> Kan later toegevoegd worden zonder de schermen om te gooien.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ KEUZE 3 ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">3</span><h2>Wat mag er nog bij?</h2></div>
+  <p class="uitleg">Vier bouwstenen die waardevol zijn maar niet nodig om te starten. Elke bouwsteen kan later toegevoegd worden; de vraag is alleen wat er nu al bij moet.</p>
+  <div class="opties">
+    <div class="optie">
+      <h3>Gemeenterapport</h3>
+      <p>Een overzicht per gemeente: wat wordt er uitgeleend, hoeveel zou dat aan aankopen of huur gescheeld hebben, waar loont een collectieve aankoop. Dit is het verhaal waarmee Ecolife bij lokale besturen aan tafel zit.</p>
+      <span class="basis-regel"><b>Extra.</b> In de basis kan Ecolife de ruwe gegevens al zien in het beheer.</span>
+    </div>
+    <div class="optie">
+      <h3>Foto's uploaden</h3>
+      <p>De materiaalmeester voegt foto's toe aan een fiche. De catalogus houdt dezelfde layout: het icoonvierkantje wordt een miniatuur.</p>
+      <span class="basis-regel"><b>Extra.</b> Bij de start heeft bijna niets een foto; de lijst is daarop ontworpen.</span>
+    </div>
+    <div class="optie">
+      <h3>Herinneringen</h3>
+      <p>Automatische mailtjes: "deze uitlening staat al drie weken op opgehaald" of "je hebt een aanvraag nog niet beantwoord". Houdt het netwerk netjes zonder dat de deelcoach erachteraan moet.</p>
+      <span class="basis-regel"><b>Extra.</b> In de basis is er &eacute;&eacute;n mail per gebeurtenis: nieuwe aanvraag, goedgekeurd, geweigerd.</span>
+    </div>
+    <div class="optie">
+      <h3>Spelregels en Over</h3>
+      <p>De twee inhoudspagina's. De links staan al in het ontwerp; de teksten komen van Ecolife (leenafspraken, wat bij schade, wie is de deelcoach).</p>
+      <span class="basis-regel"><b>Zit in de basis</b> zodra de teksten er zijn. Zonder teksten blijven de links weg.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BEWUST NIET ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">4</span><h2>Bewust niet in deze versie</h2></div>
+  <p class="uitleg">Even belangrijk als wat er wel in zit. Deze dingen zijn eerder overwogen en bewust geschrapt.</p>
+  <div class="nee">
+    <ul>
+      <li><b>Een beschikbaarheidskalender per materiaal.</b> Lenen wordt weken vooraf afgesproken tussen mensen; een dagkalender vraagt onderhoud dat niemand gaat doen.</li>
+      <li><b>Een intern berichtensysteem.</b> Niemand logt dagelijks in op een deelplatform. Communicatie loopt via mail en telefoon; het systeem bewaakt alleen de statussen.</li>
+      <li><b>Zelf een account aanmaken.</b> Toegang is een beslissing van de deelcoach, geen formulier. Zo blijft het netwerk betrouwbaar.</li>
+      <li><b>Meerdere rollen per vereniging.</b> E&eacute;n materiaalmeester-account per vereniging volstaat om te starten.</li>
+      <li><b>Prijzen of waarborgen in het systeem.</b> Alles is gratis lenen tussen verenigingen; afspraken over schade staan in de spelregels, niet in de software.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ BESLISLIJST ============ -->
+<div class="wrap sectie">
+  <div class="beslis">
+    <h2>Wat we samen beslissen in deze sessie</h2>
+    <p>Vijf beslissingen, dan kan er gebouwd worden.</p>
+    <ol>
+      <li>Het netwerkmodel: A, B of C.</li>
+      <li>Bij model C: welke gemeenten koppelen we bij de start, en wie beslist over nieuwe koppelingen?</li>
+      <li>De voorraad: leenstatus of echte teller?</li>
+      <li>Welke van de vier extra bouwstenen moeten er nu al bij?</li>
+      <li>Wie levert de teksten voor Spelregels en Over, en tegen wanneer?</li>
+    </ol>
+  </div>
+</div>
+
+<div class="paginavoet">
+  <div class="wrap">
+    <span>Out of Stock &middot; werksessiemateriaal, geen definitief ontwerp</span>
+    <span style="display:flex; gap:8px; flex-wrap:wrap;"><a class="switch" href="mvp-schermen.html">De schermen</a><a class="switch" href="rollen.html">Wie mag wat</a><a class="switch" href="verantwoording.html">Waarom zo</a></span>
+  </div>
+</div>
+
+</body>
+</html>

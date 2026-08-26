@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Out of Stock in acht schermen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Albert Sans', sans-serif; color: #222222; background: #FAFAF7; -webkit-font-smoothing: antialiased; }
+  a { color: #222222; text-decoration: none; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* ------- paginakop ------- */
+  .pagehead { background: #FFFFFF; border-bottom: 1px solid #EBEBEB; }
+  .pagehead .wrap { display: flex; align-items: center; gap: 20px; padding-top: 10px; padding-bottom: 10px; }
+  .pagehead img { height: 60px; width: 60px; object-fit: contain; }
+  .pagehead .kicker { font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #708C3D; }
+  .pagehead h1 { margin: 2px 0 0; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+  .pagehead .switch { margin-left: auto; font-weight: 700; font-size: 14px; color: #222222; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 18px; background: #FFFFFF; }
+  .pagehead .switch:hover { border-color: #222222; }
+
+  .intro { padding: 40px 0 8px; }
+  .intro p.lead { margin: 0 0 26px; font-size: 16.5px; font-weight: 500; line-height: 1.65; color: #444444; max-width: 720px; }
+
+  /* ------- mvp-blok ------- */
+  .mvpblok { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 28px 30px; margin-bottom: 8px; }
+  .mvpblok h2 { margin: 0 0 6px; font-size: 18px; font-weight: 800; }
+  .mvpblok p { margin: 0 0 18px; font-size: 14.5px; font-weight: 500; color: #6A6A6A; line-height: 1.6; max-width: 680px; }
+  .mvp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px; }
+  .mvp-card { border: 1px solid #EBEBEB; border-radius: 14px; padding: 16px 18px; background: #FAFAF7; }
+  .mvp-card .nr { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: #708C3D; color: #FFF; font-weight: 800; font-size: 13px; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .mvp-card b { display: block; font-size: 14.5px; font-weight: 700; margin-bottom: 3px; }
+  .mvp-card span { font-size: 13.5px; font-weight: 500; color: #6A6A6A; line-height: 1.5; }
+
+  /* ------- deel-scheiding ------- */
+  .deel { padding: 52px 0 0; }
+  .deel .deelkop { display: flex; align-items: center; gap: 16px; }
+  .deel .deelkop h2 { margin: 0; font-size: 15px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: #708C3D; white-space: nowrap; }
+  .deel .deelkop .lijn { flex: 1; height: 1px; background: #E3E3E0; }
+  .deel p { margin: 10px 0 0; font-size: 14.5px; font-weight: 500; color: #6A6A6A; line-height: 1.6; max-width: 740px; }
+
+  /* ------- schermsecties ------- */
+  .scherm { padding: 44px 0 8px; }
+  .scherm-kop { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+  .scherm-kop .nr { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: #222222; color: #FFFFFF; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; align-self: center; }
+  .scherm-kop h2 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 12px; }
+  .chip { font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 5px 13px; background: #F2F2F2; color: #6A6A6A; }
+  .chip.publiek { color: #5C7431; background: #F0F4E8; }
+  .chip.login { color: #8A6A1F; background: #FBF3E4; }
+  .chip.coach { color: #4A5B7A; background: #E9EDF5; }
+  .scherm > .uitleg { margin: 0 0 20px; font-size: 15px; font-weight: 500; line-height: 1.65; color: #444444; max-width: 720px; }
+
+  /* browserkader rond elke mockup */
+  .frame { background: #FFFFFF; border: 1px solid #E3E3E3; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 34px rgba(0,0,0,0.07); }
+  .frame-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #F4F4F2; border-bottom: 1px solid #E8E8E8; }
+  .frame-bar i { width: 10px; height: 10px; border-radius: 50%; background: #DDDAD2; }
+  .frame-bar .url { margin-left: 10px; font-size: 12px; font-weight: 600; color: #9A9A9A; background: #FFFFFF; border-radius: 999px; padding: 4px 14px; }
+
+  /* ------- publieke mockup-onderdelen ------- */
+  .m-header { display: flex; align-items: center; gap: 16px; padding: 8px 26px; border-bottom: 1px solid #EBEBEB; }
+  .m-header img { height: 46px; width: 46px; object-fit: contain; }
+  .m-nav { display: flex; gap: 4px; margin: 0 auto; }
+  .m-nav span { font-size: 13px; font-weight: 600; padding: 8px 13px; border-radius: 999px; color: #6A6A6A; }
+  .m-nav span.on { color: #222222; background: #F7F7F7; }
+  .m-cta { font-size: 12.5px; font-weight: 600; padding: 8px 13px; }
+  .m-menu { display: flex; align-items: center; gap: 8px; border: 1px solid #DDDDDD; border-radius: 999px; padding: 5px 5px 5px 11px; }
+  .m-menu .avatar { width: 24px; height: 24px; border-radius: 50%; background: #708C3D; color: #FFF; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; }
+
+  .m-search { display: flex; align-items: stretch; border: 1px solid #DDDDDD; border-radius: 999px; box-shadow: 0 3px 12px rgba(0,0,0,0.08); overflow: hidden; max-width: 620px; margin: 16px auto; }
+  .m-search > div { flex: 1; padding: 9px 20px; }
+  .m-search > div + div { border-left: 1px solid #EBEBEB; }
+  .m-search b { display: block; font-size: 10.5px; font-weight: 700; }
+  .m-search span { font-size: 12.5px; font-weight: 500; color: #6A6A6A; }
+  .m-search .go { flex: 0 0 auto; align-self: center; margin-right: 6px; width: 36px; height: 36px; border-radius: 50%; background: #708C3D; display: flex; align-items: center; justify-content: center; padding: 0; }
+
+  .m-rail { display: flex; gap: 26px; justify-content: center; padding: 4px 20px 0; border-bottom: 1px solid #EBEBEB; }
+  .m-rail span { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: #222222; padding: 8px 2px 9px; opacity: 0.62; border-bottom: 2px solid transparent; }
+  .m-rail span.on { opacity: 1; border-bottom-color: #222222; }
+
+  .m-rows { max-width: 860px; margin: 0 auto; padding: 18px 26px 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 28px; }
+  .m-row { display: flex; align-items: center; gap: 12px; padding: 9px 10px; border-bottom: 1px solid #F3F3F3; border-radius: 10px; }
+  .m-row .ico { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; background: #F1E8D6; display: flex; align-items: center; justify-content: center; }
+  .m-row .mid { flex: 1; min-width: 0; }
+  .m-row .mid b { display: block; font-size: 12.5px; font-weight: 600; line-height: 1.3; }
+  .m-row .mid span { font-size: 11.5px; font-weight: 500; color: #6A6A6A; }
+  .m-row .end { text-align: right; flex-shrink: 0; }
+  .m-row .end b { display: block; font-size: 11.5px; font-weight: 500; }
+  .m-row .end span { font-size: 11px; font-weight: 500; color: #6A6A6A; }
+
+  .m-btn { display: inline-block; font-weight: 700; font-size: 13px; color: #FFFFFF; background: #708C3D; border-radius: 9px; padding: 10px 18px; }
+  .m-btn.ghost { color: #222222; background: #FFFFFF; border: 1px solid #DDDDDD; }
+  .m-input { border: 1px solid #DDDDDD; border-radius: 9px; padding: 9px 12px; font-size: 12.5px; font-weight: 500; color: #9A9A9A; background: #FFFFFF; }
+  .m-label { font-weight: 700; font-size: 11.5px; margin-bottom: 4px; display: block; color: #222222; }
+
+  /* ------- Filament mockup-onderdelen (tokens uit prototype-v2/filament.css) ------- */
+  .f { display: flex; background: #F0EEE9; font-size: 13px; color: #1C1917; min-height: 380px; }
+  .f-zijbalk { width: 200px; flex-shrink: 0; background: #FFFFFF; border-right: 1px solid #E8E4DC; }
+  .f-merk { display: flex; align-items: center; gap: 9px; padding: 14px 18px; border-bottom: 1px solid #F0EEE9; }
+  .f-merk .blokje { width: 24px; height: 24px; border-radius: 8px; background: #708C3D; color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 11px; }
+  .f-merk b { font-weight: 700; font-size: 13px; }
+  .f-nav { padding: 12px 10px; display: flex; flex-direction: column; gap: 2px; }
+  .f-groep { padding: 5px 10px; font-size: 10px; font-weight: 600; color: #78716C; text-transform: uppercase; letter-spacing: 0.04em; }
+  .f-item { display: flex; align-items: center; gap: 9px; padding: 8px 10px; border-radius: 9px; font-size: 12.5px; font-weight: 500; color: #44403C; }
+  .f-item.actief { background: #F1F5E8; color: #5C7431; font-weight: 600; }
+  .f-item .telling { margin-left: auto; background: #FEF3C7; color: #92400E; font-size: 10px; font-weight: 600; border-radius: 999px; padding: 1px 7px; }
+  .f-romp { flex: 1; min-width: 0; }
+  .f-kop { background: #FFFFFF; border-bottom: 1px solid #E8E4DC; display: flex; align-items: center; justify-content: space-between; padding: 10px 22px; gap: 12px; }
+  .f-tenant { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; color: #44403C; background: #F0EEE9; border: 1px solid #E8E4DC; border-radius: 999px; padding: 4px 12px; }
+  .f-tenant i { width: 6px; height: 6px; border-radius: 999px; background: #708C3D; }
+  .f-avatar { width: 26px; height: 26px; border-radius: 999px; background: #708C3D; color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 11px; }
+  .f-main { padding: 20px 22px 26px; }
+  .f-main h3 { margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+  .f-onderkop { margin: 2px 0 0; font-size: 12px; color: #78716C; }
+  .f-titelrij { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .f-kaart { background: #FFFFFF; border-radius: 13px; overflow: hidden; box-shadow: 0 1px 3px rgba(28,25,23,0.05), 0 0 0 1px rgba(28,25,23,0.06); }
+  .f-kaart + .f-kaart { margin-top: 14px; }
+  .f-kaartkop { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 16px; border-bottom: 1px solid #F0EEE9; flex-wrap: wrap; }
+  .f-kaartkop b { font-size: 13px; font-weight: 700; }
+  .f-zoek { display: flex; align-items: center; gap: 8px; border: 1px solid #D6D1C7; border-radius: 9px; padding: 6px 10px; font-size: 12px; color: #A8A29E; width: 190px; }
+  .f-tabel { width: 100%; border-collapse: collapse; }
+  .f-tabel th { text-align: left; font-size: 10px; font-weight: 600; color: #78716C; text-transform: uppercase; letter-spacing: 0.04em; padding: 9px 16px; background: #FAF8F5; border-bottom: 1px solid #F0EEE9; }
+  .f-tabel td { padding: 10px 16px; border-bottom: 1px solid #F0EEE9; font-size: 12.5px; vertical-align: middle; }
+  .f-tabel tr:last-child td { border-bottom: none; }
+  .f-tabel td.naam { font-weight: 600; }
+  .f-tabel td.zacht { color: #78716C; }
+  .f-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; border-radius: 7px; padding: 3px 9px; white-space: nowrap; }
+  .f-badge i { width: 5px; height: 5px; border-radius: 999px; }
+  .f-badge.groen { background: #ECFDF5; color: #047857; } .f-badge.groen i { background: #10B981; }
+  .f-badge.amber { background: #FFFBEB; color: #B45309; } .f-badge.amber i { background: #F59E0B; }
+  .f-badge.grijs { background: #F0EEE9; color: #57534E; } .f-badge.grijs i { background: #A8A29E; }
+  .f-badge.blauw { background: #EFF6FF; color: #1D4ED8; } .f-badge.blauw i { background: #3B82F6; }
+  .f-knop { display: inline-flex; align-items: center; border-radius: 8px; padding: 6px 12px; font-size: 12px; font-weight: 600; border: 1px solid #D6D1C7; background: #FFFFFF; color: #1C1917; white-space: nowrap; }
+  .f-knop.primair { background: #708C3D; border-color: #708C3D; color: #FFFFFF; }
+  .f-knop.klein { padding: 5px 10px; font-size: 11.5px; }
+  .f-veld label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+  .f-veld .invoer { border: 1px solid #D6D1C7; border-radius: 9px; padding: 8px 11px; font-size: 12.5px; color: #A8A29E; background: #FFFFFF; }
+  .f-veld .invoer.gevuld { color: #1C1917; }
+  .f-hint { font-size: 11px; color: #78716C; margin-top: 3px; }
+  .f-melding { background: #FAFAF7; border: 1px solid #E8E4DC; border-radius: 10px; padding: 10px 13px; font-size: 12px; color: #78716C; margin-bottom: 12px; }
+  .f-melding b { color: #1C1917; }
+
+  /* statusflow-strip */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 14px; padding: 16px 20px; margin-top: 14px; }
+  .flow .stap { font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 6px 14px; }
+  .flow .pijl { color: #B5B5B5; font-weight: 700; }
+  .flow .lbl { font-size: 12.5px; font-weight: 700; color: #6A6A6A; margin-right: 6px; }
+  .flow .zij { font-size: 12px; font-weight: 500; color: #9A9A9A; margin-left: 8px; }
+
+  /* toelichting onder elke mockup */
+  .duiding { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 12px; margin-top: 14px; }
+  .duiding .kolom { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 14px; padding: 18px 20px; }
+  .duiding h3 { margin: 0 0 10px; font-size: 12px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+  .duiding .kolom.nu h3 { color: #5C7431; }
+  .duiding .kolom.later h3 { color: #9A9A9A; }
+  .duiding ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .duiding li { font-size: 13.5px; font-weight: 500; color: #444444; line-height: 1.5; padding-left: 18px; position: relative; }
+  .duiding .kolom.nu li::before { content: ""; position: absolute; left: 0; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: #708C3D; }
+  .duiding .kolom.later li::before { content: ""; position: absolute; left: 0; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: #D8D8D8; }
+
+  .paginavoet { border-top: 1px solid #EBEBEB; margin-top: 56px; background: #FFFFFF; }
+  .paginavoet .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 22px; padding-bottom: 26px; }
+  .paginavoet span { font-size: 13px; font-weight: 500; color: #6A6A6A; }
+  .paginavoet a.switch { font-weight: 700; font-size: 14px; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 18px; background: #FFFFFF; }
+
+  @media (max-width: 860px) {
+    .m-rows { grid-template-columns: 1fr; }
+    .m-nav { display: none; }
+    .pagehead h1 { font-size: 17px; }
+    .f-zijbalk { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="pagehead">
+  <div class="wrap">
+    <img src="uploads/logo-outofstock.png" alt="Out of Stock">
+    <div>
+      <div class="kicker">Werksessie · Out of Stock</div>
+      <h1>De MVP in acht schermen</h1>
+    </div>
+    <span style="margin-left:auto; display:flex; gap:8px;">
+      <a class="switch" style="margin-left:0;" href="rollen.html">Wie mag wat</a>
+      <a class="switch" style="margin-left:0;" href="keuzepagina.html">De keuzes</a>
+      <a class="switch" style="margin-left:0;" href="verantwoording.html">Waarom zo</a>
+    </span>
+  </div>
+</div>
+
+<div class="wrap intro">
+  <p class="lead">Dit is het voorstel voor de eerste echte versie van Out of Stock: elk scherm apart, met wat er in de eerste versie zit en wat bewust voor later is. De publieke kant is maatwerk in de eigen stijl; alles achter de login is standaard Filament. E&eacute;n grote keuze bepaalt hoe het netwerk in elkaar zit; die staat op de <a href="keuzepagina.html" style="font-weight:700; text-decoration:underline;">keuzepagina</a>.</p>
+
+  <div class="mvpblok">
+    <h2>De minimale MVP: drie dingen moeten werken</h2>
+    <p>Al de rest is inkleding. Als deze drie dingen werken, kan het netwerk draaien en kunnen we testen of verenigingen het echt gebruiken.</p>
+    <div class="mvp-grid">
+      <div class="mvp-card"><span class="nr">1</span><b>Uitlenen loopt binnen het systeem</b><span>Een vereniging vraagt materiaal aan voor een periode, de eigenaar keurt goed of weigert, en de statussen (aangevraagd, goedgekeurd, opgehaald, terug) worden bijgehouden.</span></div>
+      <div class="mvp-card"><span class="nr">2</span><b>Materiaal toevoegen is simpel</b><span>De materiaalmeester zet iets in de catalogus met naam, aantal en categorie, en zet de leenstatus aan of uit. Geen foto verplicht.</span></div>
+      <div class="mvp-card"><span class="nr">3</span><b>Ecolife voegt verenigingen toe</b><span>Geen self-service registratie. Ecolife of de deelcoach maakt de vereniging aan, nodigt de materiaalmeester uit en bepaalt wie met wie kan lenen.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= DEEL 1: PUBLIEK ================= -->
+<div class="wrap deel">
+  <div class="deelkop"><h2>Deel 1 &middot; De publieke kant</h2><span class="lijn"></span></div>
+  <p>Maatwerk in de eigen Out of Stock-stijl (Albert Sans, olijf en zand). Iedereen kan kijken, niemand ziet contactgegevens, en wie wil aanvragen moet ingelogd zijn.</p>
+</div>
+
+<!-- ============ SCHERM 1: HOMEPAGE ============ -->
+<div class="wrap scherm">
+  <div class="scherm-kop"><span class="nr">1</span><h2>Homepage: wat is Out of Stock</h2></div>
+  <div class="chips"><span class="chip publiek">Publiek, zonder login</span><span class="chip">Nieuw scherm</span></div>
+  <p class="uitleg">De pagina die uitlegt hoe het werkt, in drie stappen, en meteen laat zoeken. Sober gehouden: titel, &eacute;&eacute;n zin, de zoekbalk, drie stappen. Onderaan de twee ingangen: verenigingen die willen meedoen, en gemeenten die een deelnetwerk willen starten.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be</span></div>
+    <div class="m-header">
+      <img src="uploads/logo-outofstock.png" alt="">
+      <div class="m-nav"><span class="on">Alle materialen</span><span>Spelregels</span><span>Over</span></div>
+      <span class="m-cta">Deel jullie materiaal</span>
+      <span class="m-menu"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><line x1="1" y1="3.5" x2="15" y2="3.5" stroke="#222" stroke-width="1.6" stroke-linecap="round"/><line x1="1" y1="8" x2="15" y2="8" stroke="#222" stroke-width="1.6" stroke-linecap="round"/><line x1="1" y1="12.5" x2="15" y2="12.5" stroke="#222" stroke-width="1.6" stroke-linecap="round"/></svg><span class="avatar">A</span></span>
+    </div>
+    <div style="text-align:center; padding: 34px 26px 8px;">
+      <div style="font-size: 28px; font-weight: 800; letter-spacing: -0.02em;">Lenen bij de vereniging om de hoek</div>
+      <div style="font-size: 14.5px; font-weight: 500; color: #6A6A6A; margin-top: 8px;">Verenigingen delen tafels, tenten en frietketels met elkaar, in plaats van alles zelf te kopen.</div>
+      <div class="m-search">
+        <div><b>Wat</b><span>Zoek materiaal</span></div>
+        <div><b>Waar</b><span>Leuven</span></div>
+        <div><b>Afstand</b><span>binnen 25 km</span></div>
+        <span class="go"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="6" stroke="#FFF" stroke-width="2.4"/><line x1="13.5" y1="13.5" x2="18" y2="18" stroke="#FFF" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      </div>
+    </div>
+    <div style="max-width: 820px; margin: 0 auto; padding: 10px 26px 26px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+      <div style="border: 1px solid #EBEBEB; border-radius: 12px; padding: 14px 16px;"><b style="font-size: 13px; font-weight: 700;">1 &middot; Zoek en vind</b><div style="font-size: 12px; font-weight: 500; color: #6A6A6A; margin-top: 4px; line-height: 1.5;">Kijken kan iedereen, zonder account. Je ziet wat er in de buurt te leen is.</div></div>
+      <div style="border: 1px solid #EBEBEB; border-radius: 12px; padding: 14px 16px;"><b style="font-size: 13px; font-weight: 700;">2 &middot; Vraag aan als vereniging</b><div style="font-size: 12px; font-weight: 500; color: #6A6A6A; margin-top: 4px; line-height: 1.5;">Kies een periode en verstuur je aanvraag. De eigenaar krijgt meteen een mailtje.</div></div>
+      <div style="border: 1px solid #EBEBEB; border-radius: 12px; padding: 14px 16px;"><b style="font-size: 13px; font-weight: 700;">3 &middot; Haal op en breng terug</b><div style="font-size: 12px; font-weight: 500; color: #6A6A6A; margin-top: 4px; line-height: 1.5;">Jullie spreken onderling af. Gratis, van vereniging tot vereniging.</div></div>
+    </div>
+    <div style="max-width: 820px; margin: 0 auto; padding: 0 26px 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div style="border: 1px solid #EBEBEB; border-radius: 12px; padding: 16px 18px; background: #FAFAF7; display: flex; justify-content: space-between; align-items: center; gap: 12px;"><span><b style="font-size: 13px; font-weight: 700;">Voor verenigingen</b><div style="font-size: 12px; font-weight: 500; color: #6A6A6A; margin-top: 2px;">Doe mee en deel jullie materiaal.</div></span><span class="m-btn" style="font-size: 12px; padding: 9px 14px;">Doe mee</span></div>
+      <div style="border: 1px solid #EBEBEB; border-radius: 12px; padding: 16px 18px; background: #FAFAF7; display: flex; justify-content: space-between; align-items: center; gap: 12px;"><span><b style="font-size: 13px; font-weight: 700;">Voor gemeenten</b><div style="font-size: 12px; font-weight: 500; color: #6A6A6A; margin-top: 2px;">Start een deelnetwerk met een deelcoach.</div></span><span class="m-btn ghost" style="font-size: 12px; padding: 9px 14px;">Meer info</span></div>
+    </div>
+  </div>
+
+  <div class="duiding">
+    <div class="kolom nu"><h3>In de eerste versie</h3><ul>
+      <li>Titel, &eacute;&eacute;n zin, de zoekbalk en de drie stappen. De zoekbalk springt meteen naar de catalogus.</li>
+      <li>De knop "Doe mee" opent de aanmeldfiche (scherm 4), "Meer info" voor gemeenten mailt naar Ecolife.</li>
+      <li>Spelregels en Over staan in de navigatie; de inhoud komt van Ecolife.</li>
+    </ul></div>
+    <div class="kolom later"><h3>Later</h3><ul>
+      <li>Cijfers op de homepage (zoveel materialen, zoveel verenigingen) zodra die indruk maken.</li>
+      <li>Verhalen of foto's van uitleningen die goed liepen.</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- ============ SCHERM 2: CATALOGUS ============ -->
+<div class="wrap scherm">
+  <div class="scherm-kop"><span class="nr">2</span><h2>Catalogus: alles wat te leen is</h2></div>
+  <div class="chips"><span class="chip publiek">Publiek, zonder login</span><span class="chip">Bestaat al in handoff-v2</span></div>
+  <p class="uitleg">Een lijst, geen fototegels: bij lancering heeft bijna geen materiaal een foto. Compacte rijen met naam, aantal en de vereniging met buurt en afstand. Zoeken op wat, waar en afstand; categorie&euml;n als vaste rail. Alfabetisch gesorteerd, afstand is een filter.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/catalogus</span></div>
+    <div class="m-header">
+      <img src="uploads/logo-outofstock.png" alt="">
+      <div class="m-nav"><span class="on">Alle materialen</span><span>Spelregels</span><span>Over</span></div>
+      <span class="m-cta">Deel jullie materiaal</span>
+      <span class="m-menu"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><line x1="1" y1="3.5" x2="15" y2="3.5" stroke="#222" stroke-width="1.6" stroke-linecap="round"/><line x1="1" y1="8" x2="15" y2="8" stroke="#222" stroke-width="1.6" stroke-linecap="round"/><line x1="1" y1="12.5" x2="15" y2="12.5" stroke="#222" stroke-width="1.6" stroke-linecap="round"/></svg><span class="avatar">A</span></span>
+    </div>
+    <div class="m-search" style="margin: 12px auto;">
+      <div><b>Wat</b><span>Zoek materiaal</span></div>
+      <div><b>Waar</b><span>Leuven</span></div>
+      <div><b>Afstand</b><span>binnen 25 km</span></div>
+      <span class="go"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="6" stroke="#FFF" stroke-width="2.4"/><line x1="13.5" y1="13.5" x2="18" y2="18" stroke="#FFF" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+    </div>
+    <div class="m-rail">
+      <span class="on"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>Alles</span>
+      <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="m4 8 16-4"/><path d="m8.86 6.78-.45-1.81a2 2 0 0 1 1.45-2.43l1.94-.48a2 2 0 0 1 2.43 1.46l.45 1.8"/></svg>Keuken</span>
+      <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M5 18v2"/><path d="M19 18v2"/></svg>Tafels &amp; banken</span>
+      <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 21 14 3"/><path d="M20.5 21 10 3"/><path d="M15.5 21 12 15l-3.5 6"/><path d="M2 21h20"/></svg>Tenten &amp; kamp</span>
+      <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4"/><path d="M12 12a12.6 12.6 0 0 1-8.7 5"/></svg>Spel &amp; sport</span>
+      <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><circle cx="12" cy="14" r="4"/></svg>Geluid &amp; licht</span>
+      <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>Varia</span>
+    </div>
+    <div class="m-rows">
+      <div class="m-row"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A7B55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="m4 8 16-4"/></svg></span><span class="mid"><b>Kookpotten</b><span>&plusmn;20 potten, 5 tot 50 l</span></span><span class="end"><b>Wandelclub WSP</b><span>Leuven centrum &middot; 0,6 km</span></span></div>
+      <div class="m-row"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A7B55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 21 14 3"/><path d="M20.5 21 10 3"/><path d="M15.5 21 12 15l-3.5 6"/><path d="M2 21h20"/></svg></span><span class="mid"><b>Slaaptenten</b><span>4 patrouilletenten, 8 pers.</span></span><span class="end"><b>FOS De Vlievleger</b><span>Heverlee &middot; 2,5 km</span></span></div>
+      <div class="m-row"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A7B55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/></svg></span><span class="mid"><b>Tafels en banken</b><span>10 tafels, 20 banken</span></span><span class="end"><b>Chiro Blauwput</b><span>Kessel-Lo &middot; 2,6 km</span></span></div>
+      <div class="m-row"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A7B55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="m4 8 16-4"/></svg></span><span class="mid"><b>Industri&euml;le friteuse en bakplaat</b><span>dubbele friteuse, 2&times;8 l</span></span><span class="end"><b>F.C. Tabor Heverlee</b><span>Heverlee &middot; 2,8 km</span></span></div>
+      <div class="m-row"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A7B55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 21 14 3"/><path d="M20.5 21 10 3"/><path d="M2 21h20"/></svg></span><span class="mid"><b>Sjorbalken</b><span>&plusmn;60 balken, div. lengtes</span></span><span class="end"><b>Chiro Hekeko</b><span>Kessel-Lo &middot; 3,1 km</span></span></div>
+      <div class="m-row"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A7B55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4"/></svg></span><span class="mid"><b>Parachutes</b><span>2 speeldoeken, &Oslash; 6 m</span></span><span class="end"><b>Chiro Don Bosco</b><span>Kessel-Lo &middot; 3,0 km</span></span></div>
+    </div>
+  </div>
+
+  <div class="duiding">
+    <div class="kolom nu"><h3>In de eerste versie</h3><ul>
+      <li>Zoeken op tekst, plaats en afstand; categorie&euml;n; alfabetische volgorde.</li>
+      <li>Aantal of capaciteit is verplicht bij elk materiaal: "10 tafels, 20 banken" zegt meer dan "tafels en banken".</li>
+      <li>Geen prijzen (alles is gratis) en geen actuele beschikbaarheid in de lijst; dat hoort bij de aanvraag.</li>
+    </ul></div>
+    <div class="kolom later"><h3>Later</h3><ul>
+      <li>Het icoonvierkantje wordt een fotominiatuur zodra verenigingen foto's uploaden; de layout verandert niet.</li>
+      <li>Slimmer zoeken (synoniemen: friteuse, frietketel).</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- ============ SCHERM 3: MATERIAALDETAIL ============ -->
+<div class="wrap scherm">
+  <div class="scherm-kop"><span class="nr">3</span><h2>Materiaalfiche: bekijken en aanvragen</h2></div>
+  <div class="chips"><span class="chip publiek">Bekijken: publiek</span><span class="chip login">Aanvragen: enkel ingelogde verenigingen</span><span class="chip">Bestaat al in handoff-v2</span></div>
+  <p class="uitleg">Bewust sober: naam, wie het uitleent, een korte beschrijving en &eacute;&eacute;n info-blok. De aanvraag gebeurt hier, voor een periode van-tot. Contactgegevens staan nooit open op het internet: het formulier is de standaardweg, rechtstreeks contact verschijnt pas na login en enkel als de vereniging dat wil.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/materiaal/friteuse</span></div>
+    <div class="m-header">
+      <img src="uploads/logo-outofstock.png" alt="">
+      <div class="m-nav" style="margin-left:auto; margin-right:0;"><span class="on">Alle materialen</span><span>Log in</span></div>
+    </div>
+    <div style="display: flex; gap: 24px; padding: 22px 26px 28px; align-items: flex-start; flex-wrap: wrap;">
+      <div style="flex: 1 1 380px; min-width: 0;">
+        <div style="font-size: 12px; font-weight: 500; color: #6A6A6A;">Alle materialen / Keuken / <span style="color:#222;">Industri&euml;le friteuse en bakplaat</span></div>
+        <div style="font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 8px;">Industri&euml;le friteuse en bakplaat</div>
+        <div style="font-size: 12.5px; font-weight: 500; color: #6A6A6A; margin-top: 2px;">F.C. Tabor Heverlee &middot; Heverlee (Leuven) &middot; op 2,8 km</div>
+        <div style="font-size: 13px; font-weight: 400; line-height: 1.6; margin-top: 10px; color: #222;">Dubbele gasfriteuse (2&times;8 liter) en een grote bakplaat, samen goed voor een eetfestijn van 100 personen.</div>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <div style="flex: 0 0 170px; height: 106px; border-radius: 12px; background: #F1E8D6; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B9A87F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="m4 8 16-4"/></svg><span style="font-size: 10.5px; font-weight: 500; color: #8F7F55;">Foto volgt van de vereniging</span></div>
+          <div style="flex: 0 0 80px; height: 106px; border-radius: 12px; background: #F7F7F7; border: 1px dashed #DDDDDD;"></div>
+        </div>
+        <div style="border: 1px solid #EBEBEB; border-radius: 12px; padding: 13px 16px; margin-top: 12px;">
+          <b style="font-size: 12.5px; font-weight: 700;">Info</b>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; padding: 7px 0; border-bottom: 1px solid #F2F2F2;"><span style="color:#6A6A6A; font-weight:500;">Aantal</span><span style="font-weight:600;">1 friteuse (2 bakken) + 1 bakplaat</span></div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; padding: 7px 0;"><span style="color:#6A6A6A; font-weight:500;">Wat zit erbij</span><span style="font-weight:600;">gasslang, deksels, handleiding</span></div>
+        </div>
+      </div>
+      <div style="flex: 0 0 280px; border: 1px solid #DDDDDD; border-radius: 14px; padding: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+        <span class="m-label">Periode</span>
+        <div style="display:flex; gap:6px;"><span class="m-input" style="flex:1;">van 14/08</span><span class="m-input" style="flex:1;">tot 16/08</span></div>
+        <span class="m-label" style="margin-top: 10px;">Bericht (niet verplicht)</span>
+        <span class="m-input" style="display:block;">bv. Voor ons eetfestijn.</span>
+        <div style="font-size: 11px; font-weight: 500; color: #6A6A6A; line-height: 1.5; margin-top: 10px;">Alleen geregistreerde verenigingen kunnen een aanvraag doen. <u style="font-weight:700; color:#222;">Meld je aan</u>.</div>
+        <span class="m-btn" style="display:block; text-align:center; margin-top: 10px;">Verstuur aanvraag</span>
+        <div style="border-top: 1px solid #EBEBEB; margin: 12px 0;"></div>
+        <span class="m-btn ghost" style="display:block; text-align:center; font-size: 12px;">Liever rechtstreeks? Toon contact</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="duiding">
+    <div class="kolom nu"><h3>In de eerste versie</h3><ul>
+      <li>Aanvraag met periode van-tot en een vrij bericht; de eigenaar krijgt meteen een mailtje.</li>
+      <li>Aanvragen kan pas na login als geregistreerde vereniging. Een particulier met een feestje komt er niet in.</li>
+      <li>Contactgegevens pas na login en na een klik, en enkel als de vereniging dat in haar instellingen toestaat.</li>
+      <li>Deelbare link per materiaal, om in de WhatsApp-groep te gooien.</li>
+    </ul></div>
+    <div class="kolom later"><h3>Later</h3><ul>
+      <li>Foto's van de vereniging op de fiche.</li>
+      <li>"Meer van deze vereniging" als doorklik.</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- ============ SCHERM 4: DOE MEE ============ -->
+<div class="wrap scherm">
+  <div class="scherm-kop"><span class="nr">4</span><h2>Doe mee: de aanmeldfiche</h2></div>
+  <div class="chips"><span class="chip publiek">Publiek, zonder login</span><span class="chip">Nieuw scherm</span></div>
+  <p class="uitleg">Wie op de homepage of in de catalogus enthousiast wordt, komt hier terecht. Geen self-service account, wel een korte fiche die bij Ecolife binnenkomt. Zit de gemeente al in het netwerk, dan nodigt de deelcoach de vereniging uit. Zit ze er nog niet in, dan is dit meteen het signaal om met dat lokaal bestuur te gaan praten. De fiche is dus ook de leadmachine van Ecolife.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/doe-mee</span></div>
+    <div style="background: #FAFAF7; padding: 30px 24px; display: flex; justify-content: center;">
+      <div style="width: 340px; background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+        <div style="font-size: 17px; font-weight: 700;">Doe mee met jullie vereniging</div>
+        <div style="font-size: 12px; font-weight: 500; color: #6A6A6A; margin-top: 3px; line-height: 1.5;">Vul de fiche in, dan neemt de deelcoach contact op.</div>
+        <div style="margin-top: 14px;">
+          <span class="m-label">Naam van de vereniging</span>
+          <span class="m-input" style="display:block;">bv. Chiro Heverlee</span>
+          <span class="m-label" style="margin-top: 10px;">Gemeente</span>
+          <span class="m-input" style="display:block;">bv. Leuven</span>
+          <span class="m-label" style="margin-top: 10px;">Contactpersoon en e-mailadres</span>
+          <span class="m-input" style="display:block;">naam@vereniging.be</span>
+          <span class="m-btn" style="display:block; text-align:center; margin-top: 12px;">Verstuur</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="duiding">
+    <div class="kolom nu"><h3>In de eerste versie</h3><ul>
+      <li>Vier velden, de fiche komt per mail bij Ecolife binnen en verschijnt in het beheer (scherm 8).</li>
+      <li>Zelfde fiche voor gemeenten die een deelnetwerk willen starten.</li>
+    </ul></div>
+    <div class="kolom later"><h3>Later</h3><ul>
+      <li>Automatische opvolging: na de goedkeuring vertrekt de uitnodigingsmail vanzelf.</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- ================= DEEL 2: FILAMENT ================= -->
+<div class="wrap deel">
+  <div class="deelkop"><h2>Deel 2 &middot; Achter de login: standaard Filament</h2><span class="lijn"></span></div>
+  <p>Alles wat een ingelogde gebruiker doet, gebeurt in een Filament-paneel: inventaris, uitleningen, instellingen en het Ecolife-beheer. Standaardcomponenten, geen maatwerk. Dat houdt de bouw klein en het onderhoud goedkoop, en het is de stack van de developers.</p>
+</div>
+
+<!-- ============ SCHERM 5: FILAMENT LOGIN ============ -->
+<div class="wrap scherm">
+  <div class="scherm-kop"><span class="nr">5</span><h2>Inloggen: op uitnodiging</h2></div>
+  <div class="chips"><span class="chip login">Toegang tot het paneel</span><span class="chip">Filament, standaard login</span></div>
+  <p class="uitleg">Echte persoonlijke accounts met e-mail en wachtwoord, gekoppeld aan een vereniging. Er is bewust geen "maak een account"-knop: de deelcoach of de huidige materiaalmeester nodigt je uit. Zo blijft het netwerk dicht genoeg en blijft de kwaliteit van de deelnemers een menselijke beslissing.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/beheer/login</span></div>
+    <div style="background: #F0EEE9; padding: 34px 24px; display: flex; justify-content: center;">
+      <div style="width: 300px; background: #FFFFFF; border-radius: 14px; padding: 26px 24px; box-shadow: 0 1px 3px rgba(28,25,23,0.05), 0 0 0 1px rgba(28,25,23,0.06); text-align: center;">
+        <img src="uploads/logo-outofstock.png" alt="" style="height: 54px; width: 54px; object-fit: contain;">
+        <div style="font-size: 17px; font-weight: 700; margin-top: 8px; color: #1C1917;">Log in</div>
+        <div style="font-size: 12px; font-weight: 500; color: #78716C; margin-top: 2px;">Beheer de materialen en uitleningen van je vereniging.</div>
+        <div style="text-align: left; margin-top: 14px;" class="f-veld">
+          <label>E-mailadres</label>
+          <span class="invoer gevuld" style="display:block;">materiaal@chirohekeko.be</span>
+          <label style="margin-top: 10px;">Wachtwoord</label>
+          <span class="invoer gevuld" style="display:block;">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span>
+          <span class="f-knop primair" style="display:flex; justify-content:center; margin-top: 12px;">Log in</span>
+        </div>
+        <div style="border-top: 1px solid #F0EEE9; margin: 16px 0 12px;"></div>
+        <div style="font-size: 11.5px; font-weight: 500; color: #78716C; line-height: 1.5;">Nog geen account? De huidige materiaalmeester of je deelcoach nodigt je uit.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="duiding">
+    <div class="kolom nu"><h3>In de eerste versie</h3><ul>
+      <li>E-mail en wachtwoord, wachtwoord vergeten, uitnodigingsmail. Allemaal standaard Filament.</li>
+      <li>Twee rollen in het hele systeem: de materiaalmeester per vereniging en de Ecolife-admin (de deelcoach werkt onder die vlag). Bewust niet meer dan dat.</li>
+      <li>Ploegwissel: de vorige materiaalmeester of de deelcoach nodigt de nieuwe uit.</li>
+    </ul></div>
+    <div class="kolom later"><h3>Later</h3><ul>
+      <li>Een aparte ledenrol (kijken en aanvragen, niet beheren) als verenigingen daarom vragen.</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- ============ SCHERM 6: INVENTARIS ============ -->
+<div class="wrap scherm">
+  <div class="scherm-kop"><span class="nr">6</span><h2>Inventaris: het materiaalkot van de vereniging</h2></div>
+  <div class="chips"><span class="chip login">Ingelogde materiaalmeester</span><span class="chip">Filament, standaard tabel + formulier</span></div>
+  <p class="uitleg">De inventaris is een gewone Filament-tabel: naam, categorie, aantal en leenstatus. Toevoegen gaat via het standaardformulier met vier velden en is klaar in een halve minuut. Wat hier op "beschikbaar" staat, staat in de publieke catalogus; "even niet" haalt het er stil uit.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/beheer/materialen</span></div>
+    <div class="f">
+      <div class="f-zijbalk">
+        <div class="f-merk"><span class="blokje">OS</span><b>Out of Stock</b></div>
+        <div class="f-nav">
+          <div class="f-groep">Mijn vereniging</div>
+          <span class="f-item actief"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8Z"/></svg>Materialen</span>
+          <span class="f-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h12.8"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H4.2"/></svg>Uitleningen<span class="telling">2</span></span>
+          <span class="f-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8L7 17M17 7l2.8-2.8"/></svg>Instellingen</span>
+        </div>
+      </div>
+      <div class="f-romp">
+        <div class="f-kop"><span class="f-tenant"><i></i>Chiro Hekeko &middot; Kessel-Lo</span><span class="f-avatar">L</span></div>
+        <div class="f-main">
+          <div class="f-titelrij">
+            <div><h3>Materialen</h3><div class="f-onderkop">Wat jullie delen met het netwerk.</div></div>
+            <span class="f-knop primair">+ Nieuw materiaal</span>
+          </div>
+          <div class="f-kaart">
+            <div class="f-kaartkop">
+              <span class="f-zoek"><svg width="13" height="13" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="6" stroke="#A8A29E" stroke-width="2"/><line x1="13.5" y1="13.5" x2="17" y2="17" stroke="#A8A29E" stroke-width="2" stroke-linecap="round"/></svg>Zoek in de inventaris</span>
+              <span style="display:flex; gap:6px;"><span class="f-knop klein" style="background:#F1F5E8; border-color:#708C3D; color:#5C7431;">Alles</span><span class="f-knop klein">Beschikbaar</span><span class="f-knop klein">Uitgeleend</span></span>
+            </div>
+            <table class="f-tabel">
+              <tr><th>Materiaal</th><th>Categorie</th><th>Aantal</th><th>Leenstatus</th><th></th></tr>
+              <tr><td class="naam">Tafels, banken en staantafels</td><td class="zacht">Tafels &amp; banken</td><td class="zacht">8 tafels, 16 banken, 6 staantafels</td><td><span class="f-badge groen"><i></i>beschikbaar</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+              <tr><td class="naam">Sjorbalken</td><td class="zacht">Tenten &amp; kamp</td><td class="zacht">&plusmn;60 balken</td><td><span class="f-badge amber"><i></i>uitgeleend</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+              <tr><td class="naam">Kegels</td><td class="zacht">Spel &amp; sport</td><td class="zacht">30 kegels</td><td><span class="f-badge groen"><i></i>beschikbaar</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+              <tr><td class="naam">Partytent 4&times;8 m</td><td class="zacht">Tenten &amp; kamp</td><td class="zacht">1 tent, opbouw met 4 pers.</td><td><span class="f-badge grijs"><i></i>even niet</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+            </table>
+          </div>
+          <div class="f-kaart" style="max-width: 420px;">
+            <div class="f-kaartkop"><b>Nieuw materiaal</b></div>
+            <div style="padding: 14px 16px;" class="f-veld">
+              <label>Wat is het?</label>
+              <span class="invoer" style="display:block;">bv. Partytent 3&times;6 m</span>
+              <label style="margin-top:10px;">Aantal of capaciteit <span style="color:#B45309;">(verplicht)</span></label>
+              <span class="invoer" style="display:block;">bv. 2 tenten, elk voor 40 personen</span>
+              <div class="f-hint">Dit is wat een lener het eerst wil weten.</div>
+              <label style="margin-top:10px;">Categorie</label>
+              <span class="invoer gevuld" style="display:block;">Tenten &amp; kamp</span>
+              <label style="margin-top:10px;">Opmerking (niet verplicht)</label>
+              <span class="invoer" style="display:block;">bv. enkel in het weekend op te halen</span>
+              <span class="f-knop primair" style="margin-top:12px;">Zet in de catalogus</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="duiding">
+    <div class="kolom nu"><h3>In de eerste versie</h3><ul>
+      <li>Standaard Filament-resource: lijst, zoeken, filteren op status, toevoegen, bewerken, verwijderen.</li>
+      <li>Vier velden bij toevoegen: naam, aantal of capaciteit (verplicht), categorie, opmerking.</li>
+      <li>Leenstatus met &eacute;&eacute;n klik: beschikbaar, uitgeleend of even niet. Bepaalt meteen wat de publieke catalogus toont.</li>
+      <li>Aantal is in de basis een tekstveld; het systeem telt niet mee (zie keuze 2 op de keuzepagina).</li>
+    </ul></div>
+    <div class="kolom later"><h3>Later</h3><ul>
+      <li>Foto's per materiaal uploaden.</li>
+      <li>Echte voorraadteller per materiaal: 20 tenten, 4 uitgeleend, 16 beschikbaar.</li>
+      <li>Bulk-import vanuit de "Wie heeft wat"-Excel bij een deelscan.</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- ============ SCHERM 7: UITLENINGEN ============ -->
+<div class="wrap scherm">
+  <div class="scherm-kop"><span class="nr">7</span><h2>Uitleningen: aanvragen en statussen</h2></div>
+  <div class="chips"><span class="chip login">Ingelogde materiaalmeester</span><span class="chip">Filament, standaard tabellen</span></div>
+  <p class="uitleg">Het hart van de MVP. Elke uitlening doorloopt vier statussen, en die ene tijdlijn drijft alles: de mailtjes, de badges en straks het gemeenterapport. Boven staan de aanvragen v&oacute;&oacute;r jullie materiaal, onder wat jullie zelf bij anderen lenen. Communicatie loopt gewoon via mail en telefoon; het systeem bewaakt alleen wat afgesproken is.</p>
+
+  <div class="flow">
+    <span class="lbl">Elke uitlening:</span>
+    <span class="stap" style="background:#EFF6FF; color:#1D4ED8;">aangevraagd</span><span class="pijl">&rarr;</span>
+    <span class="stap" style="background:#F0F4E8; color:#5C7431;">goedgekeurd</span><span class="pijl">&rarr;</span>
+    <span class="stap" style="background:#FBF3E4; color:#B0762A;">opgehaald</span><span class="pijl">&rarr;</span>
+    <span class="stap" style="background:#F2F2F2; color:#57534E;">terug</span>
+    <span class="zij">of meteen: geweigerd (met een woordje uitleg)</span>
+  </div>
+
+  <div class="frame" style="margin-top: 14px;">
+    <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/beheer/uitleningen</span></div>
+    <div class="f">
+      <div class="f-zijbalk">
+        <div class="f-merk"><span class="blokje">OS</span><b>Out of Stock</b></div>
+        <div class="f-nav">
+          <div class="f-groep">Mijn vereniging</div>
+          <span class="f-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8Z"/></svg>Materialen</span>
+          <span class="f-item actief"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h12.8"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H4.2"/></svg>Uitleningen<span class="telling">2</span></span>
+          <span class="f-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8L7 17M17 7l2.8-2.8"/></svg>Instellingen</span>
+        </div>
+      </div>
+      <div class="f-romp">
+        <div class="f-kop"><span class="f-tenant"><i></i>Chiro Hekeko &middot; Kessel-Lo</span><span class="f-avatar">L</span></div>
+        <div class="f-main">
+          <div class="f-titelrij">
+            <div><h3>Uitleningen</h3><div class="f-onderkop">Aanvragen voor jullie materiaal, en wat jullie zelf lenen.</div></div>
+          </div>
+          <div class="f-melding">Bij elke nieuwe aanvraag krijg je meteen een mailtje op <b>materiaal@chirohekeko.be</b>. Je hoeft hier dus niet dagelijks te komen kijken.</div>
+          <div class="f-kaart">
+            <div class="f-kaartkop"><b>Aanvragen voor ons materiaal</b><span style="display:flex; gap:6px;"><span class="f-knop klein" style="background:#F1F5E8; border-color:#708C3D; color:#5C7431;">Lopend</span><span class="f-knop klein">Afgerond</span></span></div>
+            <table class="f-tabel">
+              <tr><th>Materiaal</th><th>Aanvrager</th><th>Periode</th><th>Status</th><th></th></tr>
+              <tr><td class="naam">Tafels, banken en staantafels</td><td class="zacht">Chiro Heverlee &middot; Lien</td><td class="zacht">14 &ndash; 16 aug</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein primair">Keur goed</span> <span class="f-knop klein">Weiger</span></td></tr>
+              <tr><td class="naam">Kegels</td><td class="zacht">JH Impuls &middot; Karim</td><td class="zacht">22 &ndash; 24 aug</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;"><span class="f-knop klein">Markeer opgehaald</span></td></tr>
+              <tr><td class="naam">Sjorbalken</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge amber"><i></i>opgehaald</span></td><td style="text-align:right;"><span class="f-knop klein">Markeer terug</span></td></tr>
+              <tr><td class="naam">Parachute</td><td class="zacht">Chiro Blauwput</td><td class="zacht">6 &ndash; 8 jun</td><td><span class="f-badge grijs"><i></i>terug</span></td><td></td></tr>
+            </table>
+          </div>
+          <div class="f-kaart">
+            <div class="f-kaartkop"><b>Onze aanvragen bij anderen</b></div>
+            <table class="f-tabel">
+              <tr><th>Materiaal</th><th>Bij</th><th>Periode</th><th>Status</th></tr>
+              <tr><td class="naam">Industri&euml;le friteuse en bakplaat</td><td class="zacht">F.C. Tabor Heverlee</td><td class="zacht">14 &ndash; 16 aug</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td></tr>
+              <tr><td class="naam">Slaaptenten (4)</td><td class="zacht">FOS De Vlievleger</td><td class="zacht">kamp, 1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>terug</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="duiding">
+    <div class="kolom nu"><h3>In de eerste versie</h3><ul>
+      <li>Goedkeuren of weigeren met &eacute;&eacute;n klik; daarna opgehaald en terug aanvinken. Bij goedkeuring springt de leenstatus in de inventaris mee.</li>
+      <li>Elke statuswissel stuurt automatisch &eacute;&eacute;n mail naar de juiste kant: aangevraagd, goedgekeurd, geweigerd.</li>
+      <li>Het overzicht "Onze aanvragen bij anderen": je weet altijd wat er loopt en wat je nog moet terugbrengen.</li>
+      <li>Alles blijft bewaard: wie leende wat, wanneer, van wie. Dat is meteen de basis voor het latere gemeenterapport.</li>
+    </ul></div>
+    <div class="kolom later"><h3>Later</h3><ul>
+      <li>Herinneringsmail als iets lang op "opgehaald" blijft staan of een aanvraag onbeantwoord is.</li>
+      <li>Bij een echte voorraadteller: goedkeuren boekt het aantal af, terug boekt het weer op.</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- ============ SCHERM 8: ECOLIFE-BEHEER ============ -->
+<div class="wrap scherm">
+  <div class="scherm-kop"><span class="nr">8</span><h2>Ecolife-beheer: verenigingen en leenclusters</h2></div>
+  <div class="chips"><span class="chip coach">Ecolife-admin en deelcoach</span><span class="chip">Filament, standaard tabellen</span></div>
+  <p class="uitleg">Hetzelfde paneel, maar met de admin-rol: alle verenigingen, de aanmeldfiches en de netwerkinstellingen. Hier gebeurt MVP-kern nummer drie: Ecolife voegt verenigingen toe en nodigt de materiaalmeester uit. En afhankelijk van de grote keuze op de keuzepagina staan hier de leenclusters: welke gemeenten kunnen met elkaar lenen.</p>
+
+  <div class="frame">
+    <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/beheer/verenigingen</span></div>
+    <div class="f">
+      <div class="f-zijbalk">
+        <div class="f-merk"><span class="blokje">OS</span><b>Out of Stock</b></div>
+        <div class="f-nav">
+          <div class="f-groep">Netwerk</div>
+          <span class="f-item actief"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Verenigingen</span>
+          <span class="f-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>Gemeenten &amp; clusters</span>
+          <span class="f-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Aanmeldingen<span class="telling">3</span></span>
+          <span class="f-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h12.8"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H4.2"/></svg>Alle uitleningen</span>
+        </div>
+      </div>
+      <div class="f-romp">
+        <div class="f-kop"><span class="f-tenant" style="color:#4A5B7A;"><i style="background:#4A5B7A;"></i>Ecolife &middot; Deelcoach</span><span class="f-avatar" style="background:#4A5B7A;">S</span></div>
+        <div class="f-main">
+          <div class="f-titelrij">
+            <div><h3>Verenigingen</h3><div class="f-onderkop">Wie is aangesloten, wie is actief, wie kreeg al een deelscan.</div></div>
+            <span class="f-knop primair">+ Vereniging toevoegen</span>
+          </div>
+          <div class="f-kaart">
+            <table class="f-tabel">
+              <tr><th>Vereniging</th><th>Gemeente</th><th>Materialen</th><th>Laatst actief</th><th>Deelscan</th><th></th></tr>
+              <tr><td class="naam">Chiro Hekeko</td><td class="zacht">Leuven</td><td class="zacht">4</td><td class="zacht">vandaag</td><td><span class="f-badge groen"><i></i>12 mei 2026</span></td><td style="text-align:right;"><span class="f-knop klein">Beheer</span></td></tr>
+              <tr><td class="naam">F.C. Tabor Heverlee</td><td class="zacht">Leuven</td><td class="zacht">5</td><td class="zacht">gisteren</td><td><span class="f-badge groen"><i></i>3 apr 2026</span></td><td style="text-align:right;"><span class="f-knop klein">Beheer</span></td></tr>
+              <tr><td class="naam">Scouts Egenhoven</td><td class="zacht">Leuven</td><td class="zacht">3</td><td class="zacht">2 weken geleden</td><td><span class="f-knop klein">Plan deelscan</span></td><td style="text-align:right;"><span class="f-knop klein">Beheer</span></td></tr>
+              <tr><td class="naam">KSA Aarschot</td><td class="zacht">Aarschot</td><td class="zacht">2</td><td class="zacht">vorige week</td><td><span class="f-knop klein">Plan deelscan</span></td><td style="text-align:right;"><span class="f-knop klein">Beheer</span></td></tr>
+              <tr><td class="naam">Chiro Vlierbeek</td><td class="zacht">Leuven</td><td class="zacht">0</td><td><span class="f-badge amber"><i></i>3 maanden stil</span></td><td><span class="f-badge groen"><i></i>22 mrt 2026</span></td><td style="text-align:right;"><span class="f-knop klein">Beheer</span></td></tr>
+            </table>
+          </div>
+          <div class="f-kaart">
+            <div class="f-kaartkop"><b>Gemeenten &amp; leenclusters</b><span style="font-size:11.5px; color:#78716C;">afhankelijk van keuze 1</span></div>
+            <div style="padding: 13px 16px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+              <span class="f-badge groen" style="font-size:12px; padding:5px 12px;">Leuven</span><span style="color:#A8A29E; font-weight:700;">&harr;</span>
+              <span class="f-badge groen" style="font-size:12px; padding:5px 12px;">Aarschot</span><span style="color:#A8A29E; font-weight:700;">&harr;</span>
+              <span class="f-badge groen" style="font-size:12px; padding:5px 12px;">Rotselaar</span>
+              <span style="width:14px;"></span>
+              <span class="f-badge grijs" style="font-size:12px; padding:5px 12px;">Herent &middot; nog niet gekoppeld</span>
+              <span class="f-knop klein" style="margin-left:auto;">+ Koppeling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="duiding">
+    <div class="kolom nu"><h3>In de eerste versie</h3><ul>
+      <li>Vereniging toevoegen met naam, gemeente en buurt, en de materiaalmeester per mail uitnodigen.</li>
+      <li>Aanmeldfiches van de "Doe mee"-pagina komen hier binnen en worden vereniging met &eacute;&eacute;n klik.</li>
+      <li>Overzicht: wie doet mee, hoeveel materialen, wie is stil, wie kreeg al een deelscan.</li>
+      <li>Als voor clusters gekozen wordt: gemeenten koppelen, en de koppeling bepaalt wie bij wie kan aanvragen.</li>
+      <li>Alle uitleningen van het hele netwerk in &eacute;&eacute;n tabel, als ruwe data voor Ecolife.</li>
+    </ul></div>
+    <div class="kolom later"><h3>Later</h3><ul>
+      <li>Rapport per gemeente: wat wordt er uitgeleend, wat bespaart dat, waar loont een collectieve aankoop.</li>
+      <li>Werklijst voor de deelcoach: stille verenigingen, geplande deelscans.</li>
+    </ul></div>
+  </div>
+</div>
+
+<div class="paginavoet">
+  <div class="wrap">
+    <span>Out of Stock &middot; werksessiemateriaal, geen definitief ontwerp &middot; publieke schermen volgen handoff-v2, paneel volgt de Filament-stijl van prototype-v2</span>
+    <span style="display:flex; gap:8px; flex-wrap:wrap;"><a class="switch" href="rollen.html">Wie mag wat</a><a class="switch" href="keuzepagina.html">De keuzes</a><a class="switch" href="verantwoording.html">Waarom zo</a></span>
+  </div>
+</div>
+
+</body>
+</html>
