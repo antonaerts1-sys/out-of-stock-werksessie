@@ -135,6 +135,7 @@
   .f-badge.amber { background: #FFFBEB; color: #B45309; } .f-badge.amber i { background: #F59E0B; }
   .f-badge.grijs { background: #F0EEE9; color: #57534E; } .f-badge.grijs i { background: #A8A29E; }
   .f-badge.blauw { background: #EFF6FF; color: #1D4ED8; } .f-badge.blauw i { background: #3B82F6; }
+  .f-badge.rood { background: #FDECEA; color: #B3261E; } .f-badge.rood i { background: #E5544B; }
   .f-knop { display: inline-flex; align-items: center; border-radius: 8px; padding: 6px 12px; font-size: 12px; font-weight: 600; border: 1px solid #D6D1C7; background: #FFFFFF; color: #1C1917; white-space: nowrap; }
   .f-knop.primair { background: #708C3D; border-color: #708C3D; color: #FFFFFF; }
   .f-knop.klein { padding: 5px 10px; font-size: 11.5px; }
@@ -200,7 +201,7 @@
     <h2>De minimale MVP: drie dingen moeten werken</h2>
     <p>Al de rest is inkleding. Als deze drie dingen werken, kan het netwerk draaien en kunnen we testen of verenigingen het echt gebruiken.</p>
     <div class="mvp-grid">
-      <div class="mvp-card"><span class="nr">1</span><b>Uitlenen loopt binnen het systeem</b><span>Een vereniging vraagt materiaal aan voor een periode, de eigenaar keurt goed of weigert, en de statussen (aangevraagd, goedgekeurd, opgehaald, terug) worden bijgehouden.</span></div>
+      <div class="mvp-card"><span class="nr">1</span><b>Uitlenen loopt binnen het systeem</b><span>Een vereniging vraagt materiaal aan voor een periode, de eigenaar keurt goed of weigert, en het systeem houdt bij waar het staat: aangevraagd, goedgekeurd, opgehaald, terug, of be&euml;indigd als geweigerd of geannuleerd.</span></div>
       <div class="mvp-card"><span class="nr">2</span><b>Materiaal toevoegen is simpel</b><span>De materiaalmeester zet iets in de catalogus met naam, aantal en categorie, en zet de leenstatus aan of uit. Geen foto verplicht.</span></div>
       <div class="mvp-card"><span class="nr">3</span><b>Ecolife voegt verenigingen toe</b><span>Geen self-service registratie. Ecolife of de deelcoach maakt de vereniging aan, nodigt de materiaalmeester uit en bepaalt wie met wie kan lenen.</span></div>
     </div>
@@ -633,13 +634,23 @@
   <div class="chips"><span class="chip login">Ingelogde materiaalmeester</span><span class="chip">Filament, standaard tabellen</span></div>
   <p class="uitleg">Aanvragen en uitleningen zijn twee verschillende taken, dus twee schermen. Dit scherm is de postbak: hier staat wat op jouw beslissing wacht, en wat jullie zelf gevraagd hebben en nog geen antwoord kreeg. Zodra je goedkeurt, verhuist de aanvraag naar het volgende scherm en wordt het een lopende uitlening.</p>
 
-  <div class="flow">
-    <span class="lbl">De hele levensloop:</span>
-    <span class="stap" style="background:#EFF6FF; color:#1D4ED8;">aangevraagd</span><span class="pijl">&rarr;</span>
-    <span class="stap" style="background:#F0F4E8; color:#5C7431;">goedgekeurd</span><span class="pijl">&rarr;</span>
-    <span class="stap" style="background:#FBF3E4; color:#B0762A;">opgehaald</span><span class="pijl">&rarr;</span>
-    <span class="stap" style="background:#F2F2F2; color:#57534E;">terug</span>
-    <span class="zij">links van de eerste pijl is dit scherm, rechts ervan scherm 8</span>
+  <div class="flow" style="display:block;">
+    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+      <span class="lbl">De gewone weg:</span>
+      <span class="stap" style="background:#EFF6FF; color:#1D4ED8;">aangevraagd</span><span class="pijl">&rarr;</span>
+      <span class="stap" style="background:#F0F4E8; color:#5C7431;">goedgekeurd</span><span class="pijl">&rarr;</span>
+      <span class="stap" style="background:#FBF3E4; color:#B0762A;">opgehaald</span><span class="pijl">&rarr;</span>
+      <span class="stap" style="background:#F2F2F2; color:#57534E;">terug</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px solid #F2F2F2;">
+      <span class="lbl">Of het stopt:</span>
+      <span class="stap" style="background:#FDECEA; color:#B3261E;">geweigerd</span>
+      <span style="font-size:12.5px; font-weight:500; color:#6A6A6A;">door de uitlener, met een reden</span>
+      <span style="width:12px;"></span>
+      <span class="stap" style="background:#F2F2F2; color:#57534E;">geannuleerd</span>
+      <span style="font-size:12.5px; font-weight:500; color:#6A6A6A;">door beide kanten, tot de startdatum</span>
+    </div>
+    <div style="margin-top:12px; font-size:12.5px; font-weight:500; color:#9A9A9A;">Zes statussen in totaal: vier op de gewone weg, twee die de uitlening be&euml;indigen. Dit scherm gaat over de eerste stap, scherm 8 over de rest.</div>
   </div>
 
   <div style="margin: 16px 0 8px; font-size: 13px; font-weight: 700; color: #6A6A6A;">7a &middot; De postbak</div>
@@ -731,6 +742,8 @@
                   <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Goedgekeurd</span></div>
                   <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Opgehaald</span></div>
                   <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Terug</span></div>
+                  <div style="border-top:1px solid #F0EEE9; margin:2px 0;"></div>
+                  <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Of: geweigerd of geannuleerd</span></div>
                 </div>
               </div>
               <div class="f-melding" style="margin:0;">Bij goedkeuren krijgt Lien meteen een mail met jullie contactgegevens en de afspraken uit de spelregels.</div>
@@ -1145,6 +1158,8 @@
               <tr><td class="naam">Sjorbalken</td><td class="zacht">Chiro Hekeko</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge amber"><i></i>opgehaald</span></td></tr>
               <tr><td class="naam">Slaaptenten (4)</td><td class="zacht">FOS De Vlievleger</td><td class="zacht">KSA Aarschot</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>terug</span></td></tr>
               <tr><td class="naam">Parachute</td><td class="zacht">Chiro Don Bosco</td><td class="zacht">Chiro Blauwput</td><td class="zacht">6 &ndash; 8 jun</td><td><span class="f-badge grijs"><i></i>terug</span></td></tr>
+              <tr><td class="naam">Partytent 4&times;8 m</td><td class="zacht">Chiro Hekeko</td><td class="zacht">KSA Aarschot</td><td class="zacht">3 &ndash; 5 jul</td><td><span class="f-badge rood"><i></i>geweigerd</span></td></tr>
+              <tr><td class="naam">Kookpotten</td><td class="zacht">Wandelclub WSP</td><td class="zacht">Chiro Vlierbeek</td><td class="zacht">20 mei</td><td><span class="f-badge grijs"><i></i>geannuleerd</span></td></tr>
             </table>
           </div>
         </div>
