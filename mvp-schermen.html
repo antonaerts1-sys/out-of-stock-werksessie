@@ -316,14 +316,15 @@
 <!-- ============ SCHERM 3: MATERIAALDETAIL ============ -->
 <div class="wrap scherm">
   <div class="scherm-kop"><span class="nr">3</span><h2>Materiaalfiche: bekijken en aanvragen</h2></div>
-  <div class="chips"><span class="chip publiek">Bekijken: publiek</span><span class="chip login">Aanvragen: enkel ingelogde verenigingen</span><span class="chip">Bestaat al in handoff-v2</span></div>
-  <p class="uitleg">Bewust sober: naam, wie het uitleent, een korte beschrijving en &eacute;&eacute;n info-blok. De aanvraag gebeurt hier, voor een periode van-tot. Contactgegevens staan nooit open op het internet: het formulier is de standaardweg, rechtstreeks contact verschijnt pas na login en enkel als de vereniging dat wil.</p>
+  <div class="chips"><span class="chip publiek">Bekijken: publiek</span><span class="chip login">Aanvragen: ingelogd en aangesloten</span><span class="chip">Bestaat al in handoff-v2</span></div>
+  <p class="uitleg">Bewust sober: naam, wie het uitleent, een korte beschrijving en &eacute;&eacute;n info-blok. De fiche zelf is voor iedereen zichtbaar, maar het blok rechts verandert met wie je bent. Hieronder staat de gewone situatie: <b>ingelogd, en het materiaal ligt binnen je eigen deelnetwerk</b>. Dan is het formulier kort, want we weten al wie je bent: je kiest een periode, typt eventueel een bericht en verstuurt. De twee andere toestanden staan onder het scherm.</p>
 
   <div class="frame">
     <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/materiaal/friteuse</span></div>
     <div class="m-header">
       <img src="uploads/logo-outofstock.png" alt="">
-      <div class="m-nav" style="margin-left:auto; margin-right:0;"><span class="on">Alle materialen</span><span>Log in</span></div>
+      <span style="font-weight: 700; font-size: 11.5px; color: #5C7431; background: #F0F4E8; border-radius: 999px; padding: 5px 12px;">Chiro Hekeko &middot; Kessel-Lo</span>
+      <div class="m-nav" style="margin-left:auto; margin-right:0;"><span class="on">Alle materialen</span><span>Mijn vereniging</span></div>
     </div>
     <div style="display: flex; gap: 24px; padding: 22px 26px 28px; align-items: flex-start; flex-wrap: wrap;">
       <div style="flex: 1 1 380px; min-width: 0;">
@@ -342,22 +343,42 @@
         </div>
       </div>
       <div style="flex: 0 0 280px; border: 1px solid #DDDDDD; border-radius: 14px; padding: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+        <div style="font-size: 11px; font-weight: 600; color: #6A6A6A; line-height: 1.5; margin-bottom: 12px;">Je vraagt aan als <b style="color:#222; font-weight:700;">Chiro Hekeko</b>.</div>
         <span class="m-label">Periode</span>
         <div style="display:flex; gap:6px;"><span class="m-input" style="flex:1;">van 14/08</span><span class="m-input" style="flex:1;">tot 16/08</span></div>
         <span class="m-label" style="margin-top: 10px;">Bericht (niet verplicht)</span>
         <span class="m-input" style="display:block;">bv. Voor ons eetfestijn.</span>
-        <div style="font-size: 11px; font-weight: 500; color: #6A6A6A; line-height: 1.5; margin-top: 10px;">Alleen geregistreerde verenigingen kunnen een aanvraag doen. <u style="font-weight:700; color:#222;">Meld je aan</u>.</div>
-        <span class="m-btn" style="display:block; text-align:center; margin-top: 10px;">Verstuur aanvraag</span>
+        <span class="m-btn" style="display:block; text-align:center; margin-top: 12px;">Verstuur aanvraag</span>
         <div style="border-top: 1px solid #EBEBEB; margin: 12px 0;"></div>
         <span class="m-btn ghost" style="display:block; text-align:center; font-size: 12px;">Liever rechtstreeks? Toon contact</span>
       </div>
     </div>
   </div>
 
+  <div style="margin-top: 14px; background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 14px; overflow: hidden;">
+    <div style="padding: 14px 20px; border-bottom: 1px solid #F2F2F2; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;">
+      <b style="font-size: 14px; font-weight: 800;">Hetzelfde scherm, drie toestanden</b>
+      <a href="rollen.html" style="font-size: 12.5px; font-weight: 700; color: #5C7431; text-decoration: underline;">Volledig uitgewerkt op "Wie mag wat"</a>
+    </div>
+    <div style="display: flex; gap: 16px; align-items: flex-start; padding: 14px 20px;">
+      <span style="flex: 0 0 200px; font-size: 13px; font-weight: 700;">Ingelogd, eigen deelnetwerk</span>
+      <span style="flex: 1; font-size: 13px; font-weight: 500; color: #555; line-height: 1.55;">Het formulier hierboven. Kort, want we weten wie je bent: geen naam, geen mailadres, geen telefoonnummer invullen.</span>
+    </div>
+    <div style="display: flex; gap: 16px; align-items: flex-start; padding: 14px 20px; border-top: 1px solid #F2F2F2;">
+      <span style="flex: 0 0 200px; font-size: 13px; font-weight: 700;">Ingelogd, ander deelnetwerk</span>
+      <span style="flex: 1; font-size: 13px; font-weight: 500; color: #555; line-height: 1.55;">Geen formulier, wel de reden: deze vereniging hoort bij deelnetwerk Hageland. Daaronder de knop "laat weten dat je hier zou willen lenen", die Ecolife toont waar een koppeling ontbreekt.</span>
+    </div>
+    <div style="display: flex; gap: 16px; align-items: flex-start; padding: 14px 20px; border-top: 1px solid #F2F2F2;">
+      <span style="flex: 0 0 200px; font-size: 13px; font-weight: 700;">Niet ingelogd</span>
+      <span style="flex: 1; font-size: 13px; font-weight: 500; color: #555; line-height: 1.55;">Geen formulier en geen contactgegevens, wel de uitleg dat aanvragen voorbehouden is aan aangesloten verenigingen, met de weg naar de aanmeldfiche.</span>
+    </div>
+  </div>
+
   <div class="duiding">
     <div class="kolom nu"><h3>In de eerste versie</h3><ul>
-      <li>Aanvraag met periode van-tot en een vrij bericht; de eigenaar krijgt meteen een mailtje.</li>
-      <li>Aanvragen kan pas na login als geregistreerde vereniging. Een particulier met een feestje komt er niet in.</li>
+      <li>Er is maar &eacute;&eacute;n manier om te lenen: je verstuurt een aanvraag via dit formulier. De eigenaar krijgt meteen een mailtje.</li>
+      <li>Dat formulier verschijnt alleen als je ingelogd bent. En inloggen kan alleen als je gemeente aangesloten is en de deelcoach je vereniging heeft goedgekeurd. Zo komt een particulier met een feestje er nooit in.</li>
+      <li>Omdat je ingelogd bent, hoef je enkel de periode en eventueel een bericht in te vullen.</li>
       <li>Contactgegevens pas na login en na een klik, en enkel als de vereniging dat in haar instellingen toestaat.</li>
       <li>Deelbare link per materiaal, om in de WhatsApp-groep te gooien.</li>
     </ul></div>
