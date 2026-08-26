@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Out of Stock: hoe het model werkt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Albert Sans', sans-serif; color: #222222; background: #FAFAF7; -webkit-font-smoothing: antialiased; }
+  a { color: #222222; text-decoration: none; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  .pagehead { background: #FFFFFF; border-bottom: 1px solid #EBEBEB; }
+  .pagehead .wrap { display: flex; align-items: center; gap: 20px; padding-top: 10px; padding-bottom: 10px; }
+  .pagehead img { height: 60px; width: 60px; object-fit: contain; }
+  .pagehead .kicker { font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #708C3D; }
+  .pagehead h1 { margin: 2px 0 0; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+  .pagehead .navs { margin-left: auto; display: flex; gap: 8px; }
+  .pagehead .switch { font-weight: 700; font-size: 14px; color: #222222; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 16px; background: #FFFFFF; white-space: nowrap; }
+  .pagehead .switch:hover { border-color: #222222; }
+
+  .intro { padding: 40px 0 4px; }
+  .intro p.lead { margin: 0; font-size: 16.5px; font-weight: 500; line-height: 1.7; color: #444444; max-width: 780px; }
+  .intro p.lead b { font-weight: 700; }
+
+  .sectie { padding: 42px 0 4px; }
+  .sectie-kop { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .sectie-kop .nr { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: #222222; color: #FFFFFF; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+  .sectie-kop h2 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+  .sectie > .uitleg { margin: 6px 0 22px; font-size: 15px; font-weight: 500; line-height: 1.65; color: #444444; max-width: 780px; }
+
+  /* partijen */
+  .partijen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 14px; }
+  .partij { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 22px 24px; }
+  .partij .merkje { display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 5px 12px; margin-bottom: 12px; }
+  .partij.betaalt .merkje { color: #8A6A1F; background: #FBF3E4; }
+  .partij.gebruikt .merkje { color: #5C7431; background: #F0F4E8; }
+  .partij.begeleidt .merkje { color: #4A5B7A; background: #E9EDF5; }
+  .partij h3 { margin: 0 0 8px; font-size: 16.5px; font-weight: 800; }
+  .partij ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .partij li { font-size: 13.5px; font-weight: 500; color: #444444; line-height: 1.5; padding-left: 17px; position: relative; }
+  .partij li::before { content: ""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: #C9C9C9; }
+
+  /* wat de gemeente koopt */
+  .koopt { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 14px; }
+  .koopt .kaart { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 16px; padding: 22px 24px; }
+  .koopt .kaart b { display: block; font-size: 15.5px; font-weight: 800; margin-bottom: 5px; }
+  .koopt .kaart span { font-size: 13.5px; font-weight: 500; color: #555555; line-height: 1.6; }
+
+  /* kringloop */
+  .kringloop { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 26px 28px; }
+  .stappen { display: grid; gap: 0; }
+  .stap { display: flex; gap: 18px; align-items: flex-start; padding: 14px 0; }
+  .stap + .stap { border-top: 1px solid #F2F2F2; }
+  .stap .bol { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+  .stap.bestuur .bol { background: #FBF3E4; color: #8A6A1F; }
+  .stap.coach .bol { background: #E9EDF5; color: #4A5B7A; }
+  .stap.vereniging .bol { background: #F0F4E8; color: #5C7431; }
+  .stap .tekst b { display: block; font-size: 15px; font-weight: 800; margin-bottom: 3px; }
+  .stap .tekst span { font-size: 13.5px; font-weight: 500; color: #555555; line-height: 1.6; }
+  .stap .wie { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A; display: block; margin-top: 4px; }
+  .rond { margin-top: 18px; border-top: 1px solid #EBEBEB; padding-top: 16px; font-size: 14px; font-weight: 500; color: #444444; line-height: 1.6; }
+  .rond b { font-weight: 800; }
+
+  /* accent */
+  .accent { background: #222222; color: #FFFFFF; border-radius: 18px; padding: 28px 30px; }
+  .accent h2 { margin: 0 0 8px; font-size: 19px; font-weight: 800; }
+  .accent p { margin: 0 0 14px; font-size: 14.5px; font-weight: 500; color: #C9C9C9; line-height: 1.65; max-width: 760px; }
+  .accent p:last-child { margin-bottom: 0; }
+  .accent b { color: #FFFFFF; font-weight: 700; }
+  .verhouding { display: flex; height: 34px; border-radius: 10px; overflow: hidden; margin: 18px 0 10px; max-width: 620px; }
+  .verhouding span { display: flex; align-items: center; justify-content: center; font-size: 12.5px; font-weight: 800; }
+  .verhouding .beg { flex: 4; background: #708C3D; color: #FFFFFF; }
+  .verhouding .sw { flex: 1; background: #3A3A3A; color: #C9C9C9; }
+
+  /* pistes */
+  .pistes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px; }
+  .piste { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 16px; padding: 22px 24px; }
+  .piste .vlag { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #8A6A1F; background: #FBF3E4; border-radius: 999px; padding: 4px 11px; margin-bottom: 10px; }
+  .piste b { display: block; font-size: 15.5px; font-weight: 800; margin-bottom: 5px; }
+  .piste p { margin: 0; font-size: 13.5px; font-weight: 500; color: #555555; line-height: 1.6; }
+
+  /* open vragen */
+  .vragen { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 26px 28px; }
+  .vragen ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .vragen li { font-size: 14.5px; font-weight: 500; color: #444444; line-height: 1.55; padding-left: 26px; position: relative; }
+  .vragen li::before { content: "?"; position: absolute; left: 0; top: 0; width: 19px; height: 19px; border-radius: 50%; background: #F0F4E8; color: #5C7431; font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+
+  .risico { margin-top: 14px; background: #FFFFFF; border: 1px solid #EBEBEB; border-left: 3px solid #B0762A; border-radius: 0 16px 16px 0; padding: 20px 24px; }
+  .risico b { font-weight: 800; color: #8A6A1F; }
+  .risico p { margin: 6px 0 0; font-size: 14px; font-weight: 500; color: #444444; line-height: 1.6; }
+
+  .paginavoet { border-top: 1px solid #EBEBEB; margin-top: 56px; background: #FFFFFF; }
+  .paginavoet .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 22px; padding-bottom: 26px; }
+  .paginavoet span.credit { font-size: 13px; font-weight: 500; color: #6A6A6A; }
+  .paginavoet a { font-weight: 700; font-size: 14px; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 16px; background: #FFFFFF; }
+
+  @media (max-width: 900px) { .pagehead .navs { display: none; } .pagehead h1 { font-size: 17px; } }
+</style>
+</head>
+<body>
+
+<div class="pagehead">
+  <div class="wrap">
+    <img src="uploads/logo-outofstock.png" alt="Out of Stock">
+    <div>
+      <div class="kicker">Werksessie · Out of Stock</div>
+      <h1>Hoe het model werkt</h1>
+    </div>
+    <div class="navs">
+      <a class="switch" href="mvp-schermen.html">De schermen</a>
+      <a class="switch" href="rollen.html">Wie mag wat</a>
+      <a class="switch" href="keuzepagina.html">De keuzes</a>
+      <a class="switch" href="verantwoording.html">Waarom zo</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap intro">
+  <p class="lead">In één zin: <b>het lokaal bestuur betaalt, de verenigingen gebruiken het gratis, en de deelcoach zorgt dat er ook echt iets gebeurt.</b> Die derde rol is geen bijzaak. Een deelplatform staat of valt bij mensen die het in gang duwen, en dat is precies waar het geld naartoe hoort te gaan. Deze pagina zet uit wie wat betaalt, wat daar tegenover staat, en welke vragen daarover nog open liggen.</p>
+</div>
+
+<!-- ============ 1. DE DRIE PARTIJEN ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">1</span><h2>Drie partijen, drie verschillende belangen</h2></div>
+  <p class="uitleg">Wie betaalt is niet wie gebruikt, en dat is de kern van het model. Het werkt alleen als alle drie er iets aan hebben.</p>
+
+  <div class="partijen">
+    <div class="partij betaalt">
+      <span class="merkje">Betaalt</span>
+      <h3>Het lokaal bestuur</h3>
+      <ul>
+        <li>Sluit zijn gemeente aan, waardoor de verenigingen op zijn grondgebied kunnen meedoen.</li>
+        <li>Heeft er belang bij, want het subsidieert die verenigingen. Minder dubbele aankopen betekent dat subsidies verder reiken.</li>
+        <li>Krijgt cijfers over wat er op het grondgebied gedeeld wordt, iets waar vandaag geen enkel zicht op is.</li>
+        <li>Heeft geen eigen login in de eerste versie; de deelcoach brengt de cijfers.</li>
+      </ul>
+    </div>
+
+    <div class="partij gebruikt">
+      <span class="merkje">Gebruikt gratis</span>
+      <h3>De vereniging</h3>
+      <ul>
+        <li>Betaalt niets, ook geen lidgeld en geen huur. Alles wordt gratis geleend.</li>
+        <li>Kan pas meedoen als haar gemeente aangesloten is. Dat is de afhankelijkheid waar het model op rust.</li>
+        <li>Krijgt in ruil overzicht over het eigen materiaal, en toegang tot dat van anderen.</li>
+        <li>Levert de inzet: de inventaris invullen en aanvragen beantwoorden.</li>
+      </ul>
+    </div>
+
+    <div class="partij begeleidt">
+      <span class="merkje">Begeleidt</span>
+      <h3>Ecolife en de deelcoach</h3>
+      <ul>
+        <li>Doet de deelscan: langsgaan, samen bekijken wat een vereniging kan delen, de inventaris mee opmaken.</li>
+        <li>Beslist wie toegang krijgt en welke gemeenten aan elkaar gekoppeld worden.</li>
+        <li>Houdt het netwerk levend: stille verenigingen bellen, nieuwe aansluitingen begeleiden.</li>
+        <li>Is wat het bestuur eigenlijk koopt.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2. WAT DE GEMEENTE KOOPT ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">2</span><h2>Wat een gemeente precies koopt</h2></div>
+  <p class="uitleg">Dit is de vraag die op elke tafel komt, en het antwoord mag niet "software" zijn. Software is het gereedschap, niet het aanbod.</p>
+  <div class="koopt">
+    <div class="kaart"><b>Toegang</b><span>Haar verenigingen kunnen aanvragen doen en materiaal aanbieden binnen het deelnetwerk. Zonder aansluiting kunnen ze wel kijken, maar niets vragen.</span></div>
+    <div class="kaart"><b>Begeleiding</b><span>Een deelcoach die langsgaat bij de verenigingen, de deelscan doet, de inventaris mee opzet en het netwerk actief houdt. Dit is het grootste deel van de waarde.</span></div>
+    <div class="kaart"><b>Inzicht</b><span>Cijfers over wat er gedeeld wordt op het grondgebied: hoeveel, door wie, welk materiaal. Vandaag weet geen enkele gemeente dit.</span></div>
+  </div>
+</div>
+
+<!-- ============ 3. DE KRINGLOOP ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">3</span><h2>Hoe een gemeente erin komt en erin blijft</h2></div>
+  <p class="uitleg">De volgorde is niet willekeurig. Elke stap maakt de volgende mogelijk, en de laatste stap bepaalt of het bestuur volgend jaar opnieuw tekent.</p>
+
+  <div class="kringloop">
+    <div class="stappen">
+      <div class="stap bestuur"><span class="bol">1</span><div class="tekst"><b>Het bestuur sluit aan</b><span>Vaak na een gesprek waarin blijkt dat niemand weet wat er op het grondgebied ligt, en dat er dubbel gekocht wordt.</span><span class="wie">Lokaal bestuur</span></div></div>
+      <div class="stap coach"><span class="bol">2</span><div class="tekst"><b>De deelcoach gaat langs bij de verenigingen</b><span>De deelscan: wat hebben jullie, wat gebruiken jullie zelden, wat zoeken jullie elk jaar opnieuw. Hier wordt de inventaris gemaakt, niet achter een scherm.</span><span class="wie">Ecolife</span></div></div>
+      <div class="stap vereniging"><span class="bol">3</span><div class="tekst"><b>De vereniging krijgt een account en zet haar materiaal erin</b><span>Op uitnodiging, niet via zelfregistratie. Het materiaal komt in de publieke catalogus te staan.</span><span class="wie">Vereniging</span></div></div>
+      <div class="stap vereniging"><span class="bol">4</span><div class="tekst"><b>Verenigingen beginnen bij elkaar te lenen</b><span>Aanvragen, goedkeuren, ophalen, terugbrengen. Elke uitlening wordt geregistreerd.</span><span class="wie">Vereniging</span></div></div>
+      <div class="stap coach"><span class="bol">5</span><div class="tekst"><b>De deelcoach houdt het levend</b><span>Wie is stil gevallen, wie heeft nog niets ingevoerd, waar ontbreekt een koppeling met een buurgemeente. Zonder deze stap dooft het uit.</span><span class="wie">Ecolife</span></div></div>
+      <div class="stap bestuur"><span class="bol">6</span><div class="tekst"><b>Het bestuur ziet wat het opgeleverd heeft</b><span>Aantallen uitleningen, welk materiaal, welke verenigingen. Dat is waarop het volgend jaar beslist.</span><span class="wie">Lokaal bestuur</span></div></div>
+    </div>
+    <div class="rond"><b>De cirkel sluit bij stap 6.</b> Daarom is registreren in het systeem geen administratieve last maar de motor van het model: wat niet geregistreerd wordt, bestaat niet in het gesprek met het bestuur.</div>
+  </div>
+</div>
+
+<!-- ============ 4. HET PLATFORM IS NIET HET PRODUCT ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">4</span><h2>Het platform is niet het product</h2></div>
+  <div class="accent">
+    <h2>Ongeveer vier vijfde begeleiding, één vijfde software</h2>
+    <div class="verhouding"><span class="beg">begeleiding en activatie</span><span class="sw">software</span></div>
+    <p>Die verhouding kwam uit het vorige partneroverleg en ze verklaart bijna alles aan dit model. Een deelplatform staat of valt bij het engagement van de gebruikers. Draait de verhouding om, dan komt het stil te liggen.</p>
+    <p>Dat heeft twee gevolgen. Ten eerste: <b>de software mag klein blijven.</b> Wat we in de schermen tonen is bewust een tiny house en geen half afgewerkt kasteel. Ten tweede: <b>het geld hoort vooral naar mensen te gaan</b>, niet naar functies. Een gemeente die alleen software koopt, koopt een lege catalogus.</p>
+    <p>Het is ook het onderscheidende deel. Software is te kopiëren, een deelcoach die de verenigingen in haar gemeente kent niet.</p>
+  </div>
+</div>
+
+<!-- ============ 5. WAAROM VERENIGINGEN NIET BETALEN ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">5</span><h2>Waarom de verenigingen niet betalen</h2></div>
+  <p class="uitleg">Dat lijkt een gemiste kans, maar het is een bewuste keuze met twee redenen.</p>
+  <div class="koopt">
+    <div class="kaart"><b>Ze hebben het geld niet</b><span>Verenigingen draaien op vrijwilligers en een krappe kas. Precies daarom kopen ze liever niets, en precies daarom is delen voor hen interessant.</span></div>
+    <div class="kaart"><b>Elke euro is een drempel</b><span>Zodra iets niet meer gratis is, ontstaat er een beslissingsmoment en een discussie in het bestuur. Bij het lage aantal transacties dat we verwachten, is dat fataal.</span></div>
+  </div>
+
+  <div class="risico">
+    <b>Het risico van deze keuze</b>
+    <p>De vereniging die enthousiast is, hangt af van een bestuur dat weinig urgentie voelt. Wie zich aanmeldt uit een niet-aangesloten gemeente, komt op een wachtlijst waar hij zelf niets aan kan doen. Daarom is het belangrijk dat zo iemand niet alleen "nee" te horen krijgt, maar ook een hefboom: laat weten dat je wacht, en help ons je eigen bestuur overtuigen. Dat is ook precies hoe het bij vergelijkbare platformen gelukt is: besturen stapten pas in toen ze voelden dat hun eigen organisaties het wilden.</p>
+  </div>
+</div>
+
+<!-- ============ 6. PISTES ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">6</span><h2>Pistes die op tafel liggen</h2></div>
+  <p class="uitleg">Geen van deze zit in de eerste versie. Ze staan hier omdat ze in eerdere overleggen genoemd zijn en omdat ze het model op termijn sterker kunnen maken.</p>
+  <div class="pistes">
+    <div class="piste">
+      <span class="vlag">Piste</span>
+      <b>Een garantiefonds</b>
+      <p>De gemeente of het project staat borg tot een bepaald bedrag als er iets stukgaat. Dat neemt de grootste rem bij uitleners weg, want wie een frietketel uitleent riskeert vandaag het hele toestel. En het geeft een reden om de uitlening echt te registreren in plaats van gewoon te bellen, want anders vervalt de garantie. Net die registratie bepaalt de waarde voor het bestuur.</p>
+    </div>
+    <div class="piste">
+      <span class="vlag">Piste</span>
+      <b>Een tegoed in plaats van geld</b>
+      <p>Wie uitleent bouwt een tegoed op waarmee hij zelf kan lenen of later zijn aansluiting betaalt. Dat maakt zichtbaar wat het systeem oplevert. Wel opgelet: complementaire munten overleven zelden, dus dit werkt eerder als spaarkaart dan als eigen munt.</p>
+    </div>
+    <div class="piste">
+      <span class="vlag">Piste</span>
+      <b>Klein, midden en groot</b>
+      <p>Een modulair aanbod waarbij een kleine gemeente iets lichters afneemt dan een centrumstad: minder begeleidingsdagen, dezelfde software. Een kleine gemeente en een grote stad zijn duidelijk andere scenario's, en één prijs voor beide werkt niet.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 7. OPEN VRAGEN ============ -->
+<div class="wrap sectie">
+  <div class="sectie-kop"><span class="nr">7</span><h2>Wat nog niet beslist is</h2></div>
+  <p class="uitleg">Deze vragen staan grotendeels al in de verslagen van de vorige overleggen. Ze horen bij dit model en niet bij de schermen.</p>
+  <div class="vragen">
+    <ul>
+      <li>Betaalt de gemeente, of kan het model ook anders draaien?</li>
+      <li>Wat gebeurt er met een vereniging uit een gemeente die niet aansluit? Wachtlijst, of toch een beperkte vorm van meedoen?</li>
+      <li>Waar zou een garantiefonds ondergebracht worden: bij het project, bij elk bestuur apart, of bij een derde partij?</li>
+      <li>Wie neemt na de projectperiode het technisch beheer, het operationeel beheer en het productmanagement op?</li>
+      <li>Welke continuïteitsbelofte kunnen we aan een gemeente doen? Dat is de vraag waarop een eerdere kandidaat-gemeente afhaakte.</li>
+      <li>Hoeveel gemeenten zijn er minimaal nodig om de begeleiding te kunnen dragen?</li>
+      <li>Werken we per gemeente, per deelnetwerk of met een straal rond een vereniging?</li>
+    </ul>
+  </div>
+</div>
+
+<div class="paginavoet">
+  <div class="wrap">
+    <span class="credit">Out of Stock &middot; werksessiemateriaal, geen definitief model</span>
+    <span style="display:flex; gap:8px; flex-wrap:wrap;"><a href="mvp-schermen.html">De schermen</a><a href="rollen.html">Wie mag wat</a><a href="keuzepagina.html">De keuzes</a><a href="verantwoording.html">Waarom zo</a></span>
+  </div>
+</div>
+
+</body>
+</html>
