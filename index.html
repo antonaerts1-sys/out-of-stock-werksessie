@@ -30,6 +30,9 @@
   .kaart .pijl { flex-shrink: 0; color: #C4C4C4; font-size: 20px; font-weight: 700; }
   .kaart:hover .pijl { color: #708C3D; }
 
+  .kaart.klik { border-color: #708C3D; background: #F7FAF1; }
+  .kaart.klik .nr { background: #708C3D; color: #FFFFFF; }
+
   .noot { margin: 36px 0 0; background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 16px; padding: 20px 24px; font-size: 13.5px; font-weight: 500; color: #6A6A6A; line-height: 1.6; }
   .noot b { color: #222222; font-weight: 700; }
 
@@ -48,6 +51,11 @@
 
 <div class="wrap">
   <div class="lijst">
+    <a class="kaart klik" href="prototype.html">
+      <span class="nr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 9 5 12 1.8-5.2L21 14Z"/><path d="M7.2 2.2 8 5.1"/><path d="m5.1 8-2.9-.8"/><path d="M14 4.1 12 6"/><path d="m6 12-1.9 2"/></svg></span>
+      <span class="tekst"><b>Het klikbare prototype</b><span>Klik zelf door de dertien schermen, van de catalogus tot het paneel van Ecolife. Wissel van rol en probeer een aanvraag.</span></span>
+      <span class="pijl">&rarr;</span>
+    </a>
     <a class="kaart" href="mvp-schermen.html">
       <span class="nr">1</span>
       <span class="tekst"><b>De MVP, scherm per scherm</b><span>Dertien schermen, van de homepage tot het paneel van Ecolife. De publieke kant in eigen stijl, alles achter de login in Filament.</span></span>
@@ -76,7 +84,7 @@
   </div>
 
   <div class="noot">
-    <b>Let op:</b> dit is werkmateriaal voor een sessie, geen definitief ontwerp en geen afgewerkte software. De schermen zijn statische voorstellingen, ze klikken niet door. Cijfers en namen in de voorbeelden zijn illustratief.
+    <b>Let op:</b> dit is werkmateriaal voor een sessie, geen definitief ontwerp en geen afgewerkte software. Het klikbare prototype toont hoe de schermen samenhangen, maar rekent niet echt. Cijfers en namen in de voorbeelden zijn illustratief.
   </div>
 </div>
 
