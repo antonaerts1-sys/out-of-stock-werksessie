@@ -35,6 +35,11 @@
   .flag { display: inline-block; font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 6px 14px; margin-bottom: 8px; }
   .flag.groot { color: #8A6A1F; background: #FBF3E4; }
 
+  /* stand na de technische toets */
+  .toets { margin-top: 14px; background: #FFFFFF; border: 1px solid #EBEBEB; border-left: 3px solid #708C3D; border-radius: 0 16px 16px 0; padding: 20px 24px; }
+  .toets b.kop { font-weight: 800; color: #5C7431; }
+  .toets p { margin: 6px 0 0; font-size: 14px; font-weight: 500; color: #444444; line-height: 1.6; }
+
   /* modellen */
   .modellen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px; }
   .model { background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 0; }
@@ -98,7 +103,7 @@
 </div>
 
 <div class="wrap intro">
-  <p class="lead">De basis staat vast: uitlenen loopt binnen het systeem, materiaal toevoegen is simpel, en Ecolife voegt verenigingen toe. Daarbovenop liggen keuzes. Twee daarvan bepalen wat het platform eigenlijk is: hoe open het netwerk wordt, en welke vorm geld tussen verenigingen krijgt. De rest gaat over hoe het gesprek na een aanvraag loopt en wat er in de eerste versie bij mag.</p>
+  <p class="lead">De basis staat vast: uitlenen loopt binnen het systeem, materiaal toevoegen is simpel, en Ecolife voegt verenigingen toe. Daarbovenop liggen keuzes. Twee daarvan bepalen wat het platform eigenlijk is: hoe open het netwerk wordt, en welke vorm geld tussen verenigingen krijgt. De rest gaat over hoe het gesprek na een aanvraag loopt en wat er in de eerste versie bij mag. Op 1 september is dit alles technisch getoetst met de developer; bij elke keuze staat sindsdien een blok "stand na de technische toets". De beslissingen zelf blijven aan de partners.</p>
 </div>
 
 <!-- ============ KEUZE 1 ============ -->
@@ -169,6 +174,11 @@
       <div class="let-op"><b>Let op:</b> iets meer bouw- en beheerwerk dan model A: het systeem moet per aanvraag weten of twee gemeenten gekoppeld zijn.</div>
     </div>
   </div>
+
+  <div class="toets">
+    <b class="kop">Stand na de technische toets (1 september)</b>
+    <p>Model C wordt gebouwd als eenvoudige, manuele koppelingen: Ecolife zet per gemeente "kan lenen bij" aan. Dat dekt meteen ook model A, want helemaal open is gewoon alle restricties uit, en B is technisch hetzelfde als C zonder koppelingen. Deze keuze kan dus achteraf nog bijgestuurd worden zonder herbouw. Wordt het netwerk ooit groot, dan komt er dan pas iets slimmers voor het beheer van die koppelingen.</p>
+  </div>
 </div>
 
 <!-- ============ KEUZE 2 ============ -->
@@ -184,8 +194,13 @@
     <div class="optie">
       <h3>Echte voorraadteller</h3>
       <p>Het systeem weet: 20 partytenten, 4 uitgeleend, dus 16 beschikbaar, en telt automatisch terug op wanneer ze terugkomen. Nodig voor verenigingen met grote aantallen die aan meerdere partijen tegelijk uitlenen.</p>
-      <span class="basis-regel"><b>Extra bovenop de basis.</b> Kan later toegevoegd worden zonder de schermen om te gooien.</span>
+      <span class="basis-regel"><b>Raakt de kern.</b> De teller verandert ook de aanvraagflow (er komt een vraag "hoeveel" bij) en het datamodel eronder.</span>
     </div>
+  </div>
+
+  <div class="toets">
+    <b class="kop">Stand na de technische toets (1 september)</b>
+    <p>Dit bleek d&eacute; knoop van het hele project, en er is geen tussenweg: het is het ene of het andere, en de keuze moet v&oacute;&oacute;r de bouw vallen. Half uitwerken en later ombouwen is de duurste route, want alles wat op de voorraad steunt moet dan mee. Het advies van de developer: als de teller er moet komen, dan meteen goed, ook in een eerste versie; er bestaan beproefde oplossingen voor en die worden nu uitgezocht. Wat al w&eacute;l vastligt: het aantal wordt een echt getal in een eigen veld (met de omschrijving apart), zodat beide opties mogelijk blijven tot de beslissing valt.</p>
   </div>
 </div>
 
@@ -269,6 +284,11 @@
     </div>
   </div>
 
+  <div class="toets">
+    <b class="kop">Stand na de technische toets (1 september)</b>
+    <p>De toets neigt naar de lichtere tussenstap: &eacute;&eacute;n aanduiding per materiaal, gratis of tegen betaling, met het bedrag gewoon in de uitleg (zoals "20 euro voor de gasflessen"). Gratis blijft de norm en standaardwaarde, er komt g&eacute;&eacute;n filter op prijs, en betalingen lopen nooit door het platform: wat verenigingen afspreken, regelen ze onderling. Dat is vrijwel geen bouwwerk en het laat wie vandaag al verhuurt eerlijk meedoen.</p>
+  </div>
+
   <div style="margin-top:14px; background:#FFFFFF; border:1px solid #EBEBEB; border-left:3px solid #708C3D; border-radius:0 16px 16px 0; padding:20px 24px;">
     <b style="font-weight:800; color:#5C7431;">Waar dit ook op slaat</b>
     <p style="margin:6px 0 0; font-size:14px; font-weight:500; color:#444444; line-height:1.6;">De derde functie van Ecolife, reststromen, staat hier nog helemaal buiten. Doorgeven is geen lenen: er komt niets terug, er is geen periode en geen statusflow. Dat is dus een eigen vraag en geen variant van deze drie. Als jullie daar deze zomer iets mee willen, hoort dat een aparte beslissing te zijn.</p>
@@ -325,6 +345,11 @@
       <div class="let-op"><b>Let op:</b> het moet als een brievenbus aanvoelen, niet als een chat: niemand mag binnen het uur een antwoord verwachten. En het staat of valt met de mailmeldingen, want niemand logt uit zichzelf dagelijks in.</div>
     </div>
   </div>
+
+  <div class="toets">
+    <b class="kop">Stand na de technische toets (1 september)</b>
+    <p>De toets neigt naar model A, met twee aanscherpingen. Eén: bij een aanvraag krijgt de eigenaar de gegevens van de aanvrager en neemt die zelf contact op; zo hoeft niemand zijn gegevens op de publieke fiche te zetten om toch bereikbaar te zijn. Twee: bij goedkeuren en bij weigeren kan de eigenaar een berichtje meesturen dat in de mail terechtkomt ("kom langs de poort, na 18u"). Dat vangt het gewone gesprek op zonder dat er een berichtensysteem gebouwd en beheerd moet worden.</p>
+  </div>
 </div>
 
 <!-- ============ KEUZE 5 ============ -->
@@ -335,11 +360,11 @@
     <div class="optie">
       <h3>Gemeenterapport</h3>
       <p>Een overzicht per gemeente: wat wordt er uitgeleend, hoeveel zou dat aan aankopen of huur gescheeld hebben, waar loont een collectieve aankoop. Dit is het verhaal waarmee Ecolife bij lokale besturen aan tafel zit.</p>
-      <span class="basis-regel"><b>Extra.</b> In de basis kan Ecolife de ruwe gegevens al zien in het beheer.</span>
+      <span class="basis-regel"><b>Extra.</b> In de basis kan Ecolife de ruwe gegevens al zien in het beheer, met een periodefilter en een export naar Excel van wat er gefilterd staat.</span>
     </div>
     <div class="optie">
       <h3>Foto's uploaden</h3>
-      <p>De materiaalmeester voegt foto's toe aan een fiche. De catalogus houdt dezelfde layout: het icoonvierkantje wordt een miniatuur.</p>
+      <p>De materiaalmeester voegt foto's toe aan een fiche. De catalogus houdt dezelfde layout: het icoonvierkantje wordt een miniatuur. Uit de technische toets: rechtstreeks een foto trekken met de telefoon in het materiaalkot kan met de standaardcomponenten (wordt nog getest), dus deze bouwsteen is kleiner dan gedacht.</p>
       <span class="basis-regel"><b>Extra.</b> Bij de start heeft bijna niets een foto; de lijst is daarop ontworpen.</span>
     </div>
     <div class="optie">
