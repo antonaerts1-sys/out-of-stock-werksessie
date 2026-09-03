@@ -99,6 +99,12 @@
   .f-titelrij { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
   .f-kaart { background: #FFFFFF; border-radius: 13px; overflow: hidden; box-shadow: 0 1px 3px rgba(28,25,23,0.05), 0 0 0 1px rgba(28,25,23,0.06); }
   .f-kaart + .f-kaart { margin-top: 14px; }
+  .f-tabs { display: flex; gap: 22px; border-bottom: 1px solid #E8E4DC; margin-bottom: 16px; }
+  .f-tabs span { padding: 8px 0 10px; font-size: 13px; font-weight: 500; color: #78716C; border-bottom: 2px solid transparent; cursor: pointer; display: flex; align-items: center; gap: 7px; }
+  .f-tabs span.aan { color: #5C7431; font-weight: 600; border-bottom-color: #708C3D; }
+  .f-tabs .tel { background: #F0EEE9; color: #57534E; border-radius: 999px; padding: 1px 8px; font-size: 10.5px; font-weight: 600; }
+  .f-tabs span.aan .tel { background: #F1F5E8; color: #5C7431; }
+  .f-omschrijving { font-size: 12px; color: #78716C; margin: -6px 0 14px; line-height: 1.55; max-width: 70ch; }
   .f-kaartkop { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 16px; border-bottom: 1px solid #F0EEE9; flex-wrap: wrap; }
   .f-kaartkop b { font-size: 13px; font-weight: 700; }
   .f-zoek { display: flex; align-items: center; gap: 8px; border: 1px solid #D6D1C7; border-radius: 9px; padding: 6px 10px; font-size: 12px; color: #A8A29E; width: 190px; cursor: pointer; }
@@ -444,10 +450,14 @@
           <div><h3>Materialen</h3><div class="f-onderkop">Wat jullie delen met het netwerk.</div></div>
           <span class="f-knop primair" data-go="b-materiaal-nieuw">+ Nieuw materiaal</span>
         </div>
+        <div class="f-tabs">
+          <span class="aan">Alles <span class="tel">6</span></span>
+          <span data-zeg="Toont enkel wat in de catalogus staat.">Zichtbaar <span class="tel">4</span></span>
+          <span data-zeg="Toont wat jullie tijdelijk uit de catalogus haalden.">Verborgen <span class="tel">2</span></span>
+        </div>
         <div class="f-kaart">
           <div class="f-kaartkop">
             <span class="f-zoek" data-zeg="Zoeken werkt niet op nepdata."><svg width="13" height="13" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="6" stroke="#A8A29E" stroke-width="2"/><line x1="13.5" y1="13.5" x2="17" y2="17" stroke="#A8A29E" stroke-width="2" stroke-linecap="round"/></svg>Zoek in de inventaris</span>
-            <span style="display:flex; gap:6px;"><span class="f-knop klein" style="background:#F1F5E8; border-color:#708C3D; color:#5C7431;">Alles</span><span class="f-knop klein" data-zeg="Toont enkel wat in de catalogus staat.">Zichtbaar</span><span class="f-knop klein" data-zeg="Toont wat jullie tijdelijk uit de catalogus haalden.">Verborgen</span></span>
           </div>
           <table class="f-tabel">
             <tr><th>Materiaal</th><th>Categorie</th><th>Aantal</th><th>In de catalogus</th><th></th></tr>
@@ -556,30 +566,26 @@
         <div class="f-titelrij">
           <div><h3>Aanvragen</h3><div class="f-onderkop">Wat op jullie antwoord wacht, en waar jullie zelf op wachten.</div></div>
         </div>
-        <div class="f-melding">Bij elke nieuwe aanvraag krijg je meteen een mailtje op <b>materiaal@chirohekeko.be</b>. Je hoeft hier dus niet dagelijks te komen kijken.</div>
-        <div style="display:flex; gap:6px; margin-bottom: 14px;">
-          <span class="f-knop klein" id="tab-ontvangen" style="background:#F1F5E8; border-color:#708C3D; color:#5C7431;" data-act="toon-ontvangen">Ontvangen <span style="background:#FEF3C7; color:#92400E; border-radius:999px; padding:1px 7px; font-size:10px; margin-left:4px;">3</span></span>
-          <span class="f-knop klein" id="tab-verstuurd" data-act="toon-verstuurd">Verstuurd</span>
+        <p class="f-omschrijving">Bij elke nieuwe aanvraag krijg je meteen een mailtje op materiaal@chirohekeko.be. Je hoeft hier dus niet dagelijks te komen kijken. Klik een aanvraag open om te antwoorden, de leenperiode vast te leggen en goed te keuren of te weigeren.</p>
+        <div class="f-tabs">
+          <span id="tab-ontvangen" class="aan" data-act="toon-ontvangen">Ontvangen <span class="tel">3</span></span>
+          <span id="tab-verstuurd" data-act="toon-verstuurd">Verstuurd <span class="tel">3</span></span>
         </div>
         <div class="f-kaart" id="lijst-ontvangen">
-          <div class="f-kaartkop"><b>Aanvragen aan jullie</b><span class="f-badge blauw"><i></i>3 wachten op jullie</span></div>
-          <table class="f-tabel">
+                    <table class="f-tabel">
             <tr><th>Materiaal</th><th>Aanvrager</th><th>Laatste bericht</th><th>Wacht al</th><th></th></tr>
             <tr class="klikrij" data-go="b-aanvraag"><td class="naam">Tafels</td><td class="zacht">Chiro Heverlee &middot; Lien</td><td class="zacht">"Top, dat is afgesproken!"</td><td><span class="f-badge amber"><i></i>2 dagen</span></td><td style="text-align:right;"><span class="f-knop klein" data-go="b-aanvraag">Open</span></td></tr>
             <tr class="klikrij" data-go="b-aanvraag" data-zeg="In dit prototype opent elke rij dezelfde voorbeeldaanvraag."><td class="naam">Banken</td><td class="zacht">Chiro Heverlee &middot; Lien</td><td class="zacht">"Ook voor het eetfestijn, zelfde weekend."</td><td><span class="f-badge amber"><i></i>2 dagen</span></td><td style="text-align:right;"><span class="f-knop klein" data-go="b-aanvraag" data-zeg="In dit prototype opent elke rij dezelfde voorbeeldaanvraag.">Open</span></td></tr>
             <tr class="klikrij" data-go="b-aanvraag" data-zeg="In dit prototype opent elke rij dezelfde voorbeeldaanvraag."><td class="naam">Kegels</td><td class="zacht">JH Impuls &middot; Karim</td><td class="zacht">"Voor ons buurtfeest, eind augustus."</td><td><span class="f-badge grijs"><i></i>vanmorgen</span></td><td style="text-align:right;"><span class="f-knop klein" data-go="b-aanvraag" data-zeg="In dit prototype opent elke rij dezelfde voorbeeldaanvraag.">Open</span></td></tr>
           </table>
-          <div style="padding: 11px 16px; border-top:1px solid #F0EEE9; font-size:11.5px; color:#78716C;">Klik een aanvraag open om te antwoorden, de leenperiode vast te leggen en goed te keuren of te weigeren. Lien vroeg tafels en banken apart aan, want dat zijn twee materialen: twee aanvragen dus, allebei even openen.</div>
         </div>
         <div class="f-kaart" id="lijst-verstuurd" style="display:none;">
-          <div class="f-kaartkop"><b>Aanvragen van jullie</b></div>
-          <table class="f-tabel">
+                    <table class="f-tabel">
             <tr><th>Materiaal</th><th>Bij</th><th>Laatste bericht</th><th>Status</th><th></th></tr>
             <tr id="rij-friteuse" style="display:none;" class="klikrij" data-go="b-mijn-aanvraag"><td class="naam">Industri&euml;le friteuse</td><td class="zacht">F.C. Tabor Heverlee</td><td class="zacht">jullie vraag, daarnet verstuurd</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein" data-go="b-mijn-aanvraag">Open</span> <span class="f-knop klein" data-zeg="Intrekken kan zolang er nog geen antwoord is, en na goedkeuring nog tot de startdatum.">Annuleer</span></td></tr>
             <tr class="klikrij" data-go="b-mijn-aanvraag"><td class="naam">Beamer</td><td class="zacht">Bazart Leuven</td><td class="zacht">"Mag hij vrijdag al mee?"</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein" data-go="b-mijn-aanvraag">Open</span> <span class="f-knop klein" data-zeg="Intrekken kan zolang er nog geen antwoord is, en na goedkeuring nog tot de startdatum.">Annuleer</span></td></tr>
             <tr class="klikrij" data-go="b-mijn-aanvraag"><td class="naam">Paellapan</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">"Voor 120 man, lukt dat?"</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein" data-go="b-mijn-aanvraag">Open</span> <span class="f-knop klein" data-zeg="Intrekken kan zolang er nog geen antwoord is, en na goedkeuring nog tot de startdatum.">Annuleer</span></td></tr>
           </table>
-          <div style="padding: 11px 16px; border-top:1px solid #F0EEE9; font-size:11.5px; color:#78716C;">Goedgekeurde aanvragen verhuizen naar Uitleningen. Annuleren kan zolang er geen antwoord is, en na goedkeuring nog tot de startdatum.</div>
         </div>
       </div>
     </div>
@@ -609,25 +615,25 @@
               <tr><td class="zacht">De vraag</td><td>Voor ons eetfestijn voor 80 personen. We halen op met een aanhangwagen.</td></tr>
             </table>
             <div class="f-kaartkop" style="border-top:1px solid #F0EEE9;"><b>Berichten</b><span style="display:flex; align-items:center; gap:10px;"><span style="font-size:10.5px; color:#78716C;">elk bericht komt ook per mail aan</span><span class="f-knop klein primair" data-act="open-bericht">+ Nieuw bericht</span></span></div>
-            <div style="padding: 12px 16px; display:grid; gap:10px; font-size:12px;" id="berichtenlijst">
-              <div><b>Lien</b> <span style="color:#78716C;">&middot; gisteren</span><br>Lukt vrijdagavond ophalen ook? En rond welk uur?</div>
-              <div><b>Lotte (jij)</b> <span style="color:#78716C;">&middot; gisteren</span><br>Ja hoor, na 18u. Kom langs de poort. Dus 14 tot 16 augustus?</div>
-              <div><b>Lien</b> <span style="color:#78716C;">&middot; vandaag</span><br>Top, dat is afgesproken!</div>
+            <div style="font-size:12px;" id="berichtenlijst">
+              <div style="padding:11px 16px; border-bottom:1px solid #F0EEE9;"><b>Lien</b> <span style="color:#78716C;">&middot; gisteren</span><br>Lukt vrijdagavond ophalen ook? En rond welk uur?</div>
+              <div style="padding:11px 16px; border-bottom:1px solid #F0EEE9;"><b>Lotte (jij)</b> <span style="color:#78716C;">&middot; gisteren</span><br>Ja hoor, na 18u. Kom langs de poort. Dus 14 tot 16 augustus?</div>
+              <div style="padding:11px 16px; border-bottom:1px solid #F0EEE9;"><b>Lien</b> <span style="color:#78716C;">&middot; vandaag</span><br>Top, dat is afgesproken!</div>
             </div>
           </div>
           <div style="flex:0 0 250px; display:grid; gap:14px;">
 <div class="f-kaart">
               <div class="f-kaartkop"><b>Verloop</b></div>
-              <div style="padding: 12px 16px; display:grid; gap:10px; font-size:12px;">
-                <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#3B82F6;margin-top:4px;flex-shrink:0;"></span><span><b>Aangevraagd</b><br><span style="color:#78716C;">3 aug, 20u14</span></span></div>
-                <div style="display:flex; gap:9px; align-items:flex-start;" id="tl-goedgekeurd"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Goedgekeurd</span></div>
-                <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Opgehaald</span></div>
-                <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Terug</span></div>
-                <div style="border-top:1px solid #F0EEE9; margin:2px 0;"></div>
-                <div style="display:flex; gap:9px; align-items:flex-start;" id="tl-eind"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Of: geweigerd of geannuleerd</span></div>
-              </div>
+              <table class="f-tabel">
+                <tr><td class="zacht" style="width:52%;">Aangevraagd</td><td id="tl-goedgekeurd-datum">3 aug, 20u14</td></tr>
+                <tr><td class="zacht">Goedgekeurd</td><td id="tl-goedgekeurd" style="color:#A8A29E;">nog niet</td></tr>
+                <tr><td class="zacht">Opgehaald</td><td style="color:#A8A29E;">nog niet</td></tr>
+                <tr><td class="zacht">Terug</td><td style="color:#A8A29E;">nog niet</td></tr>
+                <tr><td class="zacht">Of: geweigerd of geannuleerd</td><td id="tl-eind" style="color:#A8A29E;">niet van toepassing</td></tr>
+              </table>
             </div>
-            <div class="f-melding" style="margin:0;" id="aanvraag-melding">Bij goedkeuren krijgt Lien meteen een mail met de vastgelegde periode, jullie contactgegevens en de afspraken uit de spelregels. Zelf annuleren kan alleen de aanvrager, tot de startdatum; na goedkeuren kan dat langs beide kanten.</div>
+            </div>
+            <p class="f-omschrijving" style="margin:0;" id="aanvraag-melding">Bij goedkeuren krijgt Lien meteen een mail met de vastgelegde periode, jullie contactgegevens en de afspraken uit de spelregels. Zelf annuleren kan alleen de aanvrager, tot de startdatum; na goedkeuren kan dat langs beide kanten.</div>
           </div>
         </div>
       </div>
@@ -658,22 +664,21 @@
               <tr><td class="zacht">Jullie vraag</td><td>Voor onze filmavond op 12 september. Mag hij vrijdag al mee?</td></tr>
             </table>
             <div class="f-kaartkop" style="border-top:1px solid #F0EEE9;"><b>Berichten</b><span style="display:flex; align-items:center; gap:10px;"><span style="font-size:10.5px; color:#78716C;">elk bericht komt ook per mail aan</span><span class="f-knop klein primair" data-act="open-mijn-bericht">+ Nieuw bericht</span></span></div>
-            <div style="padding: 12px 16px; display:grid; gap:10px; font-size:12px;" id="mijn-berichtenlijst">
-              <div><b>Lotte (jij)</b> <span style="color:#78716C;">&middot; gisteren</span><br>Voor onze filmavond op 12 september. Mag hij vrijdag al mee?</div>
-              <div><b>Bazart Leuven</b> <span style="color:#78716C;">&middot; gisteren</span><br>Dat kan. Ik bevestig morgen, ik check nog even onze eigen agenda.</div>
+            <div style="font-size:12px;" id="mijn-berichtenlijst">
+              <div style="padding:11px 16px; border-bottom:1px solid #F0EEE9;"><b>Lotte (jij)</b> <span style="color:#78716C;">&middot; gisteren</span><br>Voor onze filmavond op 12 september. Mag hij vrijdag al mee?</div>
+              <div style="padding:11px 16px; border-bottom:1px solid #F0EEE9;"><b>Bazart Leuven</b> <span style="color:#78716C;">&middot; gisteren</span><br>Dat kan. Ik bevestig morgen, ik check nog even onze eigen agenda.</div>
             </div>
           </div>
           <div style="flex:0 0 250px; display:grid; gap:14px;">
             <div class="f-kaart">
               <div class="f-kaartkop"><b>Verloop</b></div>
-              <div style="padding: 12px 16px; display:grid; gap:10px; font-size:12px;">
-                <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#3B82F6;margin-top:4px;flex-shrink:0;"></span><span><b>Aangevraagd</b><br><span style="color:#78716C;">gisteren, 21u07</span></span></div>
-                <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Wacht op antwoord van Bazart</span></div>
-                <div style="border-top:1px solid #F0EEE9; margin:2px 0;"></div>
-                <div style="display:flex; gap:9px; align-items:flex-start;" id="mijn-tl-eind"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Of: geannuleerd</span></div>
-              </div>
+              <table class="f-tabel">
+                <tr><td class="zacht" style="width:52%;">Aangevraagd</td><td>gisteren, 21u07</td></tr>
+                <tr><td class="zacht">Antwoord van Bazart</td><td style="color:#A8A29E;">nog niet</td></tr>
+                <tr><td class="zacht">Of: geannuleerd</td><td id="mijn-tl-eind" style="color:#A8A29E;">niet van toepassing</td></tr>
+              </table>
             </div>
-            <div class="f-melding" style="margin:0;" id="mijn-melding">Jullie wachten op het antwoord van Bazart. Zodra ze goedkeuren, krijgen jullie een mail met de afgesproken periode en hun contactgegevens, en verhuist dit naar Uitleningen. Annuleren kan tot de startdatum.</div>
+            <p class="f-omschrijving" style="margin:0;" id="mijn-melding">Jullie wachten op het antwoord van Bazart. Zodra ze goedkeuren, krijgen jullie een mail met de afgesproken periode en hun contactgegevens, en verhuist dit naar Uitleningen. Annuleren kan tot de startdatum.</div>
           </div>
         </div>
       </div>
@@ -690,11 +695,14 @@
       <div class="f-main">
         <div class="f-titelrij">
           <div><h3>Uitleningen</h3><div class="f-onderkop">Wat er nu buiten staat, en wat jullie moeten terugbrengen.</div></div>
-          <span style="display:flex; gap:6px;"><span class="f-knop klein" style="background:#F1F5E8; border-color:#708C3D; color:#5C7431;">Lopend</span><span class="f-knop klein" data-zeg="Toont de afgeronde uitleningen. Die blijven bewaard: dat is de data voor het gemeenterapport.">Afgerond</span></span>
+        </div>
+        <div class="f-tabs">
+          <span class="aan">Ons materiaal, bij anderen <span class="tel">2</span></span>
+          <span data-zeg="Toont wat jullie zelf geleend hebben van andere verenigingen.">Van anderen, bij ons <span class="tel">1</span></span>
+          <span data-zeg="Toont de afgeronde uitleningen. Die blijven bewaard: dat is de data voor het gemeenterapport.">Afgerond</span>
         </div>
         <div class="f-kaart">
-          <div class="f-kaartkop"><b>Ons materiaal, bij iemand anders</b></div>
-          <table class="f-tabel" id="tabel-buiten">
+                    <table class="f-tabel" id="tabel-buiten">
             <tr><th>Materiaal</th><th>Bij</th><th>Periode</th><th>Status</th><th></th></tr>
             <tr id="rij-tafels-goedgekeurd" style="display:none;"><td class="naam">Tafels</td><td class="zacht">Chiro Heverlee &middot; Lien</td><td class="zacht">14 &ndash; 16 aug</td><td id="st-tafels"><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right; white-space:nowrap;" id="acties-tafels"><span class="f-knop klein" data-zeg="De eigenaar zet zelf op opgehaald, want die ziet het materiaal vertrekken.">Markeer opgehaald</span> <span class="f-knop klein" data-act="open-annuleer-uitlening">Annuleer</span></td></tr>
             
@@ -702,12 +710,10 @@
           </table>
         </div>
         <div class="f-kaart">
-          <div class="f-kaartkop"><b>Van anderen, bij ons</b></div>
-          <table class="f-tabel">
+                    <table class="f-tabel">
             <tr><th>Materiaal</th><th>Van</th><th>Periode</th><th>Status</th><th></th></tr>
             <tr><td class="naam">Kookpotten</td><td class="zacht">Wandelclub WSP</td><td class="zacht">5 &ndash; 7 sep</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;"><span class="f-knop klein" data-zeg="Gewoon een geheugensteun: ophalen spreken jullie onderling af.">Ophalen op 5 sep</span></td></tr>
           </table>
-          <div style="padding: 11px 16px; border-top:1px solid #F0EEE9; font-size:11.5px; color:#78716C;">Annuleren kan tot de startdatum, langs beide kanten; daarna staat de uitlening vast. De uitlener zet zelf op opgehaald en terug. Zo bepaalt de eigenaar wanneer iets afgerond is, precies zoals de deelregels het beschrijven.</div>
         </div>
       </div>
     </div>
@@ -1210,6 +1216,7 @@
     var lijst = document.getElementById('berichtenlijst');
     if (!lijst) return;
     var d = document.createElement('div');
+    d.setAttribute('style', 'padding:11px 16px; border-bottom:1px solid #F0EEE9;');
     d.innerHTML = '<b>' + auteur + '</b> <span style="color:#78716C;">&middot; zonet</span><br>' + tekst.replace(/</g, '&lt;');
     lijst.appendChild(d);
   }
@@ -1217,6 +1224,7 @@
     var lijst = document.getElementById('mijn-berichtenlijst');
     if (!lijst) return;
     var d = document.createElement('div');
+    d.setAttribute('style', 'padding:11px 16px; border-bottom:1px solid #F0EEE9;');
     d.innerHTML = '<b>' + auteur + '</b> <span style="color:#78716C;">&middot; zonet</span><br>' + tekst.replace(/</g, '&lt;');
     lijst.appendChild(d);
   }
@@ -1227,8 +1235,8 @@
   function zetTijdlijn(id, kleur, titel, onder) {
     var r = document.getElementById(id);
     if (!r) return;
-    r.innerHTML = '<span style="width:8px;height:8px;border-radius:999px;background:' + kleur + ';margin-top:4px;flex-shrink:0;"></span>'
-      + '<span><b>' + titel + '</b><br><span style="color:#78716C;">' + onder + '</span></span>';
+    r.style.color = '#1C1917';
+    r.textContent = onder;
   }
   function zetResultaat(tekst, naarUitleningen) {
     var a = document.getElementById('aanvraag-acties');
@@ -1268,8 +1276,8 @@
       zetBadge('blauw', 'aangevraagd');
       var c = document.getElementById('cel-periode');
       c.innerHTML = 'nog niet vastgelegd; dat doe je bij het goedkeuren'; c.style.color = '#78716C';
-      zetTijdlijn('tl-goedgekeurd', '#E8E4DC', '', ''); document.getElementById('tl-goedgekeurd').innerHTML = '<span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Goedgekeurd</span>';
-      document.getElementById('tl-eind').innerHTML = '<span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Of: geweigerd of geannuleerd</span>';
+      var g = document.getElementById('tl-goedgekeurd'); g.style.color = '#A8A29E'; g.textContent = 'nog niet';
+      var e = document.getElementById('tl-eind'); e.style.color = '#A8A29E'; e.textContent = 'niet van toepassing';
       document.getElementById('aanvraag-melding').innerHTML = 'Bij goedkeuren krijgt Lien meteen een mail met de vastgelegde periode, jullie contactgegevens en de afspraken uit de spelregels. Zelf annuleren kan alleen de aanvrager, tot de startdatum; na goedkeuren kan dat langs beide kanten.';
       var lijst = document.getElementById('berichtenlijst');
       while (lijst.children.length > 3) lijst.removeChild(lijst.lastChild);
@@ -1280,14 +1288,14 @@
     'toon-ontvangen': function () {
       document.getElementById('lijst-ontvangen').style.display = '';
       document.getElementById('lijst-verstuurd').style.display = 'none';
-      document.getElementById('tab-ontvangen').setAttribute('style', 'background:#F1F5E8; border-color:#708C3D; color:#5C7431;');
-      document.getElementById('tab-verstuurd').removeAttribute('style');
+      document.getElementById('tab-ontvangen').classList.add('aan');
+      document.getElementById('tab-verstuurd').classList.remove('aan');
     },
     'toon-verstuurd': function () {
       document.getElementById('lijst-ontvangen').style.display = 'none';
       document.getElementById('lijst-verstuurd').style.display = '';
-      document.getElementById('tab-verstuurd').setAttribute('style', 'background:#F1F5E8; border-color:#708C3D; color:#5C7431;');
-      document.getElementById('tab-ontvangen').removeAttribute('style');
+      document.getElementById('tab-verstuurd').classList.add('aan');
+      document.getElementById('tab-ontvangen').classList.remove('aan');
     },
     'open-keurgoed': function () { document.getElementById('ov-keurgoed').classList.add('aan'); },
     'open-foto': function () { document.getElementById('ov-foto').classList.add('aan'); },
@@ -1317,7 +1325,7 @@
       v.value = '';
       var b = document.getElementById('mijn-badge');
       b.className = 'f-badge grijs'; b.innerHTML = '<i></i>geannuleerd';
-      document.getElementById('mijn-tl-eind').innerHTML = '<span style="width:8px;height:8px;border-radius:999px;background:#A8A29E;margin-top:4px;flex-shrink:0;"></span><span><b>Geannuleerd</b><br><span style="color:#78716C;">zonet, door jullie</span></span>';
+      var me = document.getElementById('mijn-tl-eind'); me.style.color = '#1C1917'; me.textContent = 'geannuleerd, zonet door jullie';
       document.getElementById('mijn-acties').innerHTML = '<span style="font-size:12px; color:#78716C;">Geannuleerd. Bazart Leuven kreeg een mailtje.</span>';
       document.getElementById('mijn-melding').innerHTML = 'De aanvraag is ingetrokken en Bazart Leuven kreeg er een mailtje van. Jullie kunnen altijd opnieuw aanvragen via de catalogus.';
       toast('Aanvraag geannuleerd. Bazart Leuven kreeg meteen een mailtje.');
