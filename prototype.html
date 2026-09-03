@@ -702,26 +702,36 @@
       <div class="f-kop" data-fkop="v"></div>
       <div class="f-main">
         <div class="f-titelrij">
-          <div><h3>Uitleningen</h3><div class="f-onderkop">Wat er nu buiten staat, en wat jullie moeten terugbrengen.</div></div>
+          <div><h3>Uitleningen</h3><div class="f-onderkop">Wat er loopt, en wat al achter de rug is.</div></div>
         </div>
+        <p class="f-omschrijving">Goedgekeurde aanvragen komen hier terecht. Annuleren kan tot de startdatum, langs beide kanten; is de einddatum voorbij, dan staat de uitlening vanzelf op afgerond.</p>
         <div class="f-tabs">
-          <span class="aan">Ons materiaal, bij anderen <span class="tel">2</span></span>
-          <span data-zeg="Toont wat jullie zelf geleend hebben van andere verenigingen.">Van anderen, bij ons <span class="tel">1</span></span>
-          <span data-zeg="Toont de afgeronde uitleningen. Die blijven bewaard: dat is de data voor het gemeenterapport.">Afgerond</span>
+          <span class="aan" id="ut-uit" data-act="ut-uit">Ons materiaal, bij anderen <span class="tel">2</span></span>
+          <span id="ut-in" data-act="ut-in">Van anderen, bij ons <span class="tel">1</span></span>
+          <span id="ut-klaar" data-act="ut-klaar">Afgerond <span class="tel">2</span></span>
         </div>
-        <div class="f-kaart">
-                    <table class="f-tabel" id="tabel-buiten">
+        <div class="f-kaart" id="up-uit">
+          <table class="f-tabel">
             <tr><th>Materiaal</th><th>Bij</th><th>Periode</th><th>Status</th><th></th></tr>
-            <tr id="rij-tafels-goedgekeurd" style="display:none;"><td class="naam">Tafels</td><td class="zacht">Chiro Heverlee &middot; Lien</td><td class="zacht">14 &ndash; 16 aug</td><td id="st-tafels"><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right; white-space:nowrap;" id="acties-tafels"><span class="f-knop klein" data-act="open-annuleer-uitlening">Annuleer</span></td></tr>
-            
-            <tr><td class="naam">Sjorbalken</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td><td style="text-align:right;"><span style="font-size:11.5px; color:#78716C;">afgerond op 14 juli</span></td></tr>
+            <tr id="rij-tafels-goedgekeurd" style="display:none;"><td class="naam">Tafels</td><td class="zacht">Chiro Heverlee &middot; Lien</td><td class="zacht">14 &ndash; 16 aug</td><td id="st-tafels"><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;" id="acties-tafels"><span class="f-knop klein" data-act="open-annuleer-uitlening">Annuleer</span></td></tr>
+            <tr><td class="naam">Sjorbalken</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 sep</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;"><span class="f-knop klein" data-zeg="Annuleren kan tot de startdatum, langs beide kanten. De andere vereniging krijgt meteen een mailtje.">Annuleer</span></td></tr>
+            <tr><td class="naam">Partytent 4&times;8 m</td><td class="zacht">KSA Aarschot</td><td class="zacht">12 &ndash; 14 sep</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;"><span class="f-knop klein" data-zeg="Annuleren kan tot de startdatum, langs beide kanten. De andere vereniging krijgt meteen een mailtje.">Annuleer</span></td></tr>
           </table>
         </div>
-        <div class="f-kaart">
-                    <table class="f-tabel">
+        <div class="f-kaart" id="up-in" style="display:none;">
+          <table class="f-tabel">
             <tr><th>Materiaal</th><th>Van</th><th>Periode</th><th>Status</th><th></th></tr>
-            <tr><td class="naam">Kookpotten</td><td class="zacht">Wandelclub WSP</td><td class="zacht">5 &ndash; 7 sep</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;"><span class="f-knop klein" data-zeg="Gewoon een geheugensteun: ophalen spreken jullie onderling af.">Ophalen op 5 sep</span></td></tr>
+            <tr><td class="naam">Kookpotten</td><td class="zacht">Wandelclub WSP</td><td class="zacht">5 &ndash; 7 sep</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;"><span class="f-knop klein" data-zeg="Annuleren kan tot de startdatum. Wandelclub WSP krijgt meteen een mailtje.">Annuleer</span></td></tr>
           </table>
+          <div style="padding: 11px 16px; border-top:1px solid #F0EEE9; font-size:11.5px; color:#78716C;">Ophalen en terugbrengen spreken jullie onderling af; dat staat in de mail en in de berichten bij de aanvraag.</div>
+        </div>
+        <div class="f-kaart" id="up-klaar" style="display:none;">
+          <table class="f-tabel">
+            <tr><th>Materiaal</th><th>Met</th><th>Periode</th><th>Status</th></tr>
+            <tr><td class="naam">Sjorbalken</td><td class="zacht">aan Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
+            <tr><td class="naam">Kegels</td><td class="zacht">aan Femma Heverlee</td><td class="zacht">6 &ndash; 8 jun</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
+          </table>
+          <div style="padding: 11px 16px; border-top:1px solid #F0EEE9; font-size:11.5px; color:#78716C;">Afgeronde uitleningen blijven bewaard. Dat is de data waarmee Ecolife bij een gemeente aan tafel zit.</div>
         </div>
       </div>
     </div>
@@ -1366,6 +1376,12 @@
     d.innerHTML = '<b>' + auteur + '</b> <span style="color:#78716C;">&middot; zonet</span><br>' + tekst.replace(/</g, '&lt;');
     lijst.appendChild(d);
   }
+  function uitTab(welke) {
+    ['uit', 'in', 'klaar'].forEach(function (n) {
+      document.getElementById('up-' + n).style.display = (n === welke ? '' : 'none');
+      document.getElementById('ut-' + n).classList.toggle('aan', n === welke);
+    });
+  }
   function verTab(welke) {
     ['materialen', 'logins', 'uitleningen'].forEach(function (n) {
       document.getElementById('vp-' + n).style.display = (n === welke ? '' : 'none');
@@ -1458,6 +1474,9 @@
       document.getElementById('tab-ontvangen').classList.remove('aan');
     },
     'open-keurgoed': function () { document.getElementById('ov-keurgoed').classList.add('aan'); },
+    'ut-uit': function () { uitTab('uit'); },
+    'ut-in': function () { uitTab('in'); },
+    'ut-klaar': function () { uitTab('klaar'); },
     'ver-materialen': function () { verTab('materialen'); },
     'ver-logins': function () { verTab('logins'); },
     'ver-uitleningen': function () { verTab('uitleningen'); },
