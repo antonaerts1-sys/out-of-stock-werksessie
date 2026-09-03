@@ -266,7 +266,7 @@
       <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">3</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Gratis is de norm. Vraagt een vereniging een deelname in de kosten, dan staat dat eerlijk op de fiche. Betalen regelen jullie onderling.</span></div>
       <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">4</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Bij het goedkeuren wordt de leenperiode vastgelegd. Annuleren kan tot de startdatum, langs beide kanten.</span></div>
       <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">5</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Haal op en breng terug zoals afgesproken, en in de staat waarin je het kreeg. Iets stuk of kwijt? Meld het meteen en regel het samen.</span></div>
-      <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">6</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">De eigenaar zet "opgehaald" en "terug". Zo klopt de historiek, en dat is de data voor het gesprek met de gemeente.</span></div>
+      <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">6</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Als de afgesproken periode voorbij is, is de uitlening afgerond. Niemand hoeft iets aan te vinken.</span></div>
       <div style="display:flex; gap:14px; padding: 15px 0;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">7</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Zorg dat minstens twee mensen van jullie vereniging kunnen inloggen. Zo valt er niets stil als er iemand stopt.</span></div>
     </div>
     <div style="text-align:center; font-size: 12px; font-weight: 500; color: #9A9A9A; margin-top: 14px; line-height: 1.5;">Conceptversie. De definitieve spelregels volgen; vragen beantwoordt de deelcoach.</div>
@@ -627,8 +627,7 @@
               <table class="f-tabel">
                 <tr><td class="zacht" style="width:52%;">Aangevraagd</td><td id="tl-goedgekeurd-datum">3 aug, 20u14</td></tr>
                 <tr><td class="zacht">Goedgekeurd</td><td id="tl-goedgekeurd" style="color:#A8A29E;">nog niet</td></tr>
-                <tr><td class="zacht">Opgehaald</td><td style="color:#A8A29E;">nog niet</td></tr>
-                <tr><td class="zacht">Terug</td><td style="color:#A8A29E;">nog niet</td></tr>
+                <tr><td class="zacht">Afgerond</td><td style="color:#A8A29E;">vanzelf na 16 augustus</td></tr>
                 <tr><td class="zacht">Of: geweigerd of geannuleerd</td><td id="tl-eind" style="color:#A8A29E;">niet van toepassing</td></tr>
               </table>
             </div>
@@ -704,9 +703,9 @@
         <div class="f-kaart">
                     <table class="f-tabel" id="tabel-buiten">
             <tr><th>Materiaal</th><th>Bij</th><th>Periode</th><th>Status</th><th></th></tr>
-            <tr id="rij-tafels-goedgekeurd" style="display:none;"><td class="naam">Tafels</td><td class="zacht">Chiro Heverlee &middot; Lien</td><td class="zacht">14 &ndash; 16 aug</td><td id="st-tafels"><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right; white-space:nowrap;" id="acties-tafels"><span class="f-knop klein" data-zeg="De eigenaar zet zelf op opgehaald, want die ziet het materiaal vertrekken.">Markeer opgehaald</span> <span class="f-knop klein" data-act="open-annuleer-uitlening">Annuleer</span></td></tr>
+            <tr id="rij-tafels-goedgekeurd" style="display:none;"><td class="naam">Tafels</td><td class="zacht">Chiro Heverlee &middot; Lien</td><td class="zacht">14 &ndash; 16 aug</td><td id="st-tafels"><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right; white-space:nowrap;" id="acties-tafels"><span class="f-knop klein" data-act="open-annuleer-uitlening">Annuleer</span></td></tr>
             
-            <tr><td class="naam">Sjorbalken</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge amber"><i></i>opgehaald</span></td><td style="text-align:right;"><span class="f-knop klein primair" data-zeg="Terug gezet. De uitlening is afgerond en blijft in de historiek staan.">Markeer terug</span></td></tr>
+            <tr><td class="naam">Sjorbalken</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td><td style="text-align:right;"><span style="font-size:11.5px; color:#78716C;">afgerond op 14 juli</span></td></tr>
           </table>
         </div>
         <div class="f-kaart">
@@ -885,9 +884,9 @@
             <tr><th>Materiaal</th><th>Van</th><th>Naar</th><th>Periode</th><th>Status</th></tr>
             <tr><td class="naam">Tafels</td><td class="zacht">Chiro Hekeko</td><td class="zacht">Chiro Heverlee</td><td class="zacht">14 &ndash; 16 aug</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td></tr>
             <tr><td class="naam">Kookpotten</td><td class="zacht">Wandelclub WSP</td><td class="zacht">Chiro Hekeko</td><td class="zacht">5 &ndash; 7 sep</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td></tr>
-            <tr><td class="naam">Sjorbalken</td><td class="zacht">Chiro Hekeko</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge amber"><i></i>opgehaald</span></td></tr>
-            <tr><td class="naam">Slaaptenten (4)</td><td class="zacht">FOS De Vlievleger</td><td class="zacht">KSA Aarschot</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>terug</span></td></tr>
-            <tr><td class="naam">Parachute</td><td class="zacht">Chiro Don Bosco</td><td class="zacht">Chiro Blauwput</td><td class="zacht">6 &ndash; 8 jun</td><td><span class="f-badge grijs"><i></i>terug</span></td></tr>
+            <tr><td class="naam">Sjorbalken</td><td class="zacht">Chiro Hekeko</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
+            <tr><td class="naam">Slaaptenten (4)</td><td class="zacht">FOS De Vlievleger</td><td class="zacht">KSA Aarschot</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
+            <tr><td class="naam">Parachute</td><td class="zacht">Chiro Don Bosco</td><td class="zacht">Chiro Blauwput</td><td class="zacht">6 &ndash; 8 jun</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
             <tr><td class="naam">Partytent 4&times;8 m</td><td class="zacht">Chiro Hekeko</td><td class="zacht">KSA Aarschot</td><td class="zacht">3 &ndash; 5 jul</td><td><span class="f-badge rood"><i></i>geweigerd</span></td></tr>
             <tr><td class="naam">Kookpotten</td><td class="zacht">Wandelclub WSP</td><td class="zacht">Chiro Vlierbeek</td><td class="zacht">20 mei</td><td><span class="f-badge grijs"><i></i>geannuleerd</span></td></tr>
           </table>
@@ -1376,7 +1375,7 @@
       zetBadge('groen', 'goedgekeurd');
       zetTijdlijn('tl-goedgekeurd', '#10B981', 'Goedgekeurd', 'zonet');
       zetResultaat('Goedgekeurd. Volg de uitlening verder op bij Uitleningen.', true);
-      document.getElementById('aanvraag-melding').innerHTML = 'Lien kreeg meteen een mail met de periode ' + van + ' tot ' + tot + ', jullie contactgegevens en de afspraken uit de spelregels. Zet straks "opgehaald" en "terug" bij Uitleningen.';
+      document.getElementById('aanvraag-melding').innerHTML = 'Lien kreeg meteen een mail met de periode ' + van + ' tot ' + tot + ', jullie contactgegevens en de afspraken uit de spelregels. Je vindt de uitlening terug bij Uitleningen; ze rondt zichzelf af na de einddatum.';
       document.getElementById('rij-tafels-goedgekeurd').style.display = '';
       toast('Goedgekeurd. Lien krijgt meteen een mailtje met de bevestiging.');
     },

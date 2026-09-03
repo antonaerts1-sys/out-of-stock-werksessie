@@ -203,7 +203,7 @@
     <h2>De minimale MVP: drie dingen moeten werken</h2>
     <p>Al de rest is inkleding. Als deze drie dingen werken, kan het netwerk draaien en kunnen we testen of verenigingen het echt gebruiken.</p>
     <div class="mvp-grid">
-      <div class="mvp-card"><span class="nr">1</span><b>Uitlenen loopt binnen het systeem</b><span>Een vereniging stuurt haar vraag als berichtje, de eigenaar keurt goed (en legt dan de leenperiode vast) of weigert, en het systeem houdt bij waar het staat: aangevraagd, goedgekeurd, opgehaald, terug, of be&euml;indigd als geweigerd of geannuleerd.</span></div>
+      <div class="mvp-card"><span class="nr">1</span><b>Uitlenen loopt binnen het systeem</b><span>Een vereniging stuurt haar vraag als berichtje, de eigenaar keurt goed (en legt dan de leenperiode vast) of weigert, en het systeem houdt bij waar het staat: aangevraagd, goedgekeurd, of be&euml;indigd als geweigerd of geannuleerd; is de afgesproken periode voorbij, dan staat ze vanzelf op afgerond.</span></div>
       <div class="mvp-card"><span class="nr">2</span><b>Materiaal toevoegen is simpel</b><span>De materiaalmeester zet iets in de catalogus met naam, aantal en categorie, en zet het zichtbaar of uit. Geen foto verplicht.</span></div>
       <div class="mvp-card"><span class="nr">3</span><b>Ecolife voegt verenigingen toe</b><span>Geen self-service registratie. Ecolife of de deelcoach maakt de vereniging aan, nodigt de materiaalmeester uit en bepaalt wie met wie kan lenen.</span></div>
     </div>
@@ -640,8 +640,7 @@
       <span class="lbl">De gewone weg:</span>
       <span class="stap" style="background:#EFF6FF; color:#1D4ED8;">aangevraagd</span><span class="pijl">&rarr;</span>
       <span class="stap" style="background:#F0F4E8; color:#5C7431;">goedgekeurd</span><span class="pijl">&rarr;</span>
-      <span class="stap" style="background:#FBF3E4; color:#B0762A;">opgehaald</span><span class="pijl">&rarr;</span>
-      <span class="stap" style="background:#F2F2F2; color:#57534E;">terug</span>
+      <span class="stap" style="background:#F0F0EC; color:#57534E;">afgerond</span>
     </div>
     <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px solid #F2F2F2;">
       <span class="lbl">Of het stopt:</span>
@@ -741,8 +740,7 @@
                 <div style="padding: 12px 16px; display:grid; gap:10px; font-size:12px;">
                   <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#3B82F6;margin-top:4px;flex-shrink:0;"></span><span><b>Aangevraagd</b><br><span style="color:#78716C;">3 aug, 20u14</span></span></div>
                   <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Goedgekeurd</span></div>
-                  <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Opgehaald</span></div>
-                  <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Terug</span></div>
+                  <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Afgerond, vanzelf na de einddatum</span></div>
                   <div style="border-top:1px solid #F0EEE9; margin:2px 0;"></div>
                   <div style="display:flex; gap:9px; align-items:flex-start;"><span style="width:8px;height:8px;border-radius:999px;background:#E8E4DC;margin-top:4px;flex-shrink:0;"></span><span style="color:#A8A29E;">Of: geweigerd of geannuleerd</span></div>
                 </div>
@@ -774,7 +772,7 @@
 <div class="wrap scherm">
   <div class="scherm-kop"><span class="nr">8</span><h2>Uitleningen: wat er buiten staat</h2></div>
   <div class="chips"><span class="chip login">Ingelogde materiaalmeester</span><span class="chip">Filament, standaard tabellen</span></div>
-  <p class="uitleg">Alles wat goedgekeurd is, staat hier. Dit scherm gaat niet over beslissen maar over opvolgen: is het al opgehaald, en is het al terug? Twee blokken, omdat de vraag verschilt. Boven wat van jullie bij iemand anders ligt, onder wat jullie van anderen in huis hebben en moeten terugbrengen.</p>
+  <p class="uitleg">Alles wat goedgekeurd is, staat hier. Dit scherm gaat niet over beslissen maar over opvolgen: wat staat er buiten, en wat is al terug? Twee blokken, omdat de vraag verschilt. Boven wat van jullie bij iemand anders ligt, onder wat jullie van anderen in huis hebben en moeten terugbrengen.</p>
 
   <div class="frame">
     <div class="frame-bar"><i></i><i></i><i></i><span class="url">outofstock.be/beheer/uitleningen</span></div>
@@ -800,8 +798,8 @@
             <div class="f-kaartkop"><b>Ons materiaal, bij iemand anders</b></div>
             <table class="f-tabel">
               <tr><th>Materiaal</th><th>Bij</th><th>Periode</th><th>Status</th><th></th></tr>
-              <tr><td class="naam">Kegels</td><td class="zacht">JH Impuls &middot; Karim</td><td class="zacht">22 &ndash; 24 aug</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;"><span class="f-knop klein">Markeer opgehaald</span></td></tr>
-              <tr><td class="naam">Sjorbalken</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge amber"><i></i>opgehaald</span></td><td style="text-align:right;"><span class="f-knop klein primair">Markeer terug</span></td></tr>
+              <tr><td class="naam">Kegels</td><td class="zacht">JH Impuls &middot; Karim</td><td class="zacht">22 &ndash; 24 aug</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;"><span class="f-knop klein">Annuleer</span></td></tr>
+              <tr><td class="naam">Sjorbalken</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td><td style="text-align:right;"><span class="f-knop klein primair">Markeer terug</span></td></tr>
             </table>
           </div>
           <div class="f-kaart">
@@ -810,7 +808,7 @@
               <tr><th>Materiaal</th><th>Van</th><th>Periode</th><th>Status</th><th></th></tr>
               <tr><td class="naam">Industri&euml;le friteuse</td><td class="zacht">F.C. Tabor Heverlee</td><td class="zacht">14 &ndash; 16 aug</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td><td style="text-align:right;"><span class="f-knop klein">Ophalen op 14 aug</span></td></tr>
             </table>
-            <div style="padding: 11px 16px; border-top:1px solid #F0EEE9; font-size:11.5px; color:#78716C;">De uitlener zet zelf op opgehaald en terug. Zo bepaalt de eigenaar wanneer iets afgerond is, precies zoals de deelregels het beschrijven.</div>
+            <div style="padding: 11px 16px; border-top:1px solid #F0EEE9; font-size:11.5px; color:#78716C;">Niemand vinkt iets aan als het materiaal vertrekt of terugkomt: zodra de afgesproken periode voorbij is, staat de uitlening op afgerond.</div>
           </div>
         </div>
       </div>
@@ -820,12 +818,12 @@
   <div class="duiding">
     <div class="kolom nu"><h3>In de eerste versie</h3><ul>
       <li>Twee lijsten in plaats van &eacute;&eacute;n: wat van ons buiten staat, en wat wij van anderen hebben. De vraag is anders, dus het antwoord ook.</li>
-      <li>Opgehaald en terug worden gezet door de eigenaar van het materiaal, want die ziet het vertrekken en terugkomen.</li>
-      <li>Terug zetten rondt de uitlening af; ze blijft in de historiek staan als data voor het gemeenterapport.</li>
+      <li>Afronden gebeurt op datum, niet met een vinkje: vrijwilligers gaan niet inloggen om te melden dat de tafels vertrokken zijn, en een vinkje dat niemand zet, maakt de cijfers onbetrouwbaar.</li>
+      <li>Afronden gebeurt vanzelf zodra de periode voorbij is; de uitlening blijft in de historiek staan als data voor het gemeenterapport.</li>
       <li>Afgerond blijft bewaard. Dat is de data waarmee Ecolife straks het gemeenterapport maakt.</li>
     </ul></div>
     <div class="kolom later"><h3>Later</h3><ul>
-      <li>Herinneringsmail als iets lang op "opgehaald" blijft staan.</li>
+      <li>Herinneringsmail als een uitlening lang na de einddatum nog openstaat.</li>
       <li>Een korte staatscontrole bij het terugbrengen, in de lijn van de check-in uit de deelregels.</li>
       <li>Bij een echte voorraadteller: goedkeuren boekt het aantal af, terug boekt het weer op.</li>
     </ul></div>
@@ -1146,9 +1144,9 @@
               <tr><th>Materiaal</th><th>Van</th><th>Naar</th><th>Periode</th><th>Status</th></tr>
               <tr><td class="naam">Tafels</td><td class="zacht">Chiro Hekeko</td><td class="zacht">Chiro Heverlee</td><td class="zacht">14 &ndash; 16 aug</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td></tr>
               <tr><td class="naam">Industri&euml;le friteuse</td><td class="zacht">F.C. Tabor</td><td class="zacht">Chiro Hekeko</td><td class="zacht">14 &ndash; 16 aug</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td></tr>
-              <tr><td class="naam">Sjorbalken</td><td class="zacht">Chiro Hekeko</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge amber"><i></i>opgehaald</span></td></tr>
-              <tr><td class="naam">Slaaptenten (4)</td><td class="zacht">FOS De Vlievleger</td><td class="zacht">KSA Aarschot</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>terug</span></td></tr>
-              <tr><td class="naam">Parachute</td><td class="zacht">Chiro Don Bosco</td><td class="zacht">Chiro Blauwput</td><td class="zacht">6 &ndash; 8 jun</td><td><span class="f-badge grijs"><i></i>terug</span></td></tr>
+              <tr><td class="naam">Sjorbalken</td><td class="zacht">Chiro Hekeko</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
+              <tr><td class="naam">Slaaptenten (4)</td><td class="zacht">FOS De Vlievleger</td><td class="zacht">KSA Aarschot</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
+              <tr><td class="naam">Parachute</td><td class="zacht">Chiro Don Bosco</td><td class="zacht">Chiro Blauwput</td><td class="zacht">6 &ndash; 8 jun</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
               <tr><td class="naam">Partytent 4&times;8 m</td><td class="zacht">Chiro Hekeko</td><td class="zacht">KSA Aarschot</td><td class="zacht">3 &ndash; 5 jul</td><td><span class="f-badge rood"><i></i>geweigerd</span></td></tr>
               <tr><td class="naam">Kookpotten</td><td class="zacht">Wandelclub WSP</td><td class="zacht">Chiro Vlierbeek</td><td class="zacht">20 mei</td><td><span class="f-badge grijs"><i></i>geannuleerd</span></td></tr>
             </table>
