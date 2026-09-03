@@ -204,7 +204,7 @@
     <p>Al de rest is inkleding. Als deze drie dingen werken, kan het netwerk draaien en kunnen we testen of verenigingen het echt gebruiken.</p>
     <div class="mvp-grid">
       <div class="mvp-card"><span class="nr">1</span><b>Uitlenen loopt binnen het systeem</b><span>Een vereniging stuurt haar vraag als berichtje, de eigenaar keurt goed (en legt dan de leenperiode vast) of weigert, en het systeem houdt bij waar het staat: aangevraagd, goedgekeurd, opgehaald, terug, of be&euml;indigd als geweigerd of geannuleerd.</span></div>
-      <div class="mvp-card"><span class="nr">2</span><b>Materiaal toevoegen is simpel</b><span>De materiaalmeester zet iets in de catalogus met naam, aantal en categorie, en zet de leenstatus aan of uit. Geen foto verplicht.</span></div>
+      <div class="mvp-card"><span class="nr">2</span><b>Materiaal toevoegen is simpel</b><span>De materiaalmeester zet iets in de catalogus met naam, aantal en categorie, en zet het zichtbaar of uit. Geen foto verplicht.</span></div>
       <div class="mvp-card"><span class="nr">3</span><b>Ecolife voegt verenigingen toe</b><span>Geen self-service registratie. Ecolife of de deelcoach maakt de vereniging aan, nodigt de materiaalmeester uit en bepaalt wie met wie kan lenen.</span></div>
     </div>
   </div>
@@ -308,8 +308,8 @@
     <div class="kolom nu"><h3>In de eerste versie</h3><ul>
       <li>Zoeken op tekst, plaats en afstand; categorie&euml;n; alfabetische volgorde.</li>
       <li>Elke regel is &eacute;&eacute;n soort materiaal. Tafels en banken staan apart, ook als een vereniging ze meestal samen uitleent, want ze kunnen apart uitgeleend zijn.</li>
-      <li>Aantal is verplicht bij elk materiaal, als een echt getal, met de omschrijving ernaast: "10 &middot; klaptafels, 180 &times; 80 cm" zegt meer dan "tafels". En de catalogus toont enkel wat beschikbaar is.</li>
-      <li>Geen prijzen (alles is gratis) en geen actuele beschikbaarheid in de lijst; dat hoort bij de aanvraag.</li>
+      <li>Aantal is verplicht bij elk materiaal, als een echt getal, met de omschrijving ernaast: "10 &middot; klaptafels, 180 &times; 80 cm" zegt meer dan "tafels". Uitgeleend materiaal blijft zichtbaar met het label "nu uitgeleend", zodat je het al voor een latere periode kan vragen; enkel "even niet" verdwijnt uit de catalogus.</li>
+      <li>Geen beschikbaarheidslabels in de lijst: lenen wordt weken vooraf geregeld, dus of iets vandaag net uit is, zegt niets. Prijs staat er wel bij als een vereniging een deelname in de kosten vraagt.</li>
     </ul></div>
     <div class="kolom later"><h3>Later</h3><ul>
       <li>Het icoonvierkantje wordt een fotominiatuur zodra verenigingen foto's uploaden; de layout verandert niet.</li>
@@ -354,8 +354,6 @@
         <span class="m-input" style="display:block; min-height: 64px; line-height: 1.5;">bv. Voor ons eetfestijn, het weekend van 14 augustus. Zit de gasslang erbij?</span>
         <span class="m-btn" style="display:block; text-align:center; margin-top: 12px;">Verstuur je vraag</span>
         <div style="font-size: 10.5px; font-weight: 500; color: #6A6A6A; line-height: 1.5; margin-top: 8px;">Je gegevens reizen mee. Daarna kunnen jullie bij de aanvraag berichtjes heen en weer sturen; bij het goedkeuren legt de eigenaar de leenperiode vast.</div>
-        <div style="border-top: 1px solid #EBEBEB; margin: 12px 0;"></div>
-        <span class="m-btn ghost" style="display:block; text-align:center; font-size: 12px;">Liever rechtstreeks? Toon contact</span>
       </div>
     </div>
   </div>
@@ -479,7 +477,7 @@
 <div class="wrap scherm">
   <div class="scherm-kop"><span class="nr">6</span><h2>Inventaris: het materiaalkot van de vereniging</h2></div>
   <div class="chips"><span class="chip login">Ingelogde materiaalmeester</span><span class="chip">Filament, standaard tabel + formulier</span></div>
-  <p class="uitleg">De inventaris is een gewone Filament-tabel: naam, categorie, aantal en leenstatus. Wat hier op "beschikbaar" staat, staat in de publieke catalogus; "even niet" haalt het er stil uit. Toevoegen gebeurt op een aparte pagina met vier velden, zoals Filament dat standaard doet, en is klaar in een halve minuut.</p>
+  <p class="uitleg">De inventaris is een gewone Filament-tabel: naam, categorie, aantal en of het in de catalogus staat. Wat hier zichtbaar staat, staat in de publieke catalogus; verborgen haalt het er stil uit, zonder dat iemand ziet dat jullie pauzeren. </p>
 
   <div style="margin: 0 0 8px; font-size: 13px; font-weight: 700; color: #6A6A6A;">6a &middot; Het overzicht</div>
 
@@ -509,13 +507,13 @@
               <span style="display:flex; gap:6px;"><span class="f-knop klein" style="background:#F1F5E8; border-color:#708C3D; color:#5C7431;">Alles</span><span class="f-knop klein">Beschikbaar</span><span class="f-knop klein">Uitgeleend</span></span>
             </div>
             <table class="f-tabel">
-              <tr><th>Materiaal</th><th>Categorie</th><th>Aantal</th><th>Leenstatus</th><th></th></tr>
-              <tr><td class="naam">Tafels</td><td class="zacht">Tafels &amp; banken</td><td class="zacht">10 klaptafels, 180 &times; 80 cm</td><td><span class="f-badge groen"><i></i>beschikbaar</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
-              <tr><td class="naam">Banken</td><td class="zacht">Tafels &amp; banken</td><td class="zacht">20 zitbanken, 4 personen</td><td><span class="f-badge groen"><i></i>beschikbaar</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
-              <tr><td class="naam">Staantafels</td><td class="zacht">Tafels &amp; banken</td><td class="zacht">6 stuks</td><td><span class="f-badge grijs"><i></i>even niet</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
-              <tr><td class="naam">Sjorbalken</td><td class="zacht">Tenten &amp; kamp</td><td class="zacht">&plusmn;60 balken</td><td><span class="f-badge amber"><i></i>uitgeleend</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
-              <tr><td class="naam">Kegels</td><td class="zacht">Spel &amp; sport</td><td class="zacht">30 kegels</td><td><span class="f-badge groen"><i></i>beschikbaar</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
-              <tr><td class="naam">Partytent 4&times;8 m</td><td class="zacht">Tenten &amp; kamp</td><td class="zacht">1 tent, opbouw met 4 pers.</td><td><span class="f-badge grijs"><i></i>even niet</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+              <tr><th>Materiaal</th><th>Categorie</th><th>Aantal</th><th>In de catalogus</th><th></th></tr>
+              <tr><td class="naam">Tafels</td><td class="zacht">Tafels &amp; banken</td><td class="zacht">10 klaptafels, 180 &times; 80 cm</td><td><span class="f-badge groen"><i></i>zichtbaar</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+              <tr><td class="naam">Banken</td><td class="zacht">Tafels &amp; banken</td><td class="zacht">20 zitbanken, 4 personen</td><td><span class="f-badge groen"><i></i>zichtbaar</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+              <tr><td class="naam">Staantafels</td><td class="zacht">Tafels &amp; banken</td><td class="zacht">6 stuks</td><td><span class="f-badge grijs"><i></i>verborgen</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+              <tr><td class="naam">Sjorbalken</td><td class="zacht">Tenten &amp; kamp</td><td class="zacht">&plusmn;60 balken</td><td><span class="f-badge groen"><i></i>zichtbaar</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+              <tr><td class="naam">Kegels</td><td class="zacht">Spel &amp; sport</td><td class="zacht">30 kegels</td><td><span class="f-badge groen"><i></i>zichtbaar</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
+              <tr><td class="naam">Partytent 4&times;8 m</td><td class="zacht">Tenten &amp; kamp</td><td class="zacht">1 tent, opbouw met 4 pers.</td><td><span class="f-badge grijs"><i></i>verborgen</span></td><td style="text-align:right;"><span class="f-knop klein">Bewerk</span></td></tr>
             </table>
           </div>
         </div>
@@ -599,7 +597,7 @@
               <span class="invoer gevuld" style="display:block;">Tafels &amp; banken</span>
               <label style="margin-top:12px;">Opmerking</label>
               <span class="invoer gevuld" style="display:block;">Zware tafels, kom met twee personen.</span>
-              <label style="margin-top:12px;">Leenstatus</label>
+              <label style="margin-top:12px;">In de catalogus</label>
               <span class="invoer gevuld" style="display:block;">Beschikbaar</span>
               <div class="f-hint">Op "even niet" zetten haalt het stil uit de catalogus. Niemand ziet dat jullie pauzeren.</div>
             </div>
@@ -615,12 +613,12 @@
 
   <div class="duiding">
     <div class="kolom nu"><h3>In de eerste versie</h3><ul>
-      <li><b>E&eacute;n rij is &eacute;&eacute;n soort materiaal.</b> Dus geen "tafels, banken en staantafels" als &eacute;&eacute;n regel, maar drie regels. Anders klopt het verhaal niet: de leenstatus geldt voor de hele rij, dus zodra de tafels uit zijn zouden de banken ook op uitgeleend springen, en het aantal-veld zou twee dingen tegelijk moeten tellen.</li>
+      <li><b>E&eacute;n rij is &eacute;&eacute;n soort materiaal.</b> Dus geen "tafels, banken en staantafels" als &eacute;&eacute;n regel, maar drie regels. Anders klopt het verhaal niet: het aantal zou twee dingen tegelijk moeten tellen, en je kan de banken niet apart uit de catalogus halen als de tafels blijven. </li>
       <li>Standaard Filament-resource: lijst, zoeken, filteren op status, toevoegen, bewerken, verwijderen.</li>
       <li>Toevoegen en bewerken zijn eigen pagina's, zoals Filament ze standaard genereert. Voor zo'n kort formulier kan het evengoed een venster over de lijst worden; dat is een instelling, geen extra bouwwerk.</li>
-      <li>Bewerken toont hetzelfde formulier, ingevuld, met de leenstatus erbij en Verwijderen rechtsboven. Verwijderen vraagt eerst een bevestiging en kan niet zolang er een lopende uitlening aan hangt; daarvoor is "even niet" bedoeld.</li>
+      <li>Bewerken toont hetzelfde formulier, ingevuld, met de schakelaar zichtbaar of verborgen erbij en Verwijderen rechtsboven. Verwijderen vraagt eerst een bevestiging en kan niet zolang er een lopende uitlening aan hangt; daarvoor is "even niet" bedoeld.</li>
       <li>De velden bij toevoegen: naam, aantal (verplicht, een getal), omschrijving, categorie (vaste lijst), foto's, gratis of tegen betaling, en een opmerking.</li>
-      <li>Leenstatus met &eacute;&eacute;n klik: beschikbaar, uitgeleend of even niet. Bepaalt meteen wat de publieke catalogus toont.</li>
+      <li>E&eacute;n schakelaar: zichtbaar in de catalogus, of even verborgen. Of iets vandaag net uitgeleend is, hoeft de catalogus niet te weten; lenen wordt weken vooraf geregeld.</li>
       <li>Aantal is in de basis een tekstveld; het systeem telt niet mee (zie keuze 2 op de keuzepagina).</li>
     </ul></div>
     <div class="kolom later"><h3>Later</h3><ul>
@@ -823,7 +821,7 @@
     <div class="kolom nu"><h3>In de eerste versie</h3><ul>
       <li>Twee lijsten in plaats van &eacute;&eacute;n: wat van ons buiten staat, en wat wij van anderen hebben. De vraag is anders, dus het antwoord ook.</li>
       <li>Opgehaald en terug worden gezet door de eigenaar van het materiaal, want die ziet het vertrekken en terugkomen.</li>
-      <li>Terug zetten maakt het materiaal meteen weer beschikbaar in de catalogus.</li>
+      <li>Terug zetten rondt de uitlening af; ze blijft in de historiek staan als data voor het gemeenterapport.</li>
       <li>Afgerond blijft bewaard. Dat is de data waarmee Ecolife straks het gemeenterapport maakt.</li>
     </ul></div>
     <div class="kolom later"><h3>Later</h3><ul>
@@ -866,14 +864,9 @@
                 <span class="invoer gevuld" style="display:block;">materiaal@chirohekeko.be</span>
                 <div class="f-hint">Eén adres voor de hele ploeg, zodat niemand dubbele mails krijgt.</div>
                 <div style="border-top:1px solid #F0EEE9; margin:14px 0 12px;"></div>
-                <div style="display:flex; gap:10px; align-items:flex-start; margin-bottom:10px;">
-                  <span style="width:16px;height:16px;border-radius:4px;background:#708C3D;color:#FFF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;">&#10003;</span>
-                  <span style="font-size:12.5px;">Toon ons telefoonnummer<br><span style="color:#78716C;">0476 12 34 56, pas na een klik en enkel voor ingelogde verenigingen</span></span>
-                </div>
-                <div style="display:flex; gap:10px; align-items:flex-start;">
-                  <span style="width:16px;height:16px;border-radius:4px;border:1.5px solid #D6D1C7;flex-shrink:0;margin-top:1px;"></span>
-                  <span style="font-size:12.5px;">Toon ons e-mailadres</span>
-                </div>
+                <label>Telefoonnummer (niet verplicht)</label>
+              <span class="invoer gevuld" style="display:block;">0476 12 34 56</span>
+              <div class="f-hint">Jullie gegevens staan nooit publiek. Ze reizen enkel mee zodra er een aanvraag loopt, in beide richtingen.</div>
               </div>
             </div>
 
@@ -896,7 +889,7 @@
   <div class="duiding">
     <div class="kolom nu"><h3>In de eerste versie</h3><ul>
       <li>Eén meldingsadres voor de vereniging, los van de persoonlijke logins.</li>
-      <li>Twee schakelaars: tonen we ons telefoonnummer en ons e-mailadres, en dan nog altijd pas na een klik en alleen aan ingelogde verenigingen.</li>
+      <li>Een telefoonnummer dat meereist zodra er een aanvraag loopt. Contactgegevens staan nooit publiek: ze worden pas gedeeld bij een aanvraag, in beide richtingen.</li>
       <li>Ploegleden uitnodigen en verwijderen, allemaal met dezelfde rechten. Dit is de oplossing voor de busfactor.</li>
     </ul></div>
     <div class="kolom later"><h3>Later</h3><ul>
