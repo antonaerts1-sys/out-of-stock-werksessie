@@ -267,6 +267,28 @@
   </div>
 </section>
 
+
+<!-- ================= SCHERM 1d: OVER ================= -->
+<section class="view" id="v-over" data-adres="outofstock.be/over">
+  <header class="m-header" data-hdr="over"></header>
+  <div style="max-width: 640px; margin: 0 auto; padding: 40px 26px 50px;">
+    <div style="text-align:center;">
+      <div style="font-size: 27px; font-weight: 800; letter-spacing: -0.02em;">Over Out of Stock</div>
+      <div style="font-size: 14.5px; font-weight: 500; color: #6A6A6A; margin-top: 8px; line-height: 1.6;">Materiaal delen tussen verenigingen, in plaats van alles zelf te kopen.</div>
+    </div>
+    <div style="background:#FFFFFF; border: 1px solid #EBEBEB; border-radius: 16px; padding: 22px 26px; margin-top: 24px; font-size: 13.5px; font-weight: 500; line-height: 1.7; color: #333;">
+      <p style="margin: 0 0 12px;">Een chiro heeft tien klaptafels die vijftig weekends per jaar stilstaan. De voetbalclub verderop huurt er net tien voor haar eetfestijn. Out of Stock brengt die twee bij elkaar: verenigingen zetten hun materiaal in een gedeelde catalogus en lenen het van elkaar, gewoon in hun eigen buurt.</p>
+      <p style="margin: 0 0 12px;">Het platform is een initiatief van <b>Ecolife</b> en <b>WijDelen</b>, met de steun van <b>Vlaanderen Circulair</b>. Een gemeente sluit aan en krijgt er een deelcoach bij: iemand die langsgaat bij de verenigingen, de inventarissen mee opzet en het netwerk levend houdt. Voor de verenigingen is het gratis.</p>
+      <p style="margin: 0;">Delen is hier geen app-idee maar circulair werken in de praktijk: minder dubbel aankopen, minder materiaal dat wegroest in een kot, en verenigingen die elkaar weer kennen.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 14px;">
+      <div style="border: 1px solid #EBEBEB; border-radius: 12px; padding: 16px 18px; background:#FFFFFF; display:flex; justify-content:space-between; align-items:center; gap:10px;"><span style="font-size: 13px; font-weight: 700;">Vereniging?</span><span class="m-btn" style="font-size: 12px; padding: 9px 14px;" data-go="doe-mee">Doe mee</span></div>
+      <div style="border: 1px solid #EBEBEB; border-radius: 12px; padding: 16px 18px; background:#FFFFFF; display:flex; justify-content:space-between; align-items:center; gap:10px;"><span style="font-size: 13px; font-weight: 700;">Gemeente?</span><span class="m-btn ghost" style="font-size: 12px; padding: 9px 14px;" data-go="gemeente">Meer info</span></div>
+    </div>
+    <div style="text-align:center; font-size: 12px; font-weight: 500; color: #9A9A9A; margin-top: 14px; line-height: 1.5;">Conceptversie. De definitieve tekst komt van Ecolife.</div>
+  </div>
+</section>
+
 <!-- ================= SCHERM 2: CATALOGUS ================= -->
 <section class="view" id="v-catalogus" data-adres="outofstock.be/catalogus">
   <header class="m-header" data-hdr="catalogus"></header>
@@ -848,6 +870,7 @@
       <span data-go="doe-mee"><i>4</i>Doe mee</span>
       <span data-go="gemeente"><i>4b</i>Voor gemeenten</span>
       <span data-go="spelregels"><i>4c</i>Spelregels</span>
+      <span data-go="over"><i>4d</i>Over</span>
     </div>
     <div class="groep">Het paneel van de vereniging</div>
     <div class="lijstje">
@@ -913,7 +936,7 @@
       + '<div class="m-nav">'
       + '<span' + (actief === 'catalogus' ? ' class="on"' : '') + ' data-go="catalogus">Alle materialen</span>'
       + '<span' + (actief === 'spelregels' ? ' class="on"' : '') + ' data-go="spelregels">Spelregels</span>'
-      + '<span data-zeg="De inhoud van Over komt van Ecolife en zit niet in het prototype.">Over</span>'
+      + '<span' + (actief === 'over' ? ' class="on"' : '') + ' data-go="over">Over</span>'
       + '</div>'
       + '<span class="m-cta" data-go="doe-mee">Deel jullie materiaal</span>'
       + rechts;
