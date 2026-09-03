@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Out of Stock: wat de MVP moet aantonen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Albert Sans', sans-serif; color: #222222; background: #FAFAF7; -webkit-font-smoothing: antialiased; }
+  a { color: #222222; text-decoration: none; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+
+  .pagehead { background: #FFFFFF; border-bottom: 1px solid #EBEBEB; }
+  .pagehead .inner { max-width: 1080px; margin: 0 auto; padding: 10px 32px; display: flex; align-items: center; gap: 20px; }
+  .pagehead img { height: 60px; width: 60px; object-fit: contain; }
+  .pagehead .kicker { font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #708C3D; }
+  .pagehead h1 { margin: 2px 0 0; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+  .pagehead .navs { margin-left: auto; display: flex; gap: 8px; }
+  .pagehead .switch { font-weight: 700; font-size: 14px; color: #222222; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 18px; background: #FFFFFF; }
+  .pagehead .switch:hover { border-color: #222222; }
+
+  .intro { padding: 44px 0 6px; }
+  .intro p.lead { margin: 0 0 16px; font-size: 17px; font-weight: 500; line-height: 1.7; color: #444444; }
+  .intro p.lead:last-child { margin-bottom: 0; }
+  .intro p.lead b { font-weight: 700; }
+
+  .vraag { margin-top: 36px; background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 30px 34px; }
+  .vraag .nr { display: inline-flex; width: 34px; height: 34px; border-radius: 50%; background: #222222; color: #FFF; font-weight: 800; font-size: 15px; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .vraag h2 { margin: 0 0 10px; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+  .vraag p { margin: 0 0 12px; font-size: 15px; font-weight: 500; line-height: 1.7; color: #444444; }
+  .vraag p:last-child { margin-bottom: 0; }
+
+  .meet { margin-top: 18px; border: 1px solid #EBEBEB; border-radius: 12px; overflow: hidden; }
+  .meet .rij { padding: 15px 18px; border-top: 1px solid #EBEBEB; }
+  .meet .rij:first-child { border-top: none; background: #FAFAF7; }
+  .meet .lbl { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #708C3D; margin-bottom: 5px; }
+  .meet .rij p { margin: 0; font-size: 14px; font-weight: 500; line-height: 1.6; color: #444444; }
+  .meet .rij p + p { margin-top: 8px; }
+
+  .pil { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 999px; padding: 4px 11px; margin-left: 8px; vertical-align: 2px; }
+  .pil.klaar { background: #F0F4E8; color: #5C7431; }
+  .pil.open { background: #F1EEE7; color: #8A7A55; }
+
+  .kader { margin-top: 44px; background: #222222; color: #FFFFFF; border-radius: 18px; padding: 32px 34px; }
+  .kader h2 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
+  .kader p { margin: 0 0 14px; font-size: 14.5px; font-weight: 500; color: #C9C9C9; line-height: 1.7; }
+  .kader p:last-child { margin-bottom: 0; }
+  .kader p b { color: #FFFFFF; font-weight: 700; }
+  .kader .slot { margin-top: 20px; border-top: 1px solid #3A3A3A; padding-top: 16px; font-size: 15px; font-weight: 700; color: #FFFFFF; line-height: 1.6; }
+
+  .afspraken { margin-top: 36px; background: #FFFFFF; border: 1px solid #EBEBEB; border-radius: 18px; padding: 30px 34px; }
+  .afspraken h2 { margin: 0 0 10px; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+  .afspraken > p { margin: 0 0 18px; font-size: 15px; font-weight: 500; line-height: 1.7; color: #444444; }
+  .afspraken ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+  .afspraken li { font-size: 14.5px; font-weight: 500; line-height: 1.65; color: #444444; padding-left: 30px; position: relative; }
+  .afspraken li::before { content: "?"; position: absolute; left: 0; top: 1px; width: 21px; height: 21px; border-radius: 50%; background: #708C3D; color: #FFF; font-weight: 800; font-size: 12.5px; display: flex; align-items: center; justify-content: center; }
+  .afspraken li b { font-weight: 800; color: #222222; }
+
+  .paginavoet { border-top: 1px solid #EBEBEB; margin-top: 56px; background: #FFFFFF; }
+  .paginavoet .inner { max-width: 1080px; margin: 0 auto; padding: 22px 32px 26px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .paginavoet span { font-size: 13px; font-weight: 500; color: #6A6A6A; }
+  .paginavoet a { font-weight: 700; font-size: 14px; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 18px; background: #FFFFFF; }
+
+  @media (max-width: 760px) { .pagehead h1 { font-size: 17px; } .pagehead .navs { display: none; } .vraag, .afspraken, .kader { padding: 24px; } }
+</style>
+</head>
+<body>
+
+<div class="pagehead">
+  <div class="inner">
+    <img src="uploads/logo-outofstock.png" alt="Out of Stock">
+    <div>
+      <div class="kicker">Werksessie &middot; Out of Stock</div>
+      <h1>Wat de MVP moet aantonen</h1>
+    </div>
+    <div class="navs">
+      <a class="switch" href="mvp-schermen.html">De schermen</a>
+      <a class="switch" href="businessmodel.html">Het model</a>
+      <a class="switch" href="keuzepagina.html">De keuzes</a>
+      <a class="switch" href="verantwoording.html">Waarom zo klein</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap intro">
+  <p class="lead">Dit is een onderzoeksproject, geen productlancering. De opdracht richting Vlaanderen Circulair is een staalkaart: kijk, binnen dit budget hebben we dit kunnen testen, en dit zijn de uitbreidingen die erbij kunnen. <b>De cijfers zijn dus geen bijproduct van het platform, ze zijn de opbrengst.</b></p>
+  <p class="lead">Piloot 1.0 leerde dat verenigingen wel willen delen maar dat het te weinig gebeurt. Niet de wil ontbreekt, wel de drempels verdwijnen niet vanzelf. Deze eerste versie moet vijf vragen kunnen beantwoorden. Bij vraag 1 en 4 is het platform doorslaggevend: een inventaris die blijft kloppen en uitleningen die geteld raken, is precies wat een Excel en een WhatsApp-groep niet konden. Bij vraag 2, 3 en 5 is het platform hoogstens een hulpje, en doet de deelcoach het zware werk.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="vraag">
+    <span class="nr">1</span>
+    <h2>Raakt de inventaris gevuld, en blijft ze kloppen?<span class="pil klaar">zit erin</span></h2>
+    <p>Dit is de voorwaarde voor al de rest, en de enige vraag waarop 1.0 al een antwoord gaf: nee. De Excel uit Leuven stierf niet omdat hij slecht was, maar omdat niemand hem kon bijwerken en niemand nog wist of hij klopte. Het gaat over tien tot dertig materialen per vereniging, in te voeren op een uurtje, door vrijwilligers naast al de rest.</p>
+    <div class="meet">
+      <div class="rij"><span class="lbl">Wat we meten</span><p>Hoeveel materialen per vereniging. Hoeveel verenigingen op nul blijven staan. Wanneer een vereniging voor het laatst iets wijzigde. Wie al een deelscan kreeg en wie niet.</p></div>
+      <div class="rij"><span class="lbl">Wat het systeem daarvoor doet</span><p>Het verenigingenscherm van Ecolife toont per vereniging het aantal materialen, wanneer ze laatst actief was en of de deelscan gebeurd is. Materiaal toevoegen is één formulier, met een foto rechtstreeks van de telefoon.</p><p>Dit staat er al. Hier hoeft niets bij.</p></div>
+    </div>
+  </div>
+
+  <div class="vraag">
+    <span class="nr">2</span>
+    <h2>Vindt een vereniging het aanbod op het moment dat de nood ontstaat?<span class="pil open">deelknop ontbreekt</span></h2>
+    <p>De eerste van de twee overgangen waar het vandaag vastloopt. Wie niet toevallig op het juiste moment meeleest in de WhatsApp-groep, mist het aanbod, en dan blijft kopen of huren de reflex. Het platform is het geheugen, de groep is de megafoon: de vraag ontstaat in de groep, het antwoord staat in de lijst.</p>
+    <div class="meet">
+      <div class="rij"><span class="lbl">Wat we meten</span><p>Hoeveel aanvragen er vertrekken, en of ze uit de catalogus komen of uit een link die iemand in een groep plakte.</p></div>
+      <div class="rij"><span class="lbl">Wat het systeem daarvoor doet</span><p>De catalogus staat open zonder login, en elk materiaal heeft een eigen adres dat je kan doorsturen. Wat er nog niet is, is de knop om dat adres te delen. Die brug tussen de lijst en de groep is geen detail, het is het hele mechanisme.</p><p>Dit is meteen de vraag die het platform zelf het slechtst kan beantwoorden. Waarom iemand niet gezocht heeft, staat in geen enkele tabel; dat weet alleen de deelcoach die het vraagt.</p></div>
+    </div>
+  </div>
+
+  <div class="vraag">
+    <span class="nr">3</span>
+    <h2>Gaat een match ook echt door?<span class="pil open">tijdstempels nodig</span></h2>
+    <p>De tweede overgang, en de hardste. Delen betekent altijd twee verplaatsingen, afstemming op korte termijn en afspraken over wie waarvoor verantwoordelijk is. Precies daar haakt het af, en precies daar zien we vandaag niets van.</p>
+    <div class="meet">
+      <div class="rij"><span class="lbl">Wat we meten</span><p>Hoeveel aanvragen goedgekeurd raken. Hoeveel er geweigerd worden en waarom. Hoeveel er blijven liggen zonder antwoord. En hoeveel dagen er zitten tussen de aanvraag en het antwoord.</p></div>
+      <div class="rij"><span class="lbl">Wat het systeem daarvoor doet</span><p>De statussen zijn er, en bij een weigering wordt naar de reden gevraagd. Wat er nog bij moet: het tijdstip van elke statuswissel bewaren, niet alleen de huidige stand. Een uitlening die op "afgerond" staat vertelt niets; een uitlening die op 3 augustus is aangevraagd en op 6 augustus goedgekeurd, laat zien waar de wrijving zit.</p><p>Dat kost een vereniging geen enkele handeling: het systeem schrijft het weg op het moment dat iemand de knop indrukt die hij toch al indrukt. Maar het is ook het enige uit deze hele pagina dat je achteraf niet meer kan toevoegen.</p></div>
+    </div>
+  </div>
+
+  <div class="vraag">
+    <span class="nr">4</span>
+    <h2>Belandt de uitlening in het systeem?<span class="pil open">overzicht voor Ecolife</span></h2>
+    <p>Hier hangt alles aan. Wat een gemeente koopt, is het inzicht: hoeveel er geleend wordt, tussen wie, en hoe vaak. In beide wervingsgesprekken, Landen en Hasselt, was dat het punt waarop ze aanhaakten. Een uitlening die twee verenigingen onderling regelen buiten het systeem, bestaat later niet, hoe goed het rapport ook wordt.</p>
+    <div class="meet">
+      <div class="rij"><span class="lbl">Wat we meten</span><p>Het aantal uitleningen, tussen welke verenigingen, in welke gemeente, gespreid over het jaar. Vertrekpunt om tegen af te zetten: Leuven 1.0 telde vijftien verenigingen waarvan vier actief, en Haacht drie verenigingen met nul transacties.</p></div>
+      <div class="rij"><span class="lbl">Wat het systeem daarvoor doet</span><p>Elke uitlening draagt al de eigenaar, de lener en de periode. Het scherm van de vereniging toont dat ook zo: materiaal, bij wie, welke periode, welke status. Wie aan wie leent zit er dus volledig in. Wat ontbreekt, is hetzelfde overzicht een niveau hoger voor Ecolife, met een export. Dat is geen nieuwe functie, het is dezelfde tabel zonder het filter op één vereniging.</p><p>Belangrijker dan dat scherm: registreren moet één klik blijven. Een materiaalmeester doet per uitlening precies één handeling, goedkeuren of weigeren, en de rest leidt het systeem af uit de periode. Elke handeling die je daaraan toevoegt, verhoogt de kans dat een koppel het systeem gewoon verlaat.</p></div>
+    </div>
+  </div>
+
+  <div class="vraag">
+    <span class="nr">5</span>
+    <h2>Trekt het aanbod nieuwe verenigingen en gemeenten aan?<span class="pil open">leeft in een mailbox</span></h2>
+    <p>De werving zit vast: veel goede reacties, nog geen gemeente die tekent. Dat is het grootste risico van het hele project, en het is er een waar het platform iets aan kan doen. Een publieke catalogus die iemand uit een niet-aangesloten gemeente onder ogen krijgt, is de goedkoopste verkoper die dit project heeft.</p>
+    <div class="meet">
+      <div class="rij"><span class="lbl">Wat we meten</span><p>Hoeveel verenigingen zich aanmelden via het doe-mee-formulier, en uit welke gemeenten: aangesloten of nog niet. Datzelfde voor de gemeentepagina.</p></div>
+      <div class="rij"><span class="lbl">Wat het systeem daarvoor doet</span><p>Het formulier stuurt een mail naar Ecolife, en de verwerking gebeurt bewust buiten het platform. Dat is een goede beslissing voor de bouwkost, maar het betekent wel dat deze meting in een mailbox leeft en niet in een tabel.</p><p>Wil je dit echt weten, dan houdt iemand die aanmeldingen bij in een lijstje, of komt er alsnog een simpel aanmeldingenscherm. Dat is een keuze om bewust te maken, geen detail dat vanzelf goedkomt.</p></div>
+    </div>
+  </div>
+
+  <div class="kader">
+    <h2>Wat kan wachten en wat niet</h2>
+    <p>Alles wat een manier van kijken is, kan later. De tabel, het filter per gemeente, het rapport voor de schepen, het beeld van wie aan wie leent: dat kan je op elk moment maken zolang de rijen er zijn. Daarom staat rapportage bewust achteraan op de roadmap, en dat blijft een goede beslissing.</p>
+    <p>Wat niet kan wachten, is wat op het moment zelf wordt opgeschreven. Twee dingen: <b>het tijdstip van elke statuswissel</b>, en <b>de registratie van de uitlening zelf</b>. Beide zijn achteraf niet te reconstrueren. Een piloot die een jaar draait zonder die twee levert een platform op dat werkt en een verslag dat niets kan zeggen.</p>
+    <div class="slot">Rapporteren mag later. Vastleggen niet.</div>
+  </div>
+
+  <div class="afspraken">
+    <h2>Wat we hiervoor nog moeten afspreken</h2>
+    <p>Drie dingen die niet in de bouw zitten, maar zonder dewelke de meting weinig waard is.</p>
+    <ul>
+      <li><b>Wat noemen we geslaagd?</b> Er staat vandaag nergens een cijfer. Zijn veertig uitleningen over vijf gemeenten in een jaar een succes of een teleurstelling? Nu is dat nog vrij in te vullen, en dat is precies het moment om het samen vast te leggen.</li>
+      <li><b>Wie stelt de vragen aan de verenigingen?</b> Bij een handvol uitleningen per jaar leveren de logs geen dataset op maar een handvol gevallen. Uit tien gesprekken van de deelcoach leer je meer dan uit alle tabellen samen. Die vragenlijst staat op de agenda sinds 27 augustus.</li>
+      <li><b>Wanneer begint en stopt de meetperiode?</b> Het verslag richting Vlaanderen Circulair heeft een venster nodig, en dat kies je beter vooraf dan achteraf.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="paginavoet">
+  <div class="inner">
+    <span>Out of Stock &middot; werksessiemateriaal</span>
+    <span>
+      <a href="mvp-schermen.html">De schermen</a>
+      <a href="keuzepagina.html">De keuzes</a>
+      <a href="verantwoording.html">Waarom zo klein</a>
+    </span>
+  </div>
+</div>
+
+</body>
+</html>
