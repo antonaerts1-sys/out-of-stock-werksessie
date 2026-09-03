@@ -847,10 +847,10 @@
       <div class="f-main">
         <div class="f-titelrij">
           <div><h3>Gemeenten en deelnetwerken</h3><div class="f-onderkop">De koppelingen bepalen wie bij wie kan aanvragen.</div></div>
-          <span class="f-knop primair" data-zeg="Opent een venstertje met de naam van de gemeente en of ze aangesloten is. Koppelingen leg je daarna.">+ Gemeente</span>
+          <span class="f-knop primair" data-act="open-gemeente">+ Gemeente</span>
         </div>
         <div class="f-kaart">
-          <table class="f-tabel">
+          <table class="f-tabel" id="gemeententabel">
             <tr><th>Gemeente</th><th>Aangesloten</th><th>Verenigingen</th><th>Kan lenen bij</th><th></th></tr>
             <tr><td class="naam">Leuven</td><td><span class="f-badge groen"><i></i>ja</span></td><td class="zacht">14</td><td id="kop-leuven"><span class="f-badge groen"><i></i>Aarschot</span> <span class="f-badge groen"><i></i>Rotselaar</span></td><td style="text-align:right;"><span class="f-knop klein" data-act="open-koppelingen">Koppelingen</span></td></tr>
             <tr><td class="naam">Aarschot</td><td><span class="f-badge groen"><i></i>ja</span></td><td class="zacht">6</td><td id="kop-aarschot"><span class="f-badge groen"><i></i>Leuven</span> <span class="f-badge groen"><i></i>Rotselaar</span></td><td style="text-align:right;"><span class="f-knop klein" data-act="open-koppelingen">Koppelingen</span></td></tr>
@@ -858,52 +858,15 @@
             <tr><td class="naam zacht">Herent</td><td><span class="f-badge amber"><i></i>nog niet</span></td><td class="zacht">0</td><td id="kop-herent"><span class="f-badge grijs"><i></i>nog niet gekoppeld</span></td><td style="text-align:right;"><span class="f-knop klein" data-act="open-koppelingen">Koppelingen</span></td></tr>
           </table>
         </div>
-        <p class="f-omschrijving" style="margin-top:14px;">Wil iemand lenen buiten zijn koppelingen, dan krijgt de deelcoach daar een mailtje van. Stapelen die mailtjes zich op voor &eacute;&eacute;n gemeente (Herent staat deze maand al op zeven), dan is dat het signaal: koppelen of dat bestuur bellen.</div>
+        <p class="f-omschrijving" style="margin-top:14px;">Wil iemand lenen buiten zijn koppelingen, dan krijgt de deelcoach daar een mailtje van. Het systeem houdt daar niets van bij: de deelcoach merkt in haar eigen mailbox dat er vraag is naar een gemeente, en beslist dan om te koppelen of dat bestuur te bellen.</p>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ================= SCHERM 13: ALLE UITLENINGEN ================= -->
-<section class="view" id="v-e-uitleningen" data-adres="outofstock.be/beheer/alle-uitleningen">
-  <div class="f">
-    <aside class="f-zijbalk" data-balk="e" data-actief="alle-uitleningen"></aside>
-    <div class="f-romp">
-      <div class="f-kop" data-fkop="e"></div>
-      <div class="f-main">
-        <div class="f-titelrij">
-          <div><h3>Alle uitleningen</h3><div class="f-onderkop">84 uitleningen sinds de start.</div></div>
-          <span class="f-knop" data-zeg="Downloadt precies wat er nu gefilterd in de tabel staat als Excel. Dit is de data voor het gesprek met een gemeente.">Exporteer naar Excel</span>
-        </div>
-        <div class="f-kaart">
-          <div class="f-kaartkop">
-            <span class="f-zoek" data-zeg="Zoeken werkt niet op nepdata."><svg width="13" height="13" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="6" stroke="#A8A29E" stroke-width="2"/><line x1="13.5" y1="13.5" x2="17" y2="17" stroke="#A8A29E" stroke-width="2" stroke-linecap="round"/></svg>Zoek</span>
-            <span style="display:flex; gap:6px;"><span class="f-knop klein" style="background:#F1F5E8; border-color:#708C3D; color:#5C7431;">Alle gemeenten</span><span class="f-knop klein" data-zeg="Standaardfilter op periode (van/tot). De export pakt wat er gefilterd staat, zodat hij nooit traag wordt.">Periode: dit jaar</span></span>
-          </div>
-          <table class="f-tabel">
-            <tr><th>Materiaal</th><th>Van</th><th>Naar</th><th>Periode</th><th>Status</th></tr>
-            <tr><td class="naam">Tafels</td><td class="zacht">Chiro Hekeko</td><td class="zacht">Chiro Heverlee</td><td class="zacht">14 &ndash; 16 aug</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td></tr>
-            <tr><td class="naam">Kookpotten</td><td class="zacht">Wandelclub WSP</td><td class="zacht">Chiro Hekeko</td><td class="zacht">5 &ndash; 7 sep</td><td><span class="f-badge groen"><i></i>goedgekeurd</span></td></tr>
-            <tr><td class="naam">Sjorbalken</td><td class="zacht">Chiro Hekeko</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
-            <tr><td class="naam">Slaaptenten (4)</td><td class="zacht">FOS De Vlievleger</td><td class="zacht">KSA Aarschot</td><td class="zacht">1 &ndash; 14 jul</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
-            <tr><td class="naam">Parachute</td><td class="zacht">Chiro Don Bosco</td><td class="zacht">Chiro Blauwput</td><td class="zacht">6 &ndash; 8 jun</td><td><span class="f-badge grijs"><i></i>afgerond</span></td></tr>
-            <tr><td class="naam">Partytent 4&times;8 m</td><td class="zacht">Chiro Hekeko</td><td class="zacht">KSA Aarschot</td><td class="zacht">3 &ndash; 5 jul</td><td><span class="f-badge rood"><i></i>geweigerd</span></td></tr>
-            <tr><td class="naam">Kookpotten</td><td class="zacht">Wandelclub WSP</td><td class="zacht">Chiro Vlierbeek</td><td class="zacht">20 mei</td><td><span class="f-badge grijs"><i></i>geannuleerd</span></td></tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<div class="toastje" id="toastje"></div>
-
 
 <!-- ================= OVERLAY: KEUR GOED ================= -->
 <div class="overlay" id="ov-keurgoed">
-  <div class="paneel" style="max-width: 420px;">
+  <div class="paneel" style="max-width: 440px;">
     <h2 style="font-size: 18px;">Keur goed</h2>
     <p class="sub">Leg de leenperiode vast die jullie in de berichten afspraken. Lien krijgt meteen een mail met de bevestiging.</p>
     <div class="f-veld" style="text-align:left;">
@@ -923,6 +886,37 @@
 
 
 
+
+<!-- ================= OVERLAY: NIEUWE GEMEENTE ================= -->
+<div class="overlay" id="ov-gemeente">
+  <div class="paneel" style="max-width: 460px;">
+    <h2 style="font-size: 18px;">Nieuwe gemeente</h2>
+    <p class="sub">Een gemeente in het netwerk zetten. Ze krijgt zelf geen login: aansluiten is de enige schakelaar, en die bepaalt of haar verenigingen mogen aanvragen.</p>
+    <div class="f-veld" style="text-align:left;">
+      <label>Naam <span style="color:#B3261E;">*</span></label>
+      <input class="invoer gevuld" id="gem-naam" style="width:100%; font-family:inherit; font-size:12.5px;" placeholder="bv. Herent">
+      <label style="margin-top:12px;">Aangesloten</label>
+      <div style="display:flex; gap:8px;">
+        <span class="f-knop klein" id="gem-ja" style="background:#F1F5E8; border-color:#708C3D; color:#5C7431;" data-act="gem-aangesloten">Ja</span>
+        <span class="f-knop klein" id="gem-nee" data-act="gem-niet-aangesloten">Nog niet</span>
+      </div>
+      <div class="f-hint">Staat dit op "nog niet", dan kan je de gemeente al klaarzetten, maar kunnen haar verenigingen nog niets aanvragen en kan je ze nog niet koppelen.</div>
+      <label style="margin-top:12px;">Kan lenen bij</label>
+      <div style="display:grid; gap:2px; border:1px solid #D6D1C7; border-radius:9px; padding:6px 4px; background:#FFFFFF;">
+        <label style="display:flex; gap:10px; align-items:center; padding:8px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" id="gem-cb-leuven" style="width:15px;height:15px;">Leuven</label>
+        <label style="display:flex; gap:10px; align-items:center; padding:8px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" style="width:15px;height:15px;">Aarschot</label>
+        <label style="display:flex; gap:10px; align-items:center; padding:8px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" style="width:15px;height:15px;">Rotselaar</label>
+      </div>
+      <div class="f-hint">Koppelingen werken in twee richtingen en kan je later altijd aanpassen.</div>
+    </div>
+    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top: 18px;">
+      <span class="f-knop" style="border:none; background:none; color:#78716C;" data-sluit="ov-gemeente">Annuleer</span>
+      <span class="f-knop" data-act="maak-gemeente-nog-een">Aanmaken en nog een</span>
+      <span class="f-knop primair" data-act="maak-gemeente">Aanmaken</span>
+    </div>
+  </div>
+</div>
+
 <!-- ================= OVERLAY: KOPPELINGEN ================= -->
 <div class="overlay" id="ov-koppelingen">
   <div class="paneel" style="max-width: 450px;">
@@ -931,7 +925,7 @@
     <div style="text-align:left; display:grid; gap:2px; border:1px solid #D6D1C7; border-radius:9px; padding:6px 4px; background:#FFFFFF;">
       <label style="display:flex; gap:10px; align-items:center; padding:9px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" checked id="cb-aarschot" style="width:15px;height:15px;">Aarschot <span style="color:#78716C;">&middot; 6 verenigingen</span></label>
       <label style="display:flex; gap:10px; align-items:center; padding:9px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" checked id="cb-rotselaar" style="width:15px;height:15px;">Rotselaar <span style="color:#78716C;">&middot; 3 verenigingen</span></label>
-      <label style="display:flex; gap:10px; align-items:center; padding:9px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" id="cb-herent" style="width:15px;height:15px;">Herent <span style="color:#78716C;">&middot; 7 mensen wilden hier al lenen</span></label>
+      <label style="display:flex; gap:10px; align-items:center; padding:9px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" id="cb-herent" style="width:15px;height:15px;">Herent <span style="color:#78716C;">&middot; nog geen verenigingen</span></label>
       <label style="display:flex; gap:10px; align-items:center; padding:9px 10px; font-size:12.5px; color:#A8A29E;"><input type="checkbox" disabled style="width:15px;height:15px;">Tienen <span>&middot; nog niet aangesloten</span></label>
     </div>
     <div style="text-align:left; font-size:11px; color:#78716C; margin-top:8px; line-height:1.5;">Enkel aangesloten gemeenten kan je koppelen. Een gemeente die nog niet meedoet, blijft grijs tot haar bestuur tekent.</div>
@@ -1042,30 +1036,36 @@
   <div class="paneel">
     <h2>Alle schermen</h2>
     <p class="sub">Spring rechtstreeks naar een scherm. De rol rechtsboven wisselt vanzelf mee.</p>
-    <div class="groep">De publieke kant</div>
+    <div class="groep">De publieke kant, voor iedereen</div>
     <div class="lijstje">
       <span data-go="home"><i>1</i>Homepage</span>
       <span data-go="catalogus"><i>2</i>Catalogus</span>
-      <span data-go="materiaal"><i>3</i>Materiaalfiche</span>
-      <span data-go="doe-mee"><i>4</i>Doe mee</span>
-      <span data-go="gemeente"><i>4b</i>Voor gemeenten</span>
-      <span data-go="spelregels"><i>4c</i>Spelregels</span>
-      <span data-go="over"><i>4d</i>Over</span>
+      <span data-go="materiaal"><i>3</i>Materiaalfiche en aanvragen</span>
+      <span data-go="spelregels"><i>4</i>Spelregels</span>
+      <span data-go="over"><i>5</i>Over Out of Stock</span>
+    </div>
+    <div class="groep">Meedoen (formuliertjes die een mail sturen)</div>
+    <div class="lijstje">
+      <span data-go="doe-mee"><i>6</i>Doe mee, voor verenigingen</span>
+      <span data-go="gemeente"><i>7</i>Voor gemeenten</span>
     </div>
     <div class="groep">Het paneel van de vereniging</div>
     <div class="lijstje">
-      <span data-go="login"><i>5</i>Inloggen</span>
-      <span data-go="b-materialen"><i>6</i>Inventaris</span>
-      <span data-go="b-aanvragen"><i>7</i>Aanvragen</span>
-      <span data-go="b-mijn-aanvraag"><i>7b</i>Eigen aanvraag (lenerskant)</span>
-      <span data-go="b-uitleningen"><i>8</i>Uitleningen</span>
-      <span data-go="b-instellingen"><i>9</i>Instellingen</span>
+      <span data-go="login"><i>8</i>Inloggen</span>
+      <span data-go="b-materialen"><i>9</i>Materialen</span>
+      <span data-go="b-materiaal-nieuw"><i>10</i>Materiaal toevoegen</span>
+      <span data-go="b-aanvragen"><i>11</i>Aanvragen: ontvangen en verstuurd</span>
+      <span data-go="b-aanvraag"><i>12</i>Aanvraag behandelen</span>
+      <span data-go="b-mijn-aanvraag"><i>13</i>Eigen aanvraag opvolgen</span>
+      <span data-go="b-uitleningen"><i>14</i>Uitleningen</span>
+      <span data-go="b-instellingen"><i>15</i>Instellingen</span>
     </div>
     <div class="groep">Het paneel van Ecolife</div>
     <div class="lijstje">
-      <span data-go="e-verenigingen"><i>10</i>Verenigingen</span>
-      <span data-go="e-gemeenten"><i>11</i>Gemeenten &amp; deelnetwerken</span>
-      <span data-go="e-uitleningen"><i>12</i>Alle uitleningen</span>
+      <span data-go="e-verenigingen"><i>16</i>Verenigingen</span>
+      <span data-go="e-vereniging-nieuw"><i>17</i>Vereniging toevoegen</span>
+      <span data-go="e-gemeenten"><i>18</i>Gemeenten en koppelingen</span>
+      <span data-go="e-uitleningen"><i>19</i>Alle uitleningen</span>
     </div>
     <div class="groep">Later op de roadmap</div>
     <div class="lijstje">
@@ -1247,6 +1247,24 @@
     d.innerHTML = '<b>' + auteur + '</b> <span style="color:#78716C;">&middot; zonet</span><br>' + tekst.replace(/</g, '&lt;');
     lijst.appendChild(d);
   }
+  function maakGemeente(nogEen) {
+    var veld = document.getElementById('gem-naam');
+    var naam = (veld.value || '').trim();
+    if (!naam) { toast('Een naam is verplicht.'); return; }
+    var aangesloten = document.getElementById('gem-ja').getAttribute('style') !== null;
+    var metLeuven = document.getElementById('gem-cb-leuven').checked && aangesloten;
+    var rij = document.createElement('tr');
+    rij.innerHTML = '<td class="naam">' + naam.replace(/</g, '&lt;') + '</td>'
+      + '<td>' + (aangesloten ? '<span class="f-badge groen"><i></i>ja</span>' : '<span class="f-badge amber"><i></i>nog niet</span>') + '</td>'
+      + '<td class="zacht">0</td>'
+      + '<td>' + (metLeuven ? '<span class="f-badge groen"><i></i>Leuven</span>' : '<span class="f-badge grijs"><i></i>nog niet gekoppeld</span>') + '</td>'
+      + '<td style="text-align:right;"><span class="f-knop klein" data-act="open-koppelingen">Koppelingen</span></td>';
+    document.getElementById('gemeententabel').appendChild(rij);
+    veld.value = '';
+    document.getElementById('gem-cb-leuven').checked = false;
+    if (!nogEen) document.getElementById('ov-gemeente').classList.remove('aan');
+    toast(naam + (aangesloten ? ' toegevoegd en aangesloten.' : ' toegevoegd. Haar verenigingen kunnen nog niets aanvragen tot het bestuur tekent.'));
+  }
   function zetBadge(kleur, tekst) {
     var b = document.getElementById('aanvraag-badge');
     if (b) { b.className = 'f-badge ' + kleur; b.innerHTML = '<i></i>' + tekst; }
@@ -1317,6 +1335,17 @@
       document.getElementById('tab-ontvangen').classList.remove('aan');
     },
     'open-keurgoed': function () { document.getElementById('ov-keurgoed').classList.add('aan'); },
+    'open-gemeente': function () { document.getElementById('ov-gemeente').classList.add('aan'); },
+    'gem-aangesloten': function () {
+      document.getElementById('gem-ja').setAttribute('style', 'background:#F1F5E8; border-color:#708C3D; color:#5C7431;');
+      document.getElementById('gem-nee').removeAttribute('style');
+    },
+    'gem-niet-aangesloten': function () {
+      document.getElementById('gem-nee').setAttribute('style', 'background:#FFFBEB; border-color:#F59E0B; color:#B45309;');
+      document.getElementById('gem-ja').removeAttribute('style');
+    },
+    'maak-gemeente': function () { maakGemeente(false); },
+    'maak-gemeente-nog-een': function () { maakGemeente(true); },
     'open-koppelingen': function () { document.getElementById('ov-koppelingen').classList.add('aan'); },
     'bewaar-koppelingen': function () {
       var aarschot = document.getElementById('cb-aarschot').checked;
