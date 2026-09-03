@@ -847,18 +847,18 @@
       <div class="f-main">
         <div class="f-titelrij">
           <div><h3>Gemeenten en deelnetwerken</h3><div class="f-onderkop">De koppelingen bepalen wie bij wie kan aanvragen.</div></div>
-          <span class="f-knop primair" data-zeg="Voegt een gemeente toe, nog zonder koppelingen.">+ Gemeente</span>
+          <span class="f-knop primair" data-zeg="Opent een venstertje met de naam van de gemeente en of ze aangesloten is. Koppelingen leg je daarna.">+ Gemeente</span>
         </div>
         <div class="f-kaart">
           <table class="f-tabel">
-            <tr><th>Gemeente</th><th>Verenigingen</th><th>Kan lenen bij</th><th></th></tr>
-            <tr><td class="naam">Leuven</td><td class="zacht">14</td><td><span class="f-badge groen"><i></i>Aarschot</span> <span class="f-badge groen"><i></i>Rotselaar</span></td><td style="text-align:right;"><span class="f-knop klein" data-zeg="Kies met welke gemeenten deze gekoppeld is. De koppeling is wederzijds.">Koppelingen</span></td></tr>
-            <tr><td class="naam">Aarschot</td><td class="zacht">6</td><td><span class="f-badge groen"><i></i>Leuven</span> <span class="f-badge groen"><i></i>Rotselaar</span></td><td style="text-align:right;"><span class="f-knop klein" data-zeg="Kies met welke gemeenten deze gekoppeld is. De koppeling is wederzijds.">Koppelingen</span></td></tr>
-            <tr><td class="naam">Rotselaar</td><td class="zacht">3</td><td><span class="f-badge groen"><i></i>Leuven</span> <span class="f-badge groen"><i></i>Aarschot</span></td><td style="text-align:right;"><span class="f-knop klein" data-zeg="Kies met welke gemeenten deze gekoppeld is. De koppeling is wederzijds.">Koppelingen</span></td></tr>
-            <tr><td class="naam zacht">Herent</td><td class="zacht">0</td><td><span class="f-badge grijs"><i></i>nog niet gekoppeld</span></td><td style="text-align:right;"><span class="f-knop klein" data-zeg="Kies met welke gemeenten deze gekoppeld is. De koppeling is wederzijds.">Koppelingen</span></td></tr>
+            <tr><th>Gemeente</th><th>Aangesloten</th><th>Verenigingen</th><th>Kan lenen bij</th><th></th></tr>
+            <tr><td class="naam">Leuven</td><td><span class="f-badge groen"><i></i>ja</span></td><td class="zacht">14</td><td id="kop-leuven"><span class="f-badge groen"><i></i>Aarschot</span> <span class="f-badge groen"><i></i>Rotselaar</span></td><td style="text-align:right;"><span class="f-knop klein" data-act="open-koppelingen">Koppelingen</span></td></tr>
+            <tr><td class="naam">Aarschot</td><td><span class="f-badge groen"><i></i>ja</span></td><td class="zacht">6</td><td id="kop-aarschot"><span class="f-badge groen"><i></i>Leuven</span> <span class="f-badge groen"><i></i>Rotselaar</span></td><td style="text-align:right;"><span class="f-knop klein" data-act="open-koppelingen">Koppelingen</span></td></tr>
+            <tr><td class="naam">Rotselaar</td><td><span class="f-badge groen"><i></i>ja</span></td><td class="zacht">3</td><td id="kop-rotselaar"><span class="f-badge groen"><i></i>Leuven</span> <span class="f-badge groen"><i></i>Aarschot</span></td><td style="text-align:right;"><span class="f-knop klein" data-act="open-koppelingen">Koppelingen</span></td></tr>
+            <tr><td class="naam zacht">Herent</td><td><span class="f-badge amber"><i></i>nog niet</span></td><td class="zacht">0</td><td id="kop-herent"><span class="f-badge grijs"><i></i>nog niet gekoppeld</span></td><td style="text-align:right;"><span class="f-knop klein" data-act="open-koppelingen">Koppelingen</span></td></tr>
           </table>
         </div>
-        <div class="f-melding" style="margin-top:14px;">Wil iemand lenen buiten zijn koppelingen, dan krijgt de deelcoach daar een mailtje van. Stapelen die mailtjes zich op voor &eacute;&eacute;n gemeente (Herent staat deze maand al op zeven), dan is dat het signaal: koppelen of dat bestuur bellen.</div>
+        <p class="f-omschrijving" style="margin-top:14px;">Wil iemand lenen buiten zijn koppelingen, dan krijgt de deelcoach daar een mailtje van. Stapelen die mailtjes zich op voor &eacute;&eacute;n gemeente (Herent staat deze maand al op zeven), dan is dat het signaal: koppelen of dat bestuur bellen.</div>
       </div>
     </div>
   </div>
@@ -921,6 +921,26 @@
 </div>
 
 
+
+
+<!-- ================= OVERLAY: KOPPELINGEN ================= -->
+<div class="overlay" id="ov-koppelingen">
+  <div class="paneel" style="max-width: 450px;">
+    <h2 style="font-size: 18px;">Koppelingen voor Leuven</h2>
+    <p class="sub">Vink aan bij welke gemeenten de verenigingen van Leuven mogen aanvragen. Een koppeling werkt in twee richtingen: vink je Herent aan, dan kunnen de Herentse verenigingen ook in Leuven lenen.</p>
+    <div style="text-align:left; display:grid; gap:2px; border:1px solid #D6D1C7; border-radius:9px; padding:6px 4px; background:#FFFFFF;">
+      <label style="display:flex; gap:10px; align-items:center; padding:9px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" checked id="cb-aarschot" style="width:15px;height:15px;">Aarschot <span style="color:#78716C;">&middot; 6 verenigingen</span></label>
+      <label style="display:flex; gap:10px; align-items:center; padding:9px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" checked id="cb-rotselaar" style="width:15px;height:15px;">Rotselaar <span style="color:#78716C;">&middot; 3 verenigingen</span></label>
+      <label style="display:flex; gap:10px; align-items:center; padding:9px 10px; font-size:12.5px; cursor:pointer;"><input type="checkbox" id="cb-herent" style="width:15px;height:15px;">Herent <span style="color:#78716C;">&middot; 7 mensen wilden hier al lenen</span></label>
+      <label style="display:flex; gap:10px; align-items:center; padding:9px 10px; font-size:12.5px; color:#A8A29E;"><input type="checkbox" disabled style="width:15px;height:15px;">Tienen <span>&middot; nog niet aangesloten</span></label>
+    </div>
+    <div style="text-align:left; font-size:11px; color:#78716C; margin-top:8px; line-height:1.5;">Enkel aangesloten gemeenten kan je koppelen. Een gemeente die nog niet meedoet, blijft grijs tot haar bestuur tekent.</div>
+    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top: 18px;">
+      <span class="f-knop" data-sluit="ov-koppelingen">Annuleer</span>
+      <span class="f-knop primair" data-act="bewaar-koppelingen">Bewaren</span>
+    </div>
+  </div>
+</div>
 
 <!-- ================= OVERLAY: FOTO TOEVOEGEN ================= -->
 <div class="overlay" id="ov-foto">
@@ -1297,6 +1317,24 @@
       document.getElementById('tab-ontvangen').classList.remove('aan');
     },
     'open-keurgoed': function () { document.getElementById('ov-keurgoed').classList.add('aan'); },
+    'open-koppelingen': function () { document.getElementById('ov-koppelingen').classList.add('aan'); },
+    'bewaar-koppelingen': function () {
+      var aarschot = document.getElementById('cb-aarschot').checked;
+      var rotselaar = document.getElementById('cb-rotselaar').checked;
+      var herent = document.getElementById('cb-herent').checked;
+      function badge(naam) { return '<span class="f-badge groen"><i></i>' + naam + '</span> '; }
+      var leuven = '';
+      if (aarschot) leuven += badge('Aarschot');
+      if (rotselaar) leuven += badge('Rotselaar');
+      if (herent) leuven += badge('Herent');
+      document.getElementById('kop-leuven').innerHTML = leuven || '<span class="f-badge grijs"><i></i>nog niet gekoppeld</span>';
+      // wederzijds: de andere rijen volgen mee
+      document.getElementById('kop-aarschot').innerHTML = (aarschot ? badge('Leuven') : '') + badge('Rotselaar');
+      document.getElementById('kop-rotselaar').innerHTML = (rotselaar ? badge('Leuven') : '') + badge('Aarschot');
+      document.getElementById('kop-herent').innerHTML = herent ? badge('Leuven') : '<span class="f-badge grijs"><i></i>nog niet gekoppeld</span>';
+      document.getElementById('ov-koppelingen').classList.remove('aan');
+      toast(herent ? 'Bewaard. Leuven en Herent kunnen nu bij elkaar aanvragen, in beide richtingen.' : 'Koppelingen bewaard. Ze werken meteen, in beide richtingen.');
+    },
     'open-foto': function () { document.getElementById('ov-foto').classList.add('aan'); },
     'doe-foto': function () {
       document.getElementById('ov-foto').classList.remove('aan');
