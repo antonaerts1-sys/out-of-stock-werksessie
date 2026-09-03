@@ -245,6 +245,28 @@
   </div>
 </section>
 
+
+<!-- ================= SCHERM 1c: SPELREGELS ================= -->
+<section class="view" id="v-spelregels" data-adres="outofstock.be/spelregels">
+  <header class="m-header" data-hdr="spelregels"></header>
+  <div style="max-width: 640px; margin: 0 auto; padding: 40px 26px 50px;">
+    <div style="text-align:center;">
+      <div style="font-size: 27px; font-weight: 800; letter-spacing: -0.02em;">De spelregels</div>
+      <div style="font-size: 14.5px; font-weight: 500; color: #6A6A6A; margin-top: 8px; line-height: 1.6;">Zo houden we het lenen simpel en fair, van vereniging tot vereniging.</div>
+    </div>
+    <div style="background:#FFFFFF; border: 1px solid #EBEBEB; border-radius: 16px; padding: 8px 24px; margin-top: 24px;">
+      <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">1</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Kijken kan iedereen. Lenen kan als aangesloten vereniging, met een account via de deelcoach.</span></div>
+      <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">2</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Vraag met een berichtje en spreek de details samen af. De eigenaar beslist, altijd.</span></div>
+      <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">3</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Gratis is de norm. Vraagt een vereniging een deelname in de kosten, dan staat dat eerlijk op de fiche. Betalen regelen jullie onderling.</span></div>
+      <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">4</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Bij het goedkeuren wordt de leenperiode vastgelegd. Annuleren kan tot de startdatum, langs beide kanten.</span></div>
+      <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">5</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Haal op en breng terug zoals afgesproken, en in de staat waarin je het kreeg. Iets stuk of kwijt? Meld het meteen en regel het samen.</span></div>
+      <div style="display:flex; gap:14px; padding: 15px 0; border-bottom: 1px solid #F3F3F3;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">6</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">De eigenaar zet "opgehaald" en "terug". Zo klopt de catalogus altijd.</span></div>
+      <div style="display:flex; gap:14px; padding: 15px 0;"><b style="flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#F0F4E8; color:#5C7431; display:flex; align-items:center; justify-content:center; font-size:13px;">7</b><span style="font-size:13.5px; font-weight:500; line-height:1.6;">Zorg dat minstens twee mensen van jullie vereniging kunnen inloggen. Zo valt er niets stil als er iemand stopt.</span></div>
+    </div>
+    <div style="text-align:center; font-size: 12px; font-weight: 500; color: #9A9A9A; margin-top: 14px; line-height: 1.5;">Conceptversie. De definitieve spelregels komen van Ecolife; vragen beantwoordt de deelcoach.</div>
+  </div>
+</section>
+
 <!-- ================= SCHERM 2: CATALOGUS ================= -->
 <section class="view" id="v-catalogus" data-adres="outofstock.be/catalogus">
   <header class="m-header" data-hdr="catalogus"></header>
@@ -825,6 +847,7 @@
       <span data-go="materiaal"><i>3</i>Materiaalfiche</span>
       <span data-go="doe-mee"><i>4</i>Doe mee</span>
       <span data-go="gemeente"><i>4b</i>Voor gemeenten</span>
+      <span data-go="spelregels"><i>4c</i>Spelregels</span>
     </div>
     <div class="groep">Het paneel van de vereniging</div>
     <div class="lijstje">
@@ -889,7 +912,7 @@
     return '<img src="uploads/logo-outofstock.png" alt="Out of Stock" data-go="home">'
       + '<div class="m-nav">'
       + '<span' + (actief === 'catalogus' ? ' class="on"' : '') + ' data-go="catalogus">Alle materialen</span>'
-      + '<span data-zeg="De inhoud van Spelregels komt van Ecolife en zit niet in het prototype.">Spelregels</span>'
+      + '<span' + (actief === 'spelregels' ? ' class="on"' : '') + ' data-go="spelregels">Spelregels</span>'
       + '<span data-zeg="De inhoud van Over komt van Ecolife en zit niet in het prototype.">Over</span>'
       + '</div>'
       + '<span class="m-cta" data-go="doe-mee">Deel jullie materiaal</span>'
