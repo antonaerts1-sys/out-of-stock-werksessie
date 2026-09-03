@@ -541,6 +541,12 @@
             <span class="invoer gevuld" style="display:block;">klaptafels, 180 &times; 80 cm</span>
             <label style="margin-top:12px;">Categorie</label>
             <span class="invoer gevuld" style="display:block;">Tafels &amp; banken</span>
+            <label style="margin-top:12px;">Foto's</label>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:stretch;" id="fotorij-bewerk">
+              <span style="width:74px; height:60px; border-radius:9px; background:#F1E8D6; border:1px solid #E8E4DC; display:flex; align-items:center; justify-content:center; color:#8A7B55; font-size:11px; position:relative; cursor:pointer;" data-act="verwijder-foto">foto 1<span style="position:absolute; top:-6px; right:-6px; width:18px; height:18px; border-radius:50%; background:#FFFFFF; border:1px solid #D6D1C7; color:#78716C; font-size:11px; display:flex; align-items:center; justify-content:center;">&times;</span></span>
+              <span class="invoer" style="flex:1; min-width:160px; border-style:dashed; cursor:pointer; text-align:center;" data-act="open-foto-bewerk">+ Voeg een foto toe</span>
+            </div>
+            <div class="f-hint">Klik op een foto om ze te verwijderen. Op je telefoon kan je meteen een nieuwe trekken.</div>
             <label style="margin-top:12px;">Gratis of tegen betaling</label>
             <div style="display:flex; gap:8px;"><span class="f-knop klein" style="background:#F1F5E8; border-color:#708C3D; color:#5C7431;">Gratis</span><span class="f-knop klein" data-zeg="Zet het bedrag dan gewoon in de opmerking. Betalen regelen verenigingen onderling.">Tegen betaling</span></div>
             <label style="margin-top:12px;">Opmerking</label>
@@ -585,9 +591,9 @@
         <div class="f-kaart" id="lijst-verstuurd" style="display:none;">
                     <table class="f-tabel">
             <tr><th>Materiaal</th><th>Bij</th><th>Laatste bericht</th><th>Status</th><th></th></tr>
-            <tr id="rij-friteuse" style="display:none;" class="klikrij" data-go="b-mijn-aanvraag"><td class="naam">Industri&euml;le friteuse</td><td class="zacht">F.C. Tabor Heverlee</td><td class="zacht">jullie vraag, daarnet verstuurd</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein" data-go="b-mijn-aanvraag">Open</span> <span class="f-knop klein" data-zeg="Intrekken kan zolang er nog geen antwoord is, en na goedkeuring nog tot de startdatum.">Annuleer</span></td></tr>
-            <tr class="klikrij" data-go="b-mijn-aanvraag"><td class="naam">Beamer</td><td class="zacht">Bazart Leuven</td><td class="zacht">"Mag hij vrijdag al mee?"</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein" data-go="b-mijn-aanvraag">Open</span> <span class="f-knop klein" data-zeg="Intrekken kan zolang er nog geen antwoord is, en na goedkeuring nog tot de startdatum.">Annuleer</span></td></tr>
-            <tr class="klikrij" data-go="b-mijn-aanvraag"><td class="naam">Paellapan</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">"Voor 120 man, lukt dat?"</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein" data-go="b-mijn-aanvraag">Open</span> <span class="f-knop klein" data-zeg="Intrekken kan zolang er nog geen antwoord is, en na goedkeuring nog tot de startdatum.">Annuleer</span></td></tr>
+            <tr id="rij-friteuse" style="display:none;" class="klikrij" data-go="b-mijn-aanvraag"><td class="naam">Industri&euml;le friteuse</td><td class="zacht">F.C. Tabor Heverlee</td><td class="zacht">jullie vraag, daarnet verstuurd</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein" data-go="b-mijn-aanvraag">Open</span> <span class="f-knop klein" data-go="b-mijn-aanvraag" data-act="open-annuleer">Annuleer</span></td></tr>
+            <tr class="klikrij" data-go="b-mijn-aanvraag"><td class="naam">Beamer</td><td class="zacht">Bazart Leuven</td><td class="zacht">"Mag hij vrijdag al mee?"</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein" data-go="b-mijn-aanvraag">Open</span> <span class="f-knop klein" data-go="b-mijn-aanvraag" data-act="open-annuleer">Annuleer</span></td></tr>
+            <tr class="klikrij" data-go="b-mijn-aanvraag"><td class="naam">Paellapan</td><td class="zacht">Scouts Boven-Lo</td><td class="zacht">"Voor 120 man, lukt dat?"</td><td><span class="f-badge blauw"><i></i>aangevraagd</span></td><td style="text-align:right; white-space:nowrap;"><span class="f-knop klein" data-go="b-mijn-aanvraag">Open</span> <span class="f-knop klein" data-go="b-mijn-aanvraag" data-act="open-annuleer">Annuleer</span></td></tr>
           </table>
         </div>
       </div>
@@ -1341,6 +1347,8 @@
     toastTimer = setTimeout(function () { t.classList.remove('zien'); }, 3400);
   }
 
+  var fotoRij = 'fotorij';
+
   /* ------- aanvraagdetail simuleren ------- */
   function voegBericht(auteur, tekst) {
     var lijst = document.getElementById('berichtenlijst');
@@ -1502,10 +1510,15 @@
       document.getElementById('ov-koppelingen').classList.remove('aan');
       toast(herent ? 'Bewaard. Leuven en Bertem kunnen nu bij elkaar aanvragen, in beide richtingen.' : 'Koppelingen bewaard. Ze werken meteen, in beide richtingen.');
     },
-    'open-foto': function () { document.getElementById('ov-foto').classList.add('aan'); },
+    'open-foto': function () { fotoRij = 'fotorij'; document.getElementById('ov-foto').classList.add('aan'); },
+    'open-foto-bewerk': function () { fotoRij = 'fotorij-bewerk'; document.getElementById('ov-foto').classList.add('aan'); },
+    'verwijder-foto': function () {
+      var r = document.getElementById('fotorij-bewerk');
+      if (r && r.children.length > 1) { r.removeChild(r.firstElementChild); toast('Foto verwijderd. Vergeet niet te bewaren.'); }
+    },
     'doe-foto': function () {
       document.getElementById('ov-foto').classList.remove('aan');
-      var rij = document.getElementById('fotorij');
+      var rij = document.getElementById(fotoRij);
       var d = document.createElement('span');
       d.setAttribute('style', 'width:74px; height:60px; border-radius:9px; background:#F1E8D6; border:1px solid #E8E4DC; display:flex; align-items:center; justify-content:center; color:#8A7B55; font-size:11px; flex:0 0 auto;');
       d.innerHTML = 'foto ' + (rij.children.length);
