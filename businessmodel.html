@@ -101,24 +101,40 @@
   .paginavoet a { font-weight: 700; font-size: 14px; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 16px; background: #FFFFFF; }
 
   @media (max-width: 900px) { .pagehead .navs { display: none; } .pagehead h1 { font-size: 17px; } }
+
+  /* Vaste navigatie, gelijk op alle werksessiepagina's */
+  .navs { display: flex; gap: 8px; flex-wrap: nowrap; }
+  .pagehead .navs { margin-left: auto; }
+  .navs a.switch { margin: 0; font-weight: 700; font-size: 14px; color: #222222; border: 1px solid #DDDDDD; border-radius: 999px; padding: 10px 16px; background: #FFFFFF; white-space: nowrap; text-decoration: none; }
+  .navs a.switch:hover { border-color: #222222; }
+  .navs a.switch.klik { background: #708C3D; border-color: #708C3D; color: #FFFFFF; }
+  .navs a.switch.klik:hover { background: #5C7431; border-color: #5C7431; }
+  .navs a.switch[aria-current="page"] { background: #F0F4E8; border-color: #708C3D; color: #5C7431; }
+  .paginavoet .navs { flex-wrap: wrap; }
+  .pagehead a.thuis { display: flex; flex-shrink: 0; }
+  @media (max-width: 1000px) {
+    .pagehead .wrap, .pagehead .inner { flex-wrap: wrap; }
+    .pagehead .navs { display: flex; margin-left: 0; width: 100%; overflow-x: auto; padding-bottom: 2px; }
+  }
 </style>
 </head>
 <body>
 
 <div class="pagehead">
   <div class="wrap">
-    <img src="uploads/logo-outofstock.png" alt="Out of Stock">
+    <a class="thuis" href="index.html" title="Naar het overzicht"><img src="uploads/logo-outofstock.png" alt="Out of Stock"></a>
     <div>
       <div class="kicker">Werksessie · Out of Stock</div>
       <h1>Hoe het model werkt</h1>
     </div>
-    <div class="navs">
+    <nav class="navs" aria-label="Werksessiepagina's">
+      <a class="switch klik" href="prototype.html">Klik zelf door</a>
       <a class="switch" href="mvp-schermen.html">De schermen</a>
       <a class="switch" href="rollen.html">Wie mag wat</a>
+      <a class="switch" href="businessmodel.html" aria-current="page">Het model</a>
       <a class="switch" href="keuzepagina.html">De keuzes</a>
       <a class="switch" href="wat-we-meten.html">Wat het aantoont</a>
-      <a class="switch" href="verantwoording.html">Waarom zo</a>
-    </div>
+    </nav>
   </div>
 </div>
 
@@ -266,7 +282,14 @@
 <div class="paginavoet">
   <div class="wrap">
     <span class="credit">Out of Stock &middot; werksessiemateriaal, geen definitief model</span>
-    <span style="display:flex; gap:8px; flex-wrap:wrap;"><a href="mvp-schermen.html">De schermen</a><a href="rollen.html">Wie mag wat</a><a href="keuzepagina.html">De keuzes</a><a href="verantwoording.html">Waarom zo</a></span>
+    <nav class="navs" aria-label="Werksessiepagina's">
+      <a class="switch klik" href="prototype.html">Klik zelf door</a>
+      <a class="switch" href="mvp-schermen.html">De schermen</a>
+      <a class="switch" href="rollen.html">Wie mag wat</a>
+      <a class="switch" href="businessmodel.html" aria-current="page">Het model</a>
+      <a class="switch" href="keuzepagina.html">De keuzes</a>
+      <a class="switch" href="wat-we-meten.html">Wat het aantoont</a>
+    </nav>
   </div>
 </div>
 
